@@ -1,0 +1,2536 @@
+
+{
+  "$schemaVersion": 3,
+  "$id": "com.example.modern_ecommerce.theme",
+  "$version": "1.0.0",
+  "$name": "Modern E-Commerce Theme",
+  "$description": "Modern E-Commerce Theme - A comprehensive design system with semantic tokens for colors, sizes, and typography supporting both light and dark modes.",
+  "light": {
+    "$variables": {
+      "color": {
+        "brand": {
+          "primary": "#1A1A2E",
+          "container": "#F8F9FA"
+        },
+        "neutral": {
+          "white": "#FFFFFF",
+          "light": "#E5E7EB",
+          "disabled": "#9CA3AF",
+          "dark": "#5A5A5A",
+          "darker": "#3A3A3A"
+        },
+        "semantic": {
+          "error": "#EF4444",
+          "errorLight": "#F87171",
+          "success": "#10B981",
+          "successLight": "#34D399",
+          "warning": "#FFA500",
+          "warningLight": "#FBBF24",
+          "info": "#4A90E2",
+          "infoLight": "#60A5FA"
+        }
+      },
+      "font": {
+        "family": {
+          "primary": "Inter"
+        },
+        "size": {
+          "display": 32,
+          "headline": 28,
+          "title": 20,
+          "body": 16,
+          "label": 14,
+          "caption": 12
+        },
+        "height": {
+          "display": 1.2,
+          "headline": 1.3,
+          "title": 1.4,
+          "body": 1.5,
+          "label": 1.4,
+          "caption": 1.4
+        }
+      }
+    },
+    "color": {
+      "brand": {
+        "$description": "Brand identity colors — the primary product accent",
+        "primary": {
+          "$type": "color",
+          "$value": "$color.brand.primary",
+          "$description": "Primary brand color - deep navy, used for headers, primary buttons, and main text"
+        },
+        "container": {
+          "$type": "color",
+          "$value": "$color.brand.container",
+          "$description": "Surface color for primary tinted backgrounds"
+        }
+      },
+      "foreground": {
+        "$description": "Text colors rendered on top of any surface",
+        "primary": {
+          "$type": "color",
+          "$value": "#1A1A2E",
+          "$description": "Primary text color - deep navy for headings and important text"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "#4A4A5A",
+          "$description": "Secondary text color - body text"
+        },
+        "title": {
+          "$type": "color",
+          "$value": "#1A1A2E",
+          "$description": "Title text color - same as primary"
+        },
+        "body": {
+          "$type": "color",
+          "$value": "#6B6B7B",
+          "$description": "Body text color - tertiary level text"
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "$color.neutral.disabled",
+          "$description": "Disabled text color - for inactive elements"
+        },
+        "placeholder": {
+          "$type": "color",
+          "$value": "$color.neutral.disabled",
+          "$description": "Placeholder text color - for input hints"
+        },
+        "inverse": {
+          "$type": "color",
+          "$value": "$color.neutral.white",
+          "$description": "Text on filled/colored backgrounds"
+        },
+        "success": {
+          "$type": "color",
+          "$value": "$color.semantic.success",
+          "$description": "Success state text color"
+        },
+        "info": {
+          "$type": "color",
+          "$value": "$color.semantic.info",
+          "$description": "Info state text color"
+        },
+        "warning": {
+          "$type": "color",
+          "$value": "$color.semantic.warning",
+          "$description": "Warning state text color"
+        },
+        "error": {
+          "$type": "color",
+          "$value": "$color.semantic.error",
+          "$description": "Error state text color"
+        }
+      },
+      "icon": {
+        "$description": "Icon / glyph colors — parallel to foreground but scoped to iconography",
+        "primary": {
+          "$type": "color",
+          "$value": "#1A1A2E",
+          "$description": "Primary icon color"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "#E94560",
+          "$description": "Secondary/accent icon color - coral"
+        },
+        "title": {
+          "$type": "color",
+          "$value": "#1A1A2E",
+          "$description": "Icon color for titles"
+        },
+        "body": {
+          "$type": "color",
+          "$value": "#6B6B7B",
+          "$description": "Icon color for body text areas"
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "$color.neutral.disabled",
+          "$description": "Disabled icon color"
+        },
+        "inverse": {
+          "$type": "color",
+          "$value": "$color.neutral.white",
+          "$description": "Icon on filled backgrounds"
+        },
+        "success": {
+          "$type": "color",
+          "$value": "$color.semantic.success",
+          "$description": "Success icon color"
+        },
+        "info": {
+          "$type": "color",
+          "$value": "$color.semantic.info",
+          "$description": "Info icon color"
+        },
+        "warning": {
+          "$type": "color",
+          "$value": "$color.semantic.warning",
+          "$description": "Warning icon color"
+        },
+        "error": {
+          "$type": "color",
+          "$value": "$color.semantic.error",
+          "$description": "Error icon color"
+        }
+      },
+      "input": {
+        "$description": "Colors scoped to form controls — text fields, selects, textareas",
+        "primary": {
+          "$type": "color",
+          "$value": "#1A1A2E",
+          "$description": "TextField primary color"
+        },
+        "label": {
+          "$type": "color",
+          "$value": "#4A4A5A",
+          "$description": "TextField label color"
+        },
+        "value": {
+          "$type": "color",
+          "$value": "#1A1A2E",
+          "$description": "TextField input text color"
+        },
+        "placeholder": {
+          "$type": "color",
+          "$value": "$color.neutral.disabled",
+          "$description": "TextField placeholder color"
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "$color.neutral.disabled",
+          "$description": "TextField disabled color"
+        },
+        "fill": {
+          "$type": "color",
+          "$value": "$color.neutral.white",
+          "$description": "TextField background color"
+        },
+        "outline": {
+          "$type": "color",
+          "$value": "$color.neutral.light",
+          "$description": "TextField border color"
+        },
+        "focus": {
+          "$type": "color",
+          "$value": "#1A1A2E",
+          "$description": "TextField focus border color"
+        },
+        "error": {
+          "$type": "color",
+          "$value": "$color.semantic.error",
+          "$description": "TextField error state color"
+        }
+      },
+      "action": {
+        "$description": "Colors for interactive / tappable elements — buttons, chips, FABs, toggles",
+        "filledPrimary": {
+          "$type": "color",
+          "$value": "#1A1A2E",
+          "$description": "Primary filled button active state"
+        },
+        "filledHover": {
+          "$type": "color",
+          "$value": "#2D3A8C",
+          "$description": "Primary filled button hover state"
+        },
+        "ghostPrimary": {
+          "$type": "color",
+          "$value": "#E94560",
+          "$description": "Secondary button active state - coral"
+        },
+        "ghostHover": {
+          "$type": "color",
+          "$value": "#FF6B7A",
+          "$description": "Secondary button hover state - lighter coral"
+        },
+        "outline": {
+          "$type": "color",
+          "$value": "#1A1A2E",
+          "$description": "Outlined button border color"
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "$color.neutral.light",
+          "$description": "Disabled button background"
+        },
+        "filledDanger": {
+          "$type": "color",
+          "$value": "$color.semantic.error",
+          "$description": "Error/destructive filled button"
+        }
+      },
+      "canvas": {
+        "$description": "Screen / page background layers — the painted surface beneath all content",
+        "primary": {
+          "$type": "color",
+          "$value": "#F8F9FA",
+          "$description": "Main scaffold background - light gray"
+        },
+        "secondary": {
+          "$type": "color",
+          "$value": "#F3F4F6",
+          "$description": "Secondary surface - chips, secondary backgrounds"
+        },
+        "tertiary": {
+          "$type": "color",
+          "$value": "$color.neutral.light",
+          "$description": "Tertiary surface - dividers, subtle backgrounds"
+        },
+        "error": {
+          "$type": "color",
+          "$value": "#FEF2F2",
+          "$description": "Error state surface background"
+        },
+        "info": {
+          "$type": "color",
+          "$value": "#EFF6FF",
+          "$description": "Info state surface background"
+        },
+        "warning": {
+          "$type": "color",
+          "$value": "#FFFBEB",
+          "$description": "Warning state surface background"
+        },
+        "success": {
+          "$type": "color",
+          "$value": "#ECFDF5",
+          "$description": "Success state surface background"
+        },
+        "neutral": {
+          "$type": "color",
+          "$value": "#F3F4F6",
+          "$description": "Generic gray background"
+        },
+        "brand": {
+          "$type": "color",
+          "$value": "#1A1A2E",
+          "$description": "Primary tinted background"
+        }
+      },
+      "surface": {
+        "$description": "Elevated container colors — cards, sheets, and raised panels",
+        "card": {
+          "$type": "color",
+          "$value": "$color.neutral.white",
+          "$description": "Card background color - white"
+        }
+      },
+      "stroke": {
+        "$description": "Border, divider, and outline colors",
+        "emphasis": {
+          "$type": "color",
+          "$value": "#1A1A2E",
+          "$description": "Primary stroke/border color"
+        },
+        "primary": {
+          "$type": "color",
+          "$value": "$color.neutral.light",
+          "$description": "Default border stroke"
+        },
+        "divider": {
+          "$type": "color",
+          "$value": "$color.neutral.light",
+          "$description": "Divider line color"
+        },
+        "inverse": {
+          "$type": "color",
+          "$value": "$color.neutral.white",
+          "$description": "Inverse stroke for dark backgrounds"
+        },
+        "error": {
+          "$type": "color",
+          "$value": "$color.semantic.error",
+          "$description": "Error outline/border color"
+        }
+      },
+      "feedback": {
+        "$description": "UI state signal colors — communicates the result of an action or system condition",
+        "warning": {
+          "$type": "color",
+          "$value": "$color.semantic.warning",
+          "$description": "Warning status color - orange"
+        },
+        "danger": {
+          "$type": "color",
+          "$value": "$color.semantic.error",
+          "$description": "Danger/error status color - red"
+        },
+        "success": {
+          "$type": "color",
+          "$value": "$color.semantic.success",
+          "$description": "Success status color - green"
+        },
+        "info": {
+          "$type": "color",
+          "$value": "$color.semantic.info",
+          "$description": "Info status color - blue"
+        }
+      },
+      "indicator": {
+        "$description": "Status indicator colors — badges, chips, tags, and lifecycle pills",
+        "urgent": {
+          "$type": "color",
+          "$value": "$color.semantic.error",
+          "$description": "Urgent badge color"
+        },
+        "pending": {
+          "$type": "color",
+          "$value": "$color.semantic.warning",
+          "$description": "Pending status badge - orange"
+        },
+        "inReview": {
+          "$type": "color",
+          "$value": "$color.semantic.info",
+          "$description": "In review status badge - blue"
+        },
+        "interview": {
+          "$type": "color",
+          "$value": "#9B59B6",
+          "$description": "Interview status badge - purple"
+        },
+        "offer": {
+          "$type": "color",
+          "$value": "$color.semantic.success",
+          "$description": "Offer status badge - green"
+        },
+        "hired": {
+          "$type": "color",
+          "$value": "$color.semantic.success",
+          "$description": "Hired status badge - green"
+        },
+        "rejected": {
+          "$type": "color",
+          "$value": "$color.semantic.error",
+          "$description": "Rejected status badge - red"
+        }
+      }
+    },
+    "sizes": {
+      "$description": "Dimensional sizing scale for padding, spacing, radius, icons, typography, motion, and blur",
+      "padding": {
+        "$description": "Padding scale for internal component spacing",
+        "xs": {
+          "$type": "dimension",
+          "$value": 4,
+          "$description": "Extra small padding - 4px"
+        },
+        "sm": {
+          "$type": "dimension",
+          "$value": 8,
+          "$description": "Small padding - 8px"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": 12,
+          "$description": "Medium padding - 12px"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": 16,
+          "$description": "Large padding - 16px"
+        },
+        "xl": {
+          "$type": "dimension",
+          "$value": 20,
+          "$description": "Extra large padding - 20px"
+        },
+        "x2l": {
+          "$type": "dimension",
+          "$value": 24,
+          "$description": "2x large padding - 24px"
+        },
+        "x3l": {
+          "$type": "dimension",
+          "$value": 32,
+          "$description": "3x large padding - 32px"
+        },
+        "x4l": {
+          "$type": "dimension",
+          "$value": 40,
+          "$description": "4x large padding - 40px"
+        },
+        "x5l": {
+          "$type": "dimension",
+          "$value": 48,
+          "$description": "5x large padding - 48px"
+        },
+        "x6l": {
+          "$type": "dimension",
+          "$value": 64,
+          "$description": "6x large padding - 64px"
+        },
+        "x7l": {
+          "$type": "dimension",
+          "$value": 80,
+          "$description": "7x large padding - 80px"
+        }
+      },
+      "spacing": {
+        "$description": "Spacing scale for gaps between components and layout",
+        "xs": {
+          "$type": "dimension",
+          "$value": 4,
+          "$description": "Extra small spacing - 4px"
+        },
+        "sm": {
+          "$type": "dimension",
+          "$value": 8,
+          "$description": "Small spacing - 8px"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": 12,
+          "$description": "Medium spacing - 12px"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": 16,
+          "$description": "Large spacing - 16px"
+        },
+        "xl": {
+          "$type": "dimension",
+          "$value": 20,
+          "$description": "Extra large spacing - 20px"
+        },
+        "x2l": {
+          "$type": "dimension",
+          "$value": 24,
+          "$description": "2x large spacing - 24px"
+        },
+        "x3l": {
+          "$type": "dimension",
+          "$value": 32,
+          "$description": "3x large spacing - 32px"
+        },
+        "x4l": {
+          "$type": "dimension",
+          "$value": 40,
+          "$description": "4x large spacing - 40px"
+        },
+        "x5l": {
+          "$type": "dimension",
+          "$value": 48,
+          "$description": "5x large spacing - 48px"
+        },
+        "x6l": {
+          "$type": "dimension",
+          "$value": 64,
+          "$description": "6x large spacing - 64px"
+        },
+        "x7l": {
+          "$type": "dimension",
+          "$value": 80,
+          "$description": "7x large spacing - 80px"
+        }
+      },
+      "radius": {
+        "$description": "Border radius scale for rounding corners",
+        "xs": {
+          "$type": "dimension",
+          "$value": 4,
+          "$description": "Extra small radius - 4px"
+        },
+        "sm": {
+          "$type": "dimension",
+          "$value": 6,
+          "$description": "Small radius - 6px"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": 8,
+          "$description": "Medium radius - 8px"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": 12,
+          "$description": "Large radius - 12px"
+        },
+        "xl": {
+          "$type": "dimension",
+          "$value": 16,
+          "$description": "Extra large radius (cards)"
+        },
+        "x2l": {
+          "$type": "dimension",
+          "$value": 20,
+          "$description": "2x large radius - 20px"
+        },
+        "x3l": {
+          "$type": "dimension",
+          "$value": 24,
+          "$description": "3x large radius - 24px"
+        },
+        "x4l": {
+          "$type": "dimension",
+          "$value": 32,
+          "$description": "4x large radius - 32px"
+        },
+        "pill": {
+          "$type": "dimension",
+          "$value": 9999,
+          "$description": "Pill/fully rounded radius"
+        }
+      },
+      "icon": {
+        "$description": "Icon size scale for glyphs and symbols",
+        "xs": {
+          "$type": "dimension",
+          "$value": 12,
+          "$description": "Extra small icon - 12px"
+        },
+        "sm": {
+          "$type": "dimension",
+          "$value": 16,
+          "$description": "Small icon - 16px"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": 20,
+          "$description": "Medium icon - 20px"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": 24,
+          "$description": "Large icon - 24px"
+        },
+        "xl": {
+          "$type": "dimension",
+          "$value": 32,
+          "$description": "Extra large icon - 32px"
+        },
+        "x2l": {
+          "$type": "dimension",
+          "$value": 40,
+          "$description": "2x large icon - 40px"
+        },
+        "x3l": {
+          "$type": "dimension",
+          "$value": 48,
+          "$description": "3x large icon - 48px"
+        }
+      },
+      "font": {
+        "$description": "Font size scale for typography",
+        "xs": {
+          "$type": "dimension",
+          "$value": 10,
+          "$description": "Extra small font - 10px"
+        },
+        "sm": {
+          "$type": "dimension",
+          "$value": 12,
+          "$description": "Small font (caption)"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": 14,
+          "$description": "Medium font (body medium)"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": 16,
+          "$description": "Large font (body large, title medium)"
+        },
+        "xl": {
+          "$type": "dimension",
+          "$value": 20,
+          "$description": "Extra large font (title large)"
+        },
+        "x2l": {
+          "$type": "dimension",
+          "$value": 24,
+          "$description": "2x large font (display medium)"
+        },
+        "x3l": {
+          "$type": "dimension",
+          "$value": 32,
+          "$description": "3x large font (display large)"
+        }
+      },
+      "motion": {
+        "$description": "Motion duration scale for animations and transitions",
+        "xs": {
+          "$type": "dimension",
+          "$value": 50,
+          "$description": "Extra short duration - 50ms"
+        },
+        "sm": {
+          "$type": "dimension",
+          "$value": 100,
+          "$description": "Short duration - 100ms"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": 200,
+          "$description": "Medium duration - 200ms"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": 300,
+          "$description": "Standard duration - 300ms"
+        },
+        "xl": {
+          "$type": "dimension",
+          "$value": 500,
+          "$description": "Long duration - 500ms"
+        }
+      },
+      "blur": {
+        "$description": "Blur intensity scale for backdrop effects",
+        "xs": {
+          "$type": "dimension",
+          "$value": 2,
+          "$description": "Extra small blur - 2px"
+        },
+        "sm": {
+          "$type": "dimension",
+          "$value": 4,
+          "$description": "Small blur - 4px"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": 8,
+          "$description": "Medium blur - 8px"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": 16,
+          "$description": "Large blur - 16px"
+        },
+        "xl": {
+          "$type": "dimension",
+          "$value": 24,
+          "$description": "Extra large blur - 24px"
+        }
+      }
+    },
+    "typography": {
+      "display": {
+        "$description": "Display typography scale for large headlines and hero text",
+        "regular": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.display",
+            "fontWeight": 400,
+            "height": "$font.height.display",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Display - Regular - Normal weight for standard body text"
+        },
+        "medium": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.display",
+            "fontWeight": 500,
+            "height": "$font.height.display",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Display - Medium - Slightly emphasized text for UI elements"
+        },
+        "semiBold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.display",
+            "fontWeight": 600,
+            "height": "$font.height.display",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Display - Semi-bold - Moderate emphasis for subheadings"
+        },
+        "bold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.display",
+            "fontWeight": 700,
+            "height": "$font.height.display",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Display - Bold - Strong emphasis for headings and key text"
+        },
+        "extraBold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.display",
+            "fontWeight": 800,
+            "height": "$font.height.display",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Display - Extra bold - Heavy emphasis for prominent text"
+        },
+        "black": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.display",
+            "fontWeight": 900,
+            "height": "$font.height.display",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Display - Black - Maximum weight for maximum impact"
+        },
+        "light": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.display",
+            "fontWeight": 300,
+            "height": "$font.height.display",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Display - Light - Soft weight for refined display text"
+        },
+        "extraLight": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.display",
+            "fontWeight": 200,
+            "height": "$font.height.display",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Display - Extra light - Very light weight for elegant display text"
+        },
+        "thin": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.display",
+            "fontWeight": 100,
+            "height": "$font.height.display",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Display - Thin - Delicate, minimal weight for subtle display text"
+        }
+      },
+      "headline": {
+        "$description": "Headline typography scale for section headings",
+        "regular": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.headline",
+            "fontWeight": 400,
+            "height": "$font.height.headline",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Headline - Regular - Normal weight for standard body text"
+        },
+        "medium": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.headline",
+            "fontWeight": 500,
+            "height": "$font.height.headline",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Headline - Medium - Slightly emphasized text for UI elements"
+        },
+        "semiBold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.headline",
+            "fontWeight": 600,
+            "height": "$font.height.headline",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Headline - Semi-bold - Moderate emphasis for subheadings"
+        },
+        "bold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.headline",
+            "fontWeight": 700,
+            "height": "$font.height.headline",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Headline - Bold - Strong emphasis for headings and key text"
+        },
+        "extraBold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.headline",
+            "fontWeight": 800,
+            "height": "$font.height.headline",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Headline - Extra bold - Heavy emphasis for prominent text"
+        },
+        "black": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.headline",
+            "fontWeight": 900,
+            "height": "$font.height.headline",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Headline - Black - Maximum weight for maximum impact"
+        },
+        "light": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.headline",
+            "fontWeight": 300,
+            "height": "$font.height.headline",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Headline - Light - Soft weight for refined display text"
+        },
+        "extraLight": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.headline",
+            "fontWeight": 200,
+            "height": "$font.height.headline",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Headline - Extra light - Very light weight for elegant display text"
+        },
+        "thin": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.headline",
+            "fontWeight": 100,
+            "height": "$font.height.headline",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Headline - Thin - Delicate, minimal weight for subtle display text"
+        }
+      },
+      "title": {
+        "$description": "Title typography scale for card and component titles",
+        "regular": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.title",
+            "fontWeight": 400,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Title - Regular - Normal weight for standard body text"
+        },
+        "medium": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.body",
+            "fontWeight": 500,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Title - Medium - Slightly emphasized text for UI elements"
+        },
+        "semiBold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.title",
+            "fontWeight": 600,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Title - Semi-bold - Moderate emphasis for subheadings"
+        },
+        "bold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.title",
+            "fontWeight": 700,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Title - Bold - Strong emphasis for headings and key text"
+        },
+        "extraBold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.title",
+            "fontWeight": 800,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Title - Extra bold - Heavy emphasis for prominent text"
+        },
+        "black": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.title",
+            "fontWeight": 900,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Title - Black - Maximum weight for maximum impact"
+        },
+        "light": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.title",
+            "fontWeight": 300,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Title - Light - Soft weight for refined display text"
+        },
+        "extraLight": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.title",
+            "fontWeight": 200,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Title - Extra light - Very light weight for elegant display text"
+        },
+        "thin": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.title",
+            "fontWeight": 100,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Title - Thin - Delicate, minimal weight for subtle display text"
+        }
+      },
+      "body": {
+        "$description": "Body typography scale for paragraphs and content text",
+        "regular": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.body",
+            "fontWeight": 400,
+            "height": "$font.height.body",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Body - Regular - Normal weight for standard body text"
+        },
+        "medium": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.label",
+            "fontWeight": 500,
+            "height": "$font.height.body",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Body - Medium - Slightly emphasized text for UI elements"
+        },
+        "semiBold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.body",
+            "fontWeight": 600,
+            "height": "$font.height.body",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Body - Semi-bold - Moderate emphasis for subheadings"
+        },
+        "bold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.body",
+            "fontWeight": 700,
+            "height": "$font.height.body",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Body - Bold - Strong emphasis for headings and key text"
+        },
+        "extraBold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.body",
+            "fontWeight": 800,
+            "height": "$font.height.body",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Body - Extra bold - Heavy emphasis for prominent text"
+        },
+        "black": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.body",
+            "fontWeight": 900,
+            "height": "$font.height.body",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Body - Black - Maximum weight for maximum impact"
+        },
+        "light": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.body",
+            "fontWeight": 300,
+            "height": "$font.height.body",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Body - Light - Soft weight for refined display text"
+        },
+        "extraLight": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.body",
+            "fontWeight": 200,
+            "height": "$font.height.body",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Body - Extra light - Very light weight for elegant display text"
+        },
+        "thin": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.body",
+            "fontWeight": 100,
+            "height": "$font.height.body",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Body - Thin - Delicate, minimal weight for subtle display text"
+        }
+      },
+      "label": {
+        "$description": "Label typography scale for form labels and captions",
+        "regular": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.label",
+            "fontWeight": 400,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Label - Regular - Normal weight for standard body text"
+        },
+        "medium": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.caption",
+            "fontWeight": 500,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Label - Medium - Slightly emphasized text for UI elements"
+        },
+        "semiBold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.label",
+            "fontWeight": 600,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Label - Semi-bold - Moderate emphasis for subheadings"
+        },
+        "bold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.label",
+            "fontWeight": 700,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Label - Bold - Strong emphasis for headings and key text"
+        },
+        "extraBold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.label",
+            "fontWeight": 800,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Label - Extra bold - Heavy emphasis for prominent text"
+        },
+        "black": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.label",
+            "fontWeight": 900,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Label - Black - Maximum weight for maximum impact"
+        },
+        "light": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.label",
+            "fontWeight": 300,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Label - Light - Soft weight for refined display text"
+        },
+        "extraLight": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.label",
+            "fontWeight": 200,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Label - Extra light - Very light weight for elegant display text"
+        },
+        "thin": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.label",
+            "fontWeight": 100,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Label - Thin - Delicate, minimal weight for subtle display text"
+        }
+      },
+      "caption": {
+        "$description": "Caption typography scale for small helper text and metadata",
+        "regular": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.caption",
+            "fontWeight": 400,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Caption - Regular - Normal weight for standard body text"
+        },
+        "medium": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.caption",
+            "fontWeight": 500,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Caption - Medium - Slightly emphasized text for UI elements"
+        },
+        "semiBold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.caption",
+            "fontWeight": 600,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Caption - Semi-bold - Moderate emphasis for subheadings"
+        },
+        "bold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.caption",
+            "fontWeight": 700,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Caption - Bold - Strong emphasis for headings and key text"
+        },
+        "extraBold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.caption",
+            "fontWeight": 800,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Caption - Extra bold - Heavy emphasis for prominent text"
+        },
+        "black": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.caption",
+            "fontWeight": 900,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Caption - Black - Maximum weight for maximum impact"
+        },
+        "light": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.caption",
+            "fontWeight": 300,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Caption - Light - Soft weight for refined display text"
+        },
+        "extraLight": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.caption",
+            "fontWeight": 200,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Caption - Extra light - Very light weight for elegant display text"
+        },
+        "thin": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.caption",
+            "fontWeight": 100,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Caption - Thin - Delicate, minimal weight for subtle display text"
+        }
+      }
+    }
+  },
+  "dark": {
+    "$variables": {
+      "color": {
+        "brand": {
+          "primary": "#2D3A8C",
+          "container": "#1E1E2E"
+        },
+        "neutral": {
+          "white": "#FFFFFF",
+          "light": "#3A3A3A",
+          "disabled": "#5A5A5A",
+          "dark": "#9CA3AF",
+          "darker": "#E5E7EB"
+        },
+        "semantic": {
+          "error": "#F87171",
+          "errorLight": "#EF4444",
+          "success": "#34D399",
+          "successLight": "#10B981",
+          "warning": "#FBBF24",
+          "warningLight": "#FFA500",
+          "info": "#60A5FA",
+          "infoLight": "#4A90E2"
+        }
+      },
+      "font": {
+        "family": {
+          "primary": "Inter"
+        },
+        "size": {
+          "display": 32,
+          "headline": 28,
+          "title": 20,
+          "body": 16,
+          "label": 14,
+          "caption": 12
+        },
+        "height": {
+          "display": 1.2,
+          "headline": 1.3,
+          "title": 1.4,
+          "body": 1.5,
+          "label": 1.4,
+          "caption": 1.4
+        }
+      }
+    },
+    "color": {
+      "brand": {
+        "$description": "Brand identity colors — the primary product accent",
+        "primary": {
+          "$type": "color",
+          "$value": "$color.brand.primary",
+          "$description": "Primary brand color - deep blue for dark mode"
+        },
+        "container": {
+          "$type": "color",
+          "$value": "$color.brand.container",
+          "$description": "Surface color for primary tinted backgrounds - dark"
+        }
+      },
+      "foreground": {
+        "$description": "Text colors rendered on top of any surface",
+        "primary": {
+          "$type": "color",
+          "$value": "$color.neutral.white",
+          "$description": "Primary text color - white for dark backgrounds"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "#B0B0B0",
+          "$description": "Secondary text color - light gray"
+        },
+        "title": {
+          "$type": "color",
+          "$value": "$color.neutral.white",
+          "$description": "Title text color - white"
+        },
+        "body": {
+          "$type": "color",
+          "$value": "#808080",
+          "$description": "Body text color - medium gray"
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "$color.neutral.dark",
+          "$description": "Disabled text color - darker gray"
+        },
+        "placeholder": {
+          "$type": "color",
+          "$value": "$color.neutral.dark",
+          "$description": "Placeholder text color"
+        },
+        "inverse": {
+          "$type": "color",
+          "$value": "$color.neutral.white",
+          "$description": "Text on filled/colored backgrounds"
+        },
+        "success": {
+          "$type": "color",
+          "$value": "$color.semantic.successLight",
+          "$description": "Success state text color - lighter green"
+        },
+        "info": {
+          "$type": "color",
+          "$value": "$color.semantic.infoLight",
+          "$description": "Info state text color - lighter blue"
+        },
+        "warning": {
+          "$type": "color",
+          "$value": "$color.semantic.warningLight",
+          "$description": "Warning state text color - lighter orange"
+        },
+        "error": {
+          "$type": "color",
+          "$value": "$color.semantic.errorLight",
+          "$description": "Error state text color - lighter red"
+        }
+      },
+      "icon": {
+        "$description": "Icon / glyph colors — parallel to foreground but scoped to iconography",
+        "primary": {
+          "$type": "color",
+          "$value": "$color.neutral.white",
+          "$description": "Primary icon color - white"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "#FF6B7A",
+          "$description": "Secondary/accent icon color - lighter coral"
+        },
+        "title": {
+          "$type": "color",
+          "$value": "$color.neutral.white",
+          "$description": "Icon color for titles"
+        },
+        "body": {
+          "$type": "color",
+          "$value": "#808080",
+          "$description": "Icon color for body text areas"
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "$color.neutral.dark",
+          "$description": "Disabled icon color"
+        },
+        "inverse": {
+          "$type": "color",
+          "$value": "$color.neutral.white",
+          "$description": "Icon on filled backgrounds"
+        },
+        "success": {
+          "$type": "color",
+          "$value": "$color.semantic.successLight",
+          "$description": "Success icon color"
+        },
+        "info": {
+          "$type": "color",
+          "$value": "$color.semantic.infoLight",
+          "$description": "Info icon color"
+        },
+        "warning": {
+          "$type": "color",
+          "$value": "$color.semantic.warningLight",
+          "$description": "Warning icon color"
+        },
+        "error": {
+          "$type": "color",
+          "$value": "$color.semantic.errorLight",
+          "$description": "Error icon color"
+        }
+      },
+      "input": {
+        "$description": "Colors scoped to form controls — text fields, selects, textareas",
+        "primary": {
+          "$type": "color",
+          "$value": "$color.neutral.white",
+          "$description": "TextField primary color - white"
+        },
+        "label": {
+          "$type": "color",
+          "$value": "#B0B0B0",
+          "$description": "TextField label color - light gray"
+        },
+        "value": {
+          "$type": "color",
+          "$value": "$color.neutral.white",
+          "$description": "TextField input text color - white"
+        },
+        "placeholder": {
+          "$type": "color",
+          "$value": "$color.neutral.dark",
+          "$description": "TextField placeholder color"
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "$color.neutral.dark",
+          "$description": "TextField disabled color"
+        },
+        "fill": {
+          "$type": "color",
+          "$value": "#2A2A2A",
+          "$description": "TextField background color - dark gray"
+        },
+        "outline": {
+          "$type": "color",
+          "$value": "$color.neutral.darker",
+          "$description": "TextField border color"
+        },
+        "focus": {
+          "$type": "color",
+          "$value": "$color.semantic.info",
+          "$description": "TextField focus border color - blue"
+        },
+        "error": {
+          "$type": "color",
+          "$value": "$color.semantic.errorLight",
+          "$description": "TextField error state color"
+        }
+      },
+      "action": {
+        "$description": "Colors for interactive / tappable elements — buttons, chips, FABs, toggles",
+        "filledPrimary": {
+          "$type": "color",
+          "$value": "#2D3A8C",
+          "$description": "Primary filled button active state - deep blue"
+        },
+        "filledHover": {
+          "$type": "color",
+          "$value": "#3D4A9C",
+          "$description": "Primary filled button hover state"
+        },
+        "ghostPrimary": {
+          "$type": "color",
+          "$value": "#FF6B7A",
+          "$description": "Secondary button active state - lighter coral"
+        },
+        "ghostHover": {
+          "$type": "color",
+          "$value": "#FF8B9A",
+          "$description": "Secondary button hover state"
+        },
+        "outline": {
+          "$type": "color",
+          "$value": "$color.neutral.white",
+          "$description": "Outlined button border color"
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "$color.neutral.darker",
+          "$description": "Disabled button background"
+        },
+        "filledDanger": {
+          "$type": "color",
+          "$value": "$color.semantic.errorLight",
+          "$description": "Error/destructive filled button"
+        }
+      },
+      "canvas": {
+        "$description": "Screen / page background layers — the painted surface beneath all content",
+        "primary": {
+          "$type": "color",
+          "$value": "#121212",
+          "$description": "Main scaffold background - very dark"
+        },
+        "secondary": {
+          "$type": "color",
+          "$value": "#1E1E1E",
+          "$description": "Secondary surface - dark gray"
+        },
+        "tertiary": {
+          "$type": "color",
+          "$value": "#2A2A2A",
+          "$description": "Tertiary surface - medium dark"
+        },
+        "error": {
+          "$type": "color",
+          "$value": "#3A1E1E",
+          "$description": "Error state surface background - dark red tint"
+        },
+        "info": {
+          "$type": "color",
+          "$value": "#1E2A3A",
+          "$description": "Info state surface background - dark blue tint"
+        },
+        "warning": {
+          "$type": "color",
+          "$value": "#3A2E1E",
+          "$description": "Warning state surface background - dark orange tint"
+        },
+        "success": {
+          "$type": "color",
+          "$value": "#1E3A2E",
+          "$description": "Success state surface background - dark green tint"
+        },
+        "neutral": {
+          "$type": "color",
+          "$value": "#2A2A2A",
+          "$description": "Generic gray background - dark"
+        },
+        "brand": {
+          "$type": "color",
+          "$value": "#2D3A8C",
+          "$description": "Primary tinted background - dark blue"
+        }
+      },
+      "surface": {
+        "$description": "Elevated container colors — cards, sheets, and raised panels",
+        "card": {
+          "$type": "color",
+          "$value": "#1E1E1E",
+          "$description": "Card background color - dark surface"
+        }
+      },
+      "stroke": {
+        "$description": "Border, divider, and outline colors",
+        "emphasis": {
+          "$type": "color",
+          "$value": "#4A4A4A",
+          "$description": "Primary stroke/border color - dark"
+        },
+        "primary": {
+          "$type": "color",
+          "$value": "$color.neutral.darker",
+          "$description": "Default border stroke - dark"
+        },
+        "divider": {
+          "$type": "color",
+          "$value": "$color.neutral.darker",
+          "$description": "Divider line color - dark"
+        },
+        "inverse": {
+          "$type": "color",
+          "$value": "#1A1A2E",
+          "$description": "Inverse stroke for light backgrounds"
+        },
+        "error": {
+          "$type": "color",
+          "$value": "$color.semantic.errorLight",
+          "$description": "Error outline/border color - light red"
+        }
+      },
+      "feedback": {
+        "$description": "UI state signal colors — communicates the result of an action or system condition",
+        "warning": {
+          "$type": "color",
+          "$value": "$color.semantic.warningLight",
+          "$description": "Warning status color - light amber"
+        },
+        "danger": {
+          "$type": "color",
+          "$value": "$color.semantic.errorLight",
+          "$description": "Danger/error status color - light red"
+        },
+        "success": {
+          "$type": "color",
+          "$value": "$color.semantic.successLight",
+          "$description": "Success status color - light emerald"
+        },
+        "info": {
+          "$type": "color",
+          "$value": "$color.semantic.infoLight",
+          "$description": "Info status color - light blue"
+        }
+      },
+      "indicator": {
+        "$description": "Status indicator colors — badges, chips, tags, and lifecycle pills",
+        "urgent": {
+          "$type": "color",
+          "$value": "$color.semantic.errorLight",
+          "$description": "Urgent badge color - light red"
+        },
+        "pending": {
+          "$type": "color",
+          "$value": "$color.semantic.warningLight",
+          "$description": "Pending status badge - light amber"
+        },
+        "inReview": {
+          "$type": "color",
+          "$value": "$color.semantic.infoLight",
+          "$description": "In review status badge - light blue"
+        },
+        "interview": {
+          "$type": "color",
+          "$value": "#A78BFA",
+          "$description": "Interview status badge - light purple"
+        },
+        "offer": {
+          "$type": "color",
+          "$value": "$color.semantic.successLight",
+          "$description": "Offer status badge - light green"
+        },
+        "hired": {
+          "$type": "color",
+          "$value": "$color.semantic.successLight",
+          "$description": "Hired status badge - light green"
+        },
+        "rejected": {
+          "$type": "color",
+          "$value": "$color.semantic.errorLight",
+          "$description": "Rejected status badge - light red"
+        }
+      }
+    },
+    "sizes": {
+      "$description": "Dimensional sizing scale for padding, spacing, radius, icons, typography, motion, and blur",
+      "padding": {
+        "$description": "Padding scale for internal component spacing",
+        "xs": {
+          "$type": "dimension",
+          "$value": 4,
+          "$description": "Extra small padding - 4px"
+        },
+        "sm": {
+          "$type": "dimension",
+          "$value": 8,
+          "$description": "Small padding - 8px"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": 12,
+          "$description": "Medium padding - 12px"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": 16,
+          "$description": "Large padding - 16px"
+        },
+        "xl": {
+          "$type": "dimension",
+          "$value": 20,
+          "$description": "Extra large padding - 20px"
+        },
+        "x2l": {
+          "$type": "dimension",
+          "$value": 24,
+          "$description": "2x large padding - 24px"
+        },
+        "x3l": {
+          "$type": "dimension",
+          "$value": 32,
+          "$description": "3x large padding - 32px"
+        },
+        "x4l": {
+          "$type": "dimension",
+          "$value": 40,
+          "$description": "4x large padding - 40px"
+        },
+        "x5l": {
+          "$type": "dimension",
+          "$value": 48,
+          "$description": "5x large padding - 48px"
+        },
+        "x6l": {
+          "$type": "dimension",
+          "$value": 64,
+          "$description": "6x large padding - 64px"
+        },
+        "x7l": {
+          "$type": "dimension",
+          "$value": 80,
+          "$description": "7x large padding - 80px"
+        }
+      },
+      "spacing": {
+        "$description": "Spacing scale for gaps between components and layout",
+        "xs": {
+          "$type": "dimension",
+          "$value": 4,
+          "$description": "Extra small spacing - 4px"
+        },
+        "sm": {
+          "$type": "dimension",
+          "$value": 8,
+          "$description": "Small spacing - 8px"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": 12,
+          "$description": "Medium spacing - 12px"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": 16,
+          "$description": "Large spacing - 16px"
+        },
+        "xl": {
+          "$type": "dimension",
+          "$value": 20,
+          "$description": "Extra large spacing - 20px"
+        },
+        "x2l": {
+          "$type": "dimension",
+          "$value": 24,
+          "$description": "2x large spacing - 24px"
+        },
+        "x3l": {
+          "$type": "dimension",
+          "$value": 32,
+          "$description": "3x large spacing - 32px"
+        },
+        "x4l": {
+          "$type": "dimension",
+          "$value": 40,
+          "$description": "4x large spacing - 40px"
+        },
+        "x5l": {
+          "$type": "dimension",
+          "$value": 48,
+          "$description": "5x large spacing - 48px"
+        },
+        "x6l": {
+          "$type": "dimension",
+          "$value": 64,
+          "$description": "6x large spacing - 64px"
+        },
+        "x7l": {
+          "$type": "dimension",
+          "$value": 80,
+          "$description": "7x large spacing - 80px"
+        }
+      },
+      "radius": {
+        "$description": "Border radius scale for rounding corners",
+        "xs": {
+          "$type": "dimension",
+          "$value": 4,
+          "$description": "Extra small radius - 4px"
+        },
+        "sm": {
+          "$type": "dimension",
+          "$value": 6,
+          "$description": "Small radius - 6px"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": 8,
+          "$description": "Medium radius - 8px"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": 12,
+          "$description": "Large radius - 12px"
+        },
+        "xl": {
+          "$type": "dimension",
+          "$value": 16,
+          "$description": "Extra large radius (cards)"
+        },
+        "x2l": {
+          "$type": "dimension",
+          "$value": 20,
+          "$description": "2x large radius - 20px"
+        },
+        "x3l": {
+          "$type": "dimension",
+          "$value": 24,
+          "$description": "3x large radius - 24px"
+        },
+        "x4l": {
+          "$type": "dimension",
+          "$value": 32,
+          "$description": "4x large radius - 32px"
+        },
+        "pill": {
+          "$type": "dimension",
+          "$value": 9999,
+          "$description": "Pill/fully rounded radius"
+        }
+      },
+      "icon": {
+        "$description": "Icon size scale for glyphs and symbols",
+        "xs": {
+          "$type": "dimension",
+          "$value": 12,
+          "$description": "Extra small icon - 12px"
+        },
+        "sm": {
+          "$type": "dimension",
+          "$value": 16,
+          "$description": "Small icon - 16px"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": 20,
+          "$description": "Medium icon - 20px"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": 24,
+          "$description": "Large icon - 24px"
+        },
+        "xl": {
+          "$type": "dimension",
+          "$value": 32,
+          "$description": "Extra large icon - 32px"
+        },
+        "x2l": {
+          "$type": "dimension",
+          "$value": 40,
+          "$description": "2x large icon - 40px"
+        },
+        "x3l": {
+          "$type": "dimension",
+          "$value": 48,
+          "$description": "3x large icon - 48px"
+        }
+      },
+      "font": {
+        "$description": "Font size scale for typography",
+        "xs": {
+          "$type": "dimension",
+          "$value": 10,
+          "$description": "Extra small font - 10px"
+        },
+        "sm": {
+          "$type": "dimension",
+          "$value": 12,
+          "$description": "Small font (caption)"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": 14,
+          "$description": "Medium font (body medium)"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": 16,
+          "$description": "Large font (body large, title medium)"
+        },
+        "xl": {
+          "$type": "dimension",
+          "$value": 20,
+          "$description": "Extra large font (title large)"
+        },
+        "x2l": {
+          "$type": "dimension",
+          "$value": 24,
+          "$description": "2x large font (display medium)"
+        },
+        "x3l": {
+          "$type": "dimension",
+          "$value": 32,
+          "$description": "3x large font (display large)"
+        }
+      },
+      "motion": {
+        "$description": "Motion duration scale for animations and transitions",
+        "xs": {
+          "$type": "dimension",
+          "$value": 50,
+          "$description": "Extra short duration - 50ms"
+        },
+        "sm": {
+          "$type": "dimension",
+          "$value": 100,
+          "$description": "Short duration - 100ms"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": 200,
+          "$description": "Medium duration - 200ms"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": 300,
+          "$description": "Standard duration - 300ms"
+        },
+        "xl": {
+          "$type": "dimension",
+          "$value": 500,
+          "$description": "Long duration - 500ms"
+        }
+      },
+      "blur": {
+        "$description": "Blur intensity scale for backdrop effects",
+        "xs": {
+          "$type": "dimension",
+          "$value": 2,
+          "$description": "Extra small blur - 2px"
+        },
+        "sm": {
+          "$type": "dimension",
+          "$value": 4,
+          "$description": "Small blur - 4px"
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": 8,
+          "$description": "Medium blur - 8px"
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": 16,
+          "$description": "Large blur - 16px"
+        },
+        "xl": {
+          "$type": "dimension",
+          "$value": 24,
+          "$description": "Extra large blur - 24px"
+        }
+      }
+    },
+    "typography": {
+      "display": {
+        "$description": "Display typography scale for large headlines and hero text",
+        "regular": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.display",
+            "fontWeight": 400,
+            "height": "$font.height.display",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Display - Regular - Normal weight for standard body text"
+        },
+        "medium": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.display",
+            "fontWeight": 500,
+            "height": "$font.height.display",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Display - Medium - Slightly emphasized text for UI elements"
+        },
+        "semiBold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.display",
+            "fontWeight": 600,
+            "height": "$font.height.display",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Display - Semi-bold - Moderate emphasis for subheadings"
+        },
+        "bold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.display",
+            "fontWeight": 700,
+            "height": "$font.height.display",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Display - Bold - Strong emphasis for headings and key text"
+        },
+        "extraBold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.display",
+            "fontWeight": 800,
+            "height": "$font.height.display",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Display - Extra bold - Heavy emphasis for prominent text"
+        },
+        "black": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.display",
+            "fontWeight": 900,
+            "height": "$font.height.display",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Display - Black - Maximum weight for maximum impact"
+        },
+        "light": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.display",
+            "fontWeight": 300,
+            "height": "$font.height.display",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Display - Light - Soft weight for refined display text"
+        },
+        "extraLight": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.display",
+            "fontWeight": 200,
+            "height": "$font.height.display",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Display - Extra light - Very light weight for elegant display text"
+        },
+        "thin": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.display",
+            "fontWeight": 100,
+            "height": "$font.height.display",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Display - Thin - Delicate, minimal weight for subtle display text"
+        }
+      },
+      "headline": {
+        "$description": "Headline typography scale for section headings",
+        "regular": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.headline",
+            "fontWeight": 400,
+            "height": "$font.height.headline",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Headline - Regular - Normal weight for standard body text"
+        },
+        "medium": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.headline",
+            "fontWeight": 500,
+            "height": "$font.height.headline",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Headline - Medium - Slightly emphasized text for UI elements"
+        },
+        "semiBold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.headline",
+            "fontWeight": 600,
+            "height": "$font.height.headline",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Headline - Semi-bold - Moderate emphasis for subheadings"
+        },
+        "bold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.headline",
+            "fontWeight": 700,
+            "height": "$font.height.headline",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Headline - Bold - Strong emphasis for headings and key text"
+        },
+        "extraBold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.headline",
+            "fontWeight": 800,
+            "height": "$font.height.headline",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Headline - Extra bold - Heavy emphasis for prominent text"
+        },
+        "black": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.headline",
+            "fontWeight": 900,
+            "height": "$font.height.headline",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Headline - Black - Maximum weight for maximum impact"
+        },
+        "light": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.headline",
+            "fontWeight": 300,
+            "height": "$font.height.headline",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Headline - Light - Soft weight for refined display text"
+        },
+        "extraLight": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.headline",
+            "fontWeight": 200,
+            "height": "$font.height.headline",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Headline - Extra light - Very light weight for elegant display text"
+        },
+        "thin": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.headline",
+            "fontWeight": 100,
+            "height": "$font.height.headline",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Headline - Thin - Delicate, minimal weight for subtle display text"
+        }
+      },
+      "title": {
+        "$description": "Title typography scale for card and component titles",
+        "regular": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.title",
+            "fontWeight": 400,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Title - Regular - Normal weight for standard body text"
+        },
+        "medium": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.body",
+            "fontWeight": 500,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Title - Medium - Slightly emphasized text for UI elements"
+        },
+        "semiBold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.title",
+            "fontWeight": 600,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Title - Semi-bold - Moderate emphasis for subheadings"
+        },
+        "bold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.title",
+            "fontWeight": 700,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Title - Bold - Strong emphasis for headings and key text"
+        },
+        "extraBold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.title",
+            "fontWeight": 800,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Title - Extra bold - Heavy emphasis for prominent text"
+        },
+        "black": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.title",
+            "fontWeight": 900,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Title - Black - Maximum weight for maximum impact"
+        },
+        "light": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.title",
+            "fontWeight": 300,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Title - Light - Soft weight for refined display text"
+        },
+        "extraLight": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.title",
+            "fontWeight": 200,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Title - Extra light - Very light weight for elegant display text"
+        },
+        "thin": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.title",
+            "fontWeight": 100,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Title - Thin - Delicate, minimal weight for subtle display text"
+        }
+      },
+      "body": {
+        "$description": "Body typography scale for paragraphs and content text",
+        "regular": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.body",
+            "fontWeight": 400,
+            "height": "$font.height.body",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Body - Regular - Normal weight for standard body text"
+        },
+        "medium": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.label",
+            "fontWeight": 500,
+            "height": "$font.height.body",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Body - Medium - Slightly emphasized text for UI elements"
+        },
+        "semiBold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.body",
+            "fontWeight": 600,
+            "height": "$font.height.body",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Body - Semi-bold - Moderate emphasis for subheadings"
+        },
+        "bold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.body",
+            "fontWeight": 700,
+            "height": "$font.height.body",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Body - Bold - Strong emphasis for headings and key text"
+        },
+        "extraBold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.body",
+            "fontWeight": 800,
+            "height": "$font.height.body",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Body - Extra bold - Heavy emphasis for prominent text"
+        },
+        "black": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.body",
+            "fontWeight": 900,
+            "height": "$font.height.body",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Body - Black - Maximum weight for maximum impact"
+        },
+        "light": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.body",
+            "fontWeight": 300,
+            "height": "$font.height.body",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Body - Light - Soft weight for refined display text"
+        },
+        "extraLight": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.body",
+            "fontWeight": 200,
+            "height": "$font.height.body",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Body - Extra light - Very light weight for elegant display text"
+        },
+        "thin": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.body",
+            "fontWeight": 100,
+            "height": "$font.height.body",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Body - Thin - Delicate, minimal weight for subtle display text"
+        }
+      },
+      "label": {
+        "$description": "Label typography scale for form labels and captions",
+        "regular": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.label",
+            "fontWeight": 400,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Label - Regular - Normal weight for standard body text"
+        },
+        "medium": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.caption",
+            "fontWeight": 500,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Label - Medium - Slightly emphasized text for UI elements"
+        },
+        "semiBold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.label",
+            "fontWeight": 600,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Label - Semi-bold - Moderate emphasis for subheadings"
+        },
+        "bold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.label",
+            "fontWeight": 700,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Label - Bold - Strong emphasis for headings and key text"
+        },
+        "extraBold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.label",
+            "fontWeight": 800,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Label - Extra bold - Heavy emphasis for prominent text"
+        },
+        "black": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.label",
+            "fontWeight": 900,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Label - Black - Maximum weight for maximum impact"
+        },
+        "light": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.label",
+            "fontWeight": 300,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Label - Light - Soft weight for refined display text"
+        },
+        "extraLight": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.label",
+            "fontWeight": 200,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Label - Extra light - Very light weight for elegant display text"
+        },
+        "thin": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.label",
+            "fontWeight": 100,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Label - Thin - Delicate, minimal weight for subtle display text"
+        }
+      },
+      "caption": {
+        "$description": "Caption typography scale for small helper text and metadata",
+        "regular": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.caption",
+            "fontWeight": 400,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Caption - Regular - Normal weight for standard body text"
+        },
+        "medium": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.caption",
+            "fontWeight": 500,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Caption - Medium - Slightly emphasized text for UI elements"
+        },
+        "semiBold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.caption",
+            "fontWeight": 600,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Caption - Semi-bold - Moderate emphasis for subheadings"
+        },
+        "bold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.caption",
+            "fontWeight": 700,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Caption - Bold - Strong emphasis for headings and key text"
+        },
+        "extraBold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.caption",
+            "fontWeight": 800,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Caption - Extra bold - Heavy emphasis for prominent text"
+        },
+        "black": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.caption",
+            "fontWeight": 900,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Caption - Black - Maximum weight for maximum impact"
+        },
+        "light": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.caption",
+            "fontWeight": 300,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Caption - Light - Soft weight for refined display text"
+        },
+        "extraLight": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.caption",
+            "fontWeight": 200,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Caption - Extra light - Very light weight for elegant display text"
+        },
+        "thin": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": "$font.size.caption",
+            "fontWeight": 100,
+            "height": "$font.height.title",
+            "fontFamily": "$font.family.primary"
+          },
+          "$description": "Caption - Thin - Delicate, minimal weight for subtle display text"
+        }
+      }
+    }
+  }
+}

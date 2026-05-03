@@ -1,0 +1,621 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/khode-io/design-builder/blob/main/schema/theme-spec-metadata.schema.json",
+  "title": "Flutter Design Tokens",
+  "description": "Adaptive Flutter theme schema using W3C $type and $value conventions with enhanced metadata support.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schemaVersion", "$id", "$version", "$name", "light", "dark"],
+  "properties": {
+    "$schemaVersion": {
+      "type": "integer",
+      "const": 3,
+      "description": "Version of the theme format."
+    },
+    "$id": {
+      "type": "string",
+      "description": "Stable theme identifier."
+    },
+    "$version": {
+      "type": "string",
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$$",
+      "description": "Semantic version (SemVer 2.0.0) for theme content / client cache revision. Distinct from $schemaVersion (format version)."
+    },
+    "$name": {
+      "type": "string",
+      "description": "Display name for the theme."
+    },
+    "$description": {
+      "type": "string",
+      "description": "Root-level description of the theme."
+    },
+    "$variables": {
+      "type": "object",
+      "description": "Reusable variables for token values. Variables can be referenced using $var.path notation in $value fields.",
+      "additionalProperties": true
+    },
+    "light": { "$ref": "#/definitions/appearance" },
+    "dark": { "$ref": "#/definitions/appearance" }
+  },
+  "definitions": {
+    "colorToken": {
+      "type": "object",
+      "required": ["$type", "$value"],
+      "properties": {
+        "$type": { "type": "string", "const": "color" },
+        "$value": {
+          "type": "string",
+          "pattern": "^#?([0-9A-Fa-f]{6}|[0-9A-Fa-f]{8})$"
+        },
+        "$description": { "type": "string" },
+        "$extensions": { "type": "object" }
+      },
+      "additionalProperties": false
+    },
+    "numberToken": {
+      "type": "object",
+      "required": ["$type", "$value"],
+      "properties": {
+        "$type": { "type": "string", "enum": ["number", "dimension"] },
+        "$value": { "type": "number" },
+        "$description": { "type": "string" },
+        "$extensions": { "type": "object" }
+      },
+      "additionalProperties": false
+    },
+    "stringToken": {
+      "type": "object",
+      "required": ["$type", "$value"],
+      "properties": {
+        "$type": { "type": "string", "const": "string" },
+        "$value": { "type": "string" },
+        "$description": { "type": "string" },
+        "$extensions": { "type": "object" }
+      },
+      "additionalProperties": false
+    },
+    "scaleSpacing": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "$description": { "type": "string" },
+        "xs": { "$ref": "#/definitions/numberToken" },
+        "sm": { "$ref": "#/definitions/numberToken" },
+        "md": { "$ref": "#/definitions/numberToken" },
+        "lg": { "$ref": "#/definitions/numberToken" },
+        "xl": { "$ref": "#/definitions/numberToken" },
+        "x2l": { "$ref": "#/definitions/numberToken" },
+        "x3l": { "$ref": "#/definitions/numberToken" },
+        "x4l": { "$ref": "#/definitions/numberToken" },
+        "x5l": { "$ref": "#/definitions/numberToken" },
+        "x6l": { "$ref": "#/definitions/numberToken" },
+        "x7l": { "$ref": "#/definitions/numberToken" }
+      }
+    },
+    "scaleRadius": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "$description": { "type": "string" },
+        "xs": { "$ref": "#/definitions/numberToken" },
+        "sm": { "$ref": "#/definitions/numberToken" },
+        "md": { "$ref": "#/definitions/numberToken" },
+        "lg": { "$ref": "#/definitions/numberToken" },
+        "xl": { "$ref": "#/definitions/numberToken" },
+        "x2l": { "$ref": "#/definitions/numberToken" },
+        "x3l": { "$ref": "#/definitions/numberToken" },
+        "x4l": { "$ref": "#/definitions/numberToken" },
+        "x5l": { "$ref": "#/definitions/numberToken" },
+        "x6l": { "$ref": "#/definitions/numberToken" },
+        "x7l": { "$ref": "#/definitions/numberToken" },
+        "pill": { "$ref": "#/definitions/numberToken" }
+      }
+    },
+    "textStyleToken": {
+      "type": "object",
+      "required": ["$type", "$value"],
+      "properties": {
+        "$type": { "type": "string", "const": "typography" },
+        "$value": {
+          "type": "object",
+          "properties": {
+            "fontSize": { "type": "number" },
+            "fontWeight": {
+              "type": "integer",
+              "enum": [100, 200, 300, 400, 500, 600, 700, 800, 900]
+            },
+            "height": { "type": "number" },
+            "letterSpacing": { "type": "number" },
+            "color": {
+              "type": "string",
+              "pattern": "^#?([0-9A-Fa-f]{6}|[0-9A-Fa-f]{8})$"
+            },
+            "fontFamily": { "type": "string" }
+          }
+        },
+        "$description": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "typographyWeight": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "$description": { "type": "string" },
+        "black": { "$ref": "#/definitions/textStyleToken" },
+        "extraBold": { "$ref": "#/definitions/textStyleToken" },
+        "bold": { "$ref": "#/definitions/textStyleToken" },
+        "semiBold": { "$ref": "#/definitions/textStyleToken" },
+        "medium": { "$ref": "#/definitions/textStyleToken" },
+        "regular": { "$ref": "#/definitions/textStyleToken" },
+        "light": { "$ref": "#/definitions/textStyleToken" },
+        "extraLight": { "$ref": "#/definitions/textStyleToken" },
+        "thin": { "$ref": "#/definitions/textStyleToken" }
+      }
+    },
+    "typography": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "$description": { "type": "string" },
+        "display": { "$ref": "#/definitions/typographyWeight" },
+        "headline": { "$ref": "#/definitions/typographyWeight" },
+        "title": { "$ref": "#/definitions/typographyWeight" },
+        "body": { "$ref": "#/definitions/typographyWeight" },
+        "label": { "$ref": "#/definitions/typographyWeight" },
+        "caption": { "$ref": "#/definitions/typographyWeight" }
+      }
+    },
+    "color": {
+      "type": "object",
+      "description": "Semantic color tokens for the app's visual language.",
+      "additionalProperties": false,
+      "required": [
+        "brand",
+        "foreground",
+        "icon",
+        "input",
+        "action",
+        "canvas",
+        "surface",
+        "stroke",
+        "feedback",
+        "indicator"
+      ],
+      "properties": {
+        "brand": {
+          "type": "object",
+          "description": "Brand identity colors — the primary product accent.",
+          "required": ["primary", "container"],
+          "properties": {
+            "$description": { "type": "string" },
+            "primary": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Main brand color for primary actions and accents."
+            },
+            "container": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Tinted brand-derived fill for chips, FAB surfaces, and containers (Material 3 primaryContainer)."
+            }
+          },
+          "additionalProperties": false
+        },
+        "foreground": {
+          "type": "object",
+          "description": "Text colors rendered on top of any surface.",
+          "required": [
+            "primary",
+            "subtle",
+            "title",
+            "body",
+            "disabled",
+            "placeholder",
+            "inverse",
+            "success",
+            "info",
+            "warning",
+            "error"
+          ],
+          "properties": {
+            "$description": { "type": "string" },
+            "primary": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "High-emphasis text — headings and key content."
+            },
+            "subtle": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Medium-emphasis text — supporting copy and metadata."
+            },
+            "title": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Color paired to the typography.title scale."
+            },
+            "body": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Color paired to the typography.body scale."
+            },
+            "disabled": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Text on non-interactive / disabled elements."
+            },
+            "placeholder": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Hint text before user input."
+            },
+            "inverse": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Text on a filled/colored surface (e.g. white on a brand button). Formerly onBgFilled."
+            },
+            "success": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Text conveying a successful state."
+            },
+            "info": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Text conveying an informational state."
+            },
+            "warning": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Text conveying a warning state."
+            },
+            "error": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Text conveying an error state."
+            }
+          },
+          "additionalProperties": false
+        },
+        "icon": {
+          "type": "object",
+          "description": "Icon / glyph colors — parallel to foreground but scoped to iconography.",
+          "required": [
+            "primary",
+            "subtle",
+            "title",
+            "body",
+            "disabled",
+            "inverse",
+            "success",
+            "info",
+            "warning",
+            "error"
+          ],
+          "properties": {
+            "$description": { "type": "string" },
+            "primary": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "High-emphasis icon."
+            },
+            "subtle": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Medium-emphasis icon. Formerly secondary."
+            },
+            "title": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Icon color paired to the typography.title scale."
+            },
+            "body": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Icon color paired to the typography.body scale."
+            },
+            "disabled": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Icon on a non-interactive element."
+            },
+            "inverse": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Icon on a filled/colored surface. Formerly onBgFilled."
+            },
+            "success": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Icon conveying a successful state."
+            },
+            "info": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Icon conveying an informational state."
+            },
+            "warning": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Icon conveying a warning state."
+            },
+            "error": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Icon conveying an error state."
+            }
+          },
+          "additionalProperties": false
+        },
+        "input": {
+          "type": "object",
+          "description": "Colors scoped to form controls — text fields, selects, textareas.",
+          "required": [
+            "primary",
+            "label",
+            "value",
+            "placeholder",
+            "disabled",
+            "fill",
+            "outline",
+            "focus",
+            "error"
+          ],
+          "properties": {
+            "$description": { "type": "string" },
+            "primary": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Resting accent color for the control."
+            },
+            "label": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Floating or static label text color."
+            },
+            "value": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Typed/selected text color inside the control. Formerly input."
+            },
+            "placeholder": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Hint text before user input."
+            },
+            "disabled": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Control in a non-interactive state."
+            },
+            "fill": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Background fill of the control. Formerly background."
+            },
+            "outline": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Border / outline of the control in its resting state. Formerly border."
+            },
+            "focus": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Outline color when the control has focus."
+            },
+            "error": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Outline / label color in the error state."
+            }
+          },
+          "additionalProperties": false
+        },
+        "action": {
+          "type": "object",
+          "description": "Colors for interactive / tappable elements — buttons, chips, FABs, toggles.",
+          "required": [
+            "filledPrimary",
+            "filledHover",
+            "ghostPrimary",
+            "ghostHover",
+            "outline",
+            "disabled",
+            "filledDanger"
+          ],
+          "properties": {
+            "$description": { "type": "string" },
+            "filledPrimary": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Background of a filled (primary) button in its resting state. Formerly primaryFilledActive."
+            },
+            "filledHover": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Background of a filled button on hover / press. Formerly primaryFilledHovered."
+            },
+            "ghostPrimary": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Background of a ghost / outlined button in its resting state. Formerly secondaryActive."
+            },
+            "ghostHover": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Background of a ghost button on hover / press. Formerly secondaryHovered."
+            },
+            "outline": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Border color for outlined / ghost buttons. Formerly border."
+            },
+            "disabled": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Button in a non-interactive state."
+            },
+            "filledDanger": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Background of a destructive filled button. Formerly filledError."
+            }
+          },
+          "additionalProperties": false
+        },
+        "canvas": {
+          "type": "object",
+          "description": "Screen / page background layers — the painted surface beneath all content.",
+          "required": [
+            "primary",
+            "secondary",
+            "tertiary",
+            "error",
+            "info",
+            "warning",
+            "success",
+            "neutral",
+            "brand"
+          ],
+          "properties": {
+            "$description": { "type": "string" },
+            "primary": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Main screen / scaffold background. Formerly surface."
+            },
+            "secondary": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Slightly elevated background — section headers, tab bars. Formerly surfaceSecondary."
+            },
+            "tertiary": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Further-elevated background layer. Formerly surfaceTertiary."
+            },
+            "error": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Tinted background for error states. Formerly surfaceError."
+            },
+            "info": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Tinted background for informational states. Formerly surfaceInfo."
+            },
+            "warning": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Tinted background for warning states. Formerly surfaceWarning."
+            },
+            "success": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Tinted background for success states. Formerly surfaceSuccess."
+            },
+            "neutral": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Neutral / gray canvas — skeletons, image placeholders. Formerly gray."
+            },
+            "brand": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Brand-tinted canvas (e.g. onboarding splash, promo banners). Formerly primary."
+            }
+          },
+          "additionalProperties": false
+        },
+        "surface": {
+          "type": "object",
+          "description": "Elevated container colors — cards, sheets, and raised panels.",
+          "required": ["card"],
+          "properties": {
+            "$description": { "type": "string" },
+            "card": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Background of card and sheet components."
+            }
+          },
+          "additionalProperties": false
+        },
+        "stroke": {
+          "type": "object",
+          "description": "Border, divider, and outline colors.",
+          "required": ["emphasis", "primary", "divider", "inverse", "error"],
+          "properties": {
+            "$description": { "type": "string" },
+            "emphasis": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Strongest border — selected states, focus rings, active indicators. Formerly strokePrimary."
+            },
+            "primary": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Standard resting border for containers and inputs. Formerly strokeDefault."
+            },
+            "divider": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Thin separator between list items or sections."
+            },
+            "inverse": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Border on a filled / dark surface. Formerly inverseStroke."
+            },
+            "error": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Outline for inputs and containers in the error state. Formerly outlineError."
+            }
+          },
+          "additionalProperties": false
+        },
+        "feedback": {
+          "type": "object",
+          "description": "UI state signal colors — communicates the result of an action or system condition.",
+          "required": ["warning", "danger", "success", "info"],
+          "properties": {
+            "$description": { "type": "string" },
+            "warning": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Caution — non-blocking issue the user should be aware of."
+            },
+            "danger": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Destructive or critical — requires immediate attention."
+            },
+            "success": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Positive confirmation of a completed action."
+            },
+            "info": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Neutral informational signal."
+            }
+          },
+          "additionalProperties": false
+        },
+        "indicator": {
+          "type": "object",
+          "description": "Status indicator colors — badges, chips, tags, and lifecycle pills.",
+          "required": [
+            "urgent",
+            "pending",
+            "inReview",
+            "interview",
+            "offer",
+            "hired",
+            "rejected"
+          ],
+          "properties": {
+            "$description": { "type": "string" },
+            "urgent": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "High-priority flag — time-sensitive items."
+            },
+            "pending": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Application submitted, awaiting review. Formerly statusPending."
+            },
+            "inReview": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Application under active review. Formerly statusInReview."
+            },
+            "interview": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Candidate invited to interview. Formerly statusInterview."
+            },
+            "offer": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Offer extended to the candidate. Formerly statusOffer."
+            },
+            "hired": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Candidate accepted and hired. Formerly statusHired."
+            },
+            "rejected": {
+              "$ref": "#/definitions/colorToken",
+              "$description": "Application was not successful. Formerly statusRejected."
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    },
+    "appearance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["color", "sizes", "typography"],
+      "properties": {
+        "color": { "$ref": "#/definitions/color" },
+        "sizes": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "$description": { "type": "string" },
+            "padding": { "$ref": "#/definitions/scaleSpacing" },
+            "spacing": { "$ref": "#/definitions/scaleSpacing" },
+            "radius": { "$ref": "#/definitions/scaleRadius" },
+            "icon": { "$ref": "#/definitions/scaleSpacing" },
+            "font": { "$ref": "#/definitions/scaleSpacing" },
+            "motion": { "$ref": "#/definitions/scaleSpacing" },
+            "blur": { "$ref": "#/definitions/scaleSpacing" }
+          }
+        },
+        "typography": { "$ref": "#/definitions/typography" }
+      }
+    }
+  }
+}

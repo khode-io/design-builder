@@ -1,0 +1,14 @@
+targets:
+  $default:
+    builders:
+      design_builder|design_builder:
+        enabled: true
+        options:
+          # Path to your JSON schema file
+          spec_path: "lib/theme/theme-spec.schema.json"
+          # Glob pattern for token files
+          input_glob: "lib/theme/*.tokens.json"
+          # Output directory (relative to lib/)
+          output_path: "theme"
+          # Output file name (without extension)
+          output_file_name: "app_theme"

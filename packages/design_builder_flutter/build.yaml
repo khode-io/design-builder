@@ -1,0 +1,12 @@
+builders:
+  design_builder:
+    import: "package:design_builder/builder.dart"
+    builder_factories: ["designBuilder"]
+    build_extensions:
+      "$lib$": ["design_tokens/app_theme.g.dart"]
+    auto_apply: dependents
+    build_to: source
+    defaults:
+      options:
+        spec_path: "lib/core/theme/theme-spec.schema.json"
+        input_glob: "lib/core/theme/*.tokens.json"
