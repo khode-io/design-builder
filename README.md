@@ -1,22 +1,24 @@
-# Design Builder for Flutter
+# Design Builder
 
-A Dart build_runner package that generates Flutter `ThemeExtension` classes from W3C Design Tokens. Transform JSON token files into type-safe Dart code with support for light/dark modes, server-side overrides, and const lookup maps for O(1) token resolution.
+A multi-platform build tool that generates platform-specific theme code from W3C Design Tokens. Transform JSON token files into type-safe code for Flutter, iOS, and Android with support for light/dark modes, server-side overrides, and const lookup maps for O(1) token resolution.
 
 ## Overview
 
-This monorepo contains the **design_builder** package - a code generation tool for Flutter theming that:
+This monorepo contains platform-specific **design_builder** packages - code generation tools for theming that:
 
 - Parses W3C Design Tokens JSON format
-- Generates type-safe `ThemeExtension` classes
+- Generates type-safe theme code for each platform
 - Supports multiple theme modes (light/dark)
 - Enables runtime token overrides
 - Provides O(1) token resolution via const lookup maps
 
 ## Packages
 
-| Package | Description | Version |
-|---------|-------------|---------|
-| [design_builder_flutter](packages/design_builder_flutter) | Build runner for generating ThemeExtension from Design Tokens | 1.0.0 |
+| Package | Description | Version | Status |
+|---------|-------------|---------|--------|
+| [design_builder_flutter](packages/design_builder_flutter) | Build runner for generating Flutter ThemeExtension | 1.0.0 | ✅ Available |
+| design_builder_ios | Swift code generation for iOS | - | 🚧 Planned |
+| design_builder_android | Kotlin code generation for Android | - | 🚧 Planned |
 
 ## Features
 
@@ -30,7 +32,7 @@ This monorepo contains the **design_builder** package - a code generation tool f
 - **Type-Safe API** - Generated ThemeExtension classes with full IDE autocomplete
 - **Build Runner Integration** - Automatic regeneration on token file changes
 
-## Quick Start
+## Quick Start (Flutter)
 
 ### 1. Add Dependency
 
@@ -45,9 +47,11 @@ dev_dependencies:
   build_runner: ^2.4.13
   design_builder:
     git:
-      url: https://github.com/khode-io/design_builder_flutter.git
+      url: https://github.com/khode-io/design-builder.git
       path: packages/design_builder_flutter
 ```
+
+*Note: iOS and Android native packages coming soon.*
 
 ### 2. Configure build.yaml
 
