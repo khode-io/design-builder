@@ -1,0 +1,10 @@
+name: design_builder_skill_scripts
+description: Helper scripts for design-builder-flutter skill
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  glob: ^2.1.2

@@ -1,0 +1,602 @@
+{
+  "$schemaVersion": "3.0",
+  "$id": "example-theme",
+  "$version": "1.0.0",
+  "$name": "Example App Theme",
+  "$description": "A complete example of W3C Design Tokens for design_builder_flutter",
+  "light": {
+    "$variables": {
+      "color": {
+        "brand": {
+          "primary": "#1A1A2E",
+          "secondary": "#2D3A8C",
+          "container": "#F8F9FA",
+          "hover": "#3D4A9C"
+        },
+        "semantic": {
+          "success": "#22C55E",
+          "warning": "#F59E0B",
+          "error": "#EF4444",
+          "info": "#3B82F6"
+        },
+        "neutral": {
+          "white": "#FFFFFF",
+          "black": "#000000",
+          "gray": {
+            "100": "#F3F4F6",
+            "200": "#E5E7EB",
+            "300": "#D1D5DB",
+            "400": "#9CA3AF",
+            "500": "#6B7280",
+            "600": "#4B5563",
+            "700": "#374151",
+            "800": "#1F2937",
+            "900": "#111827"
+          }
+        }
+      },
+      "font": {
+        "family": {
+          "primary": "Inter",
+          "secondary": "Roboto",
+          "mono": "JetBrains Mono"
+        }
+      }
+    },
+    "color": {
+      "$description": "Color tokens for the theme",
+      "brand": {
+        "$description": "Brand colors",
+        "primary": {
+          "$type": "color",
+          "$value": "$color.brand.primary",
+          "$description": "Primary brand color for main actions and branding"
+        },
+        "container": {
+          "$type": "color",
+          "$value": "$color.brand.container",
+          "$description": "Container color for cards and surfaces"
+        }
+      },
+      "foreground": {
+        "$description": "Text colors",
+        "primary": {
+          "$type": "color",
+          "$value": "$color.neutral.gray.900",
+          "$description": "Primary text color"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "$color.neutral.gray.600",
+          "$description": "Secondary/muted text color"
+        },
+        "title": {
+          "$type": "color",
+          "$value": "$color.neutral.gray.900",
+          "$description": "Heading/title text color"
+        },
+        "body": {
+          "$type": "color",
+          "$value": "$color.neutral.gray.700",
+          "$description": "Body text color"
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "$color.neutral.gray.400",
+          "$description": "Disabled text color"
+        },
+        "placeholder": {
+          "$type": "color",
+          "$value": "$color.neutral.gray.400",
+          "$description": "Placeholder text color"
+        },
+        "inverse": {
+          "$type": "color",
+          "$value": "$color.neutral.white",
+          "$description": "Text color on dark backgrounds"
+        },
+        "success": {
+          "$type": "color",
+          "$value": "$color.semantic.success",
+          "$description": "Success state text"
+        },
+        "info": {
+          "$type": "color",
+          "$value": "$color.semantic.info",
+          "$description": "Info state text"
+        },
+        "warning": {
+          "$type": "color",
+          "$value": "$color.semantic.warning",
+          "$description": "Warning state text"
+        },
+        "error": {
+          "$type": "color",
+          "$value": "$color.semantic.error",
+          "$description": "Error state text"
+        }
+      },
+      "icon": {
+        "$description": "Icon colors",
+        "primary": {
+          "$type": "color",
+          "$value": "$color.neutral.gray.600",
+          "$description": "Default icon color"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "$color.neutral.gray.400",
+          "$description": "Muted icon color"
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "$color.neutral.gray.300",
+          "$description": "Disabled icon color"
+        },
+        "inverse": {
+          "$type": "color",
+          "$value": "$color.neutral.white",
+          "$description": "Icon color on dark backgrounds"
+        }
+      },
+      "input": {
+        "$description": "Input field colors",
+        "primary": {
+          "$type": "color",
+          "$value": "$color.neutral.gray.900",
+          "$description": "Input text color"
+        },
+        "label": {
+          "$type": "color",
+          "$value": "$color.neutral.gray.700",
+          "$description": "Input label color"
+        },
+        "value": {
+          "$type": "color",
+          "$value": "$color.neutral.gray.900",
+          "$description": "Input value color"
+        },
+        "placeholder": {
+          "$type": "color",
+          "$value": "$color.neutral.gray.400",
+          "$description": "Input placeholder color"
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "$color.neutral.gray.400",
+          "$description": "Disabled input text"
+        },
+        "fill": {
+          "$type": "color",
+          "$value": "$color.neutral.gray.100",
+          "$description": "Input background color"
+        },
+        "outline": {
+          "$type": "color",
+          "$value": "$color.neutral.gray.300",
+          "$description": "Input border color"
+        },
+        "focus": {
+          "$type": "color",
+          "$value": "$color.brand.primary",
+          "$description": "Input focus border color"
+        },
+        "error": {
+          "$type": "color",
+          "$value": "$color.semantic.error",
+          "$description": "Input error state color"
+        }
+      },
+      "action": {
+        "$description": "Action button colors",
+        "filledPrimary": {
+          "$type": "color",
+          "$value": "$color.brand.primary",
+          "$description": "Filled button background"
+        },
+        "filledHover": {
+          "$type": "color",
+          "$value": "$color.brand.hover",
+          "$description": "Filled button hover state"
+        },
+        "ghostPrimary": {
+          "$type": "color",
+          "$value": "$color.brand.primary",
+          "$description": "Ghost button text"
+        },
+        "ghostHover": {
+          "$type": "color",
+          "$value": "$color.neutral.gray.100",
+          "$description": "Ghost button hover background"
+        },
+        "outline": {
+          "$type": "color",
+          "$value": "$color.neutral.gray.300",
+          "$description": "Outline button border"
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "$color.neutral.gray.300",
+          "$description": "Disabled button background"
+        },
+        "filledDanger": {
+          "$type": "color",
+          "$value": "$color.semantic.error",
+          "$description": "Danger/destructive button"
+        }
+      },
+      "canvas": {
+        "$description": "Background colors",
+        "primary": {
+          "$type": "color",
+          "$value": "$color.neutral.white",
+          "$description": "Main app background"
+        },
+        "secondary": {
+          "$type": "color",
+          "$value": "$color.neutral.gray.50",
+          "$description": "Secondary background"
+        },
+        "tertiary": {
+          "$type": "color",
+          "$value": "$color.neutral.gray.100",
+          "$description": "Tertiary/elevated background"
+        }
+      },
+      "surface": {
+        "$description": "Surface colors",
+        "card": {
+          "$type": "color",
+          "$value": "$color.neutral.white",
+          "$description": "Card background"
+        }
+      },
+      "stroke": {
+        "$description": "Border/divider colors",
+        "emphasis": {
+          "$type": "color",
+          "$value": "$color.neutral.gray.900",
+          "$description": "High emphasis borders"
+        },
+        "primary": {
+          "$type": "color",
+          "$value": "$color.neutral.gray.300",
+          "$description": "Default borders"
+        },
+        "divider": {
+          "$type": "color",
+          "$value": "$color.neutral.gray.200",
+          "$description": "Divider lines"
+        },
+        "error": {
+          "$type": "color",
+          "$value": "$color.semantic.error",
+          "$description": "Error state borders"
+        }
+      },
+      "feedback": {
+        "$description": "Feedback/alert colors",
+        "success": {
+          "$type": "color",
+          "$value": "$color.semantic.success",
+          "$description": "Success feedback"
+        },
+        "warning": {
+          "$type": "color",
+          "$value": "$color.semantic.warning",
+          "$description": "Warning feedback"
+        },
+        "danger": {
+          "$type": "color",
+          "$value": "$color.semantic.error",
+          "$description": "Danger feedback"
+        },
+        "info": {
+          "$type": "color",
+          "$value": "$color.semantic.info",
+          "$description": "Info feedback"
+        }
+      }
+    },
+    "sizes": {
+      "$description": "Dimension tokens",
+      "padding": {
+        "$description": "Padding scale",
+        "xs": { "$type": "number", "$value": 4 },
+        "sm": { "$type": "number", "$value": 8 },
+        "md": { "$type": "number", "$value": 16 },
+        "lg": { "$type": "number", "$value": 24 },
+        "xl": { "$type": "number", "$value": 32 },
+        "x2l": { "$type": "number", "$value": 40 },
+        "x3l": { "$type": "number", "$value": 48 }
+      },
+      "spacing": {
+        "$description": "Spacing scale",
+        "xs": { "$type": "number", "$value": 4 },
+        "sm": { "$type": "number", "$value": 8 },
+        "md": { "$type": "number", "$value": 16 },
+        "lg": { "$type": "number", "$value": 24 },
+        "xl": { "$type": "number", "$value": 32 },
+        "x2l": { "$type": "number", "$value": 40 },
+        "x3l": { "$type": "number", "$value": 48 }
+      },
+      "radius": {
+        "$description": "Border radius scale",
+        "xs": { "$type": "number", "$value": 2 },
+        "sm": { "$type": "number", "$value": 4 },
+        "md": { "$type": "number", "$value": 8 },
+        "lg": { "$type": "number", "$value": 12 },
+        "xl": { "$type": "number", "$value": 16 },
+        "x2l": { "$type": "number", "$value": 24 },
+        "pill": { "$type": "number", "$value": 9999 }
+      },
+      "icon": {
+        "$description": "Icon sizes",
+        "xs": { "$type": "number", "$value": 12 },
+        "sm": { "$type": "number", "$value": 16 },
+        "md": { "$type": "number", "$value": 24 },
+        "lg": { "$type": "number", "$value": 32 },
+        "xl": { "$type": "number", "$value": 48 },
+        "x2l": { "$type": "number", "$value": 64 }
+      },
+      "font": {
+        "$description": "Font sizes",
+        "xs": { "$type": "number", "$value": 12 },
+        "sm": { "$type": "number", "$value": 14 },
+        "md": { "$type": "number", "$value": 16 },
+        "lg": { "$type": "number", "$value": 18 },
+        "xl": { "$type": "number", "$value": 20 },
+        "x2l": { "$type": "number", "$value": 24 },
+        "x3l": { "$type": "number", "$value": 30 }
+      }
+    },
+    "typography": {
+      "$description": "Typography tokens",
+      "display": {
+        "$description": "Display text styles",
+        "bold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": 48,
+            "fontWeight": 700,
+            "height": 1.1,
+            "fontFamily": "$font.family.primary",
+            "color": "$color.foreground.title"
+          },
+          "$description": "Bold display text"
+        },
+        "medium": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": 48,
+            "fontWeight": 500,
+            "height": 1.1,
+            "fontFamily": "$font.family.primary",
+            "color": "$color.foreground.title"
+          },
+          "$description": "Medium weight display text"
+        },
+        "regular": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": 48,
+            "fontWeight": 400,
+            "height": 1.1,
+            "fontFamily": "$font.family.primary",
+            "color": "$color.foreground.title"
+          },
+          "$description": "Regular display text"
+        }
+      },
+      "headline": {
+        "$description": "Headline text styles",
+        "bold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": 32,
+            "fontWeight": 700,
+            "height": 1.2,
+            "fontFamily": "$font.family.primary",
+            "color": "$color.foreground.title"
+          },
+          "$description": "Bold headline"
+        },
+        "medium": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": 32,
+            "fontWeight": 500,
+            "height": 1.2,
+            "fontFamily": "$font.family.primary",
+            "color": "$color.foreground.title"
+          },
+          "$description": "Medium headline"
+        }
+      },
+      "title": {
+        "$description": "Title text styles",
+        "bold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": 24,
+            "fontWeight": 700,
+            "height": 1.3,
+            "fontFamily": "$font.family.primary",
+            "color": "$color.foreground.title"
+          },
+          "$description": "Bold title"
+        },
+        "medium": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": 24,
+            "fontWeight": 500,
+            "height": 1.3,
+            "fontFamily": "$font.family.primary",
+            "color": "$color.foreground.title"
+          },
+          "$description": "Medium title"
+        }
+      },
+      "body": {
+        "$description": "Body text styles",
+        "bold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": 16,
+            "fontWeight": 700,
+            "height": 1.5,
+            "letterSpacing": 0.5,
+            "fontFamily": "$font.family.primary",
+            "color": "$color.foreground.body"
+          },
+          "$description": "Bold body text"
+        },
+        "medium": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": 16,
+            "fontWeight": 500,
+            "height": 1.5,
+            "letterSpacing": 0.5,
+            "fontFamily": "$font.family.primary",
+            "color": "$color.foreground.body"
+          },
+          "$description": "Medium body text"
+        },
+        "regular": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": 16,
+            "fontWeight": 400,
+            "height": 1.5,
+            "letterSpacing": 0.5,
+            "fontFamily": "$font.family.primary",
+            "color": "$color.foreground.body"
+          },
+          "$description": "Regular body text"
+        }
+      },
+      "label": {
+        "$description": "Label text styles",
+        "bold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": 14,
+            "fontWeight": 700,
+            "height": 1.4,
+            "fontFamily": "$font.family.primary",
+            "color": "$color.foreground.primary"
+          },
+          "$description": "Bold label"
+        },
+        "medium": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": 14,
+            "fontWeight": 500,
+            "height": 1.4,
+            "fontFamily": "$font.family.primary",
+            "color": "$color.foreground.primary"
+          },
+          "$description": "Medium label"
+        },
+        "regular": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": 14,
+            "fontWeight": 400,
+            "height": 1.4,
+            "fontFamily": "$font.family.primary",
+            "color": "$color.foreground.primary"
+          },
+          "$description": "Regular label"
+        }
+      },
+      "caption": {
+        "$description": "Caption text styles",
+        "bold": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": 12,
+            "fontWeight": 700,
+            "height": 1.4,
+            "fontFamily": "$font.family.primary",
+            "color": "$color.foreground.subtle"
+          },
+          "$description": "Bold caption"
+        },
+        "medium": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": 12,
+            "fontWeight": 500,
+            "height": 1.4,
+            "fontFamily": "$font.family.primary",
+            "color": "$color.foreground.subtle"
+          },
+          "$description": "Medium caption"
+        },
+        "regular": {
+          "$type": "typography",
+          "$value": {
+            "fontSize": 12,
+            "fontWeight": 400,
+            "height": 1.4,
+            "fontFamily": "$font.family.primary",
+            "color": "$color.foreground.subtle"
+          },
+          "$description": "Regular caption"
+        }
+      }
+    }
+  },
+  "dark": {
+    "$variables": {
+      "color": {
+        "brand": {
+          "primary": "#2D3A8C",
+          "container": "#1E1E2E"
+        },
+        "neutral": {
+          "gray": {
+            "100": "#1F2937",
+            "200": "#374151",
+            "300": "#4B5563",
+            "400": "#6B7280",
+            "500": "#9CA3AF",
+            "600": "#D1D5DB",
+            "700": "#E5E7EB",
+            "800": "#F3F4F6",
+            "900": "#F9FAFB"
+          }
+        }
+      }
+    },
+    "color": {
+      "foreground": {
+        "primary": { "$type": "color", "$value": "$color.neutral.gray.900" },
+        "subtle": { "$type": "color", "$value": "$color.neutral.gray.600" },
+        "title": { "$type": "color", "$value": "$color.neutral.gray.900" },
+        "body": { "$type": "color", "$value": "$color.neutral.gray.700" },
+        "disabled": { "$type": "color", "$value": "$color.neutral.gray.400" },
+        "placeholder": { "$type": "color", "$value": "$color.neutral.gray.400" }
+      },
+      "canvas": {
+        "primary": { "$type": "color", "$value": "$color.neutral.gray.100" },
+        "secondary": { "$type": "color", "$value": "$color.neutral.gray.200" },
+        "tertiary": { "$type": "color", "$value": "$color.neutral.gray.300" }
+      },
+      "surface": {
+        "card": { "$type": "color", "$value": "$color.neutral.gray.200" }
+      },
+      "input": {
+        "fill": { "$type": "color", "$value": "$color.neutral.gray.200" },
+        "outline": { "$type": "color", "$value": "$color.neutral.gray.400" }
+      },
+      "action": {
+        "ghostHover": { "$type": "color", "$value": "$color.neutral.gray.300" }
+      }
+    }
+  }
+}
