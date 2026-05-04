@@ -27,8 +27,7 @@ dependencies:
 
 dev_dependencies:
   build_runner: ^2.4.13
-  design_builder:
-    path: ../packages/design_builder_flutter # or use git/pub.dev when published
+  design_builder: ^1.0.1
 ```
 
 ### 2. Configure build.yaml
@@ -62,7 +61,7 @@ targets:
 
 ### 3. Create JSON Schema
 
-Create a JSON schema file (e.g., `lib/schema/theme-spec.schema.json`) that defines your token structure. See [SETUP.md](SETUP.md) for a complete schema example.
+Create a JSON schema file (e.g., `lib/schema/theme-spec.schema.json`) that defines your token structure. See the `schema/theme-spec.schema.json` file in this package for a complete schema example.
 
 ### 4. Create Token Files
 
@@ -312,7 +311,6 @@ Variables are resolved at build time and injected into the generated Dart code a
 ## Additional Information
 
 For more detailed information, see:
-- [SETUP.md](SETUP.md) - Complete setup guide with schema examples
 - [CHANGELOG.md](CHANGELOG.md) - Version history
 - [example/](example/) - Example usage
 

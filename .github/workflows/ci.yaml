@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.24.0"
+          channel: "stable"
+      - run: flutter pub get
+        working-directory: packages/design_builder_flutter
+      - run: flutter analyze
+        working-directory: packages/design_builder_flutter
+      - run: dart run build_runner build --delete-conflicting-outputs
+        working-directory: packages/design_builder_flutter
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.24.0"
+          channel: "stable"
+      - run: flutter pub get
+        working-directory: packages/design_builder_flutter
+      - run: flutter test
+        working-directory: packages/design_builder_flutter
+
+  pana:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.24.0"
+          channel: "stable"
+      - run: dart pub global activate pana
+      - run: flutter pub get
+        working-directory: packages/design_builder_flutter
+      - run: pana packages/design_builder_flutter --exit-code-threshold 0
