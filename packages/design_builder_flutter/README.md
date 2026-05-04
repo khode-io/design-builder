@@ -1,18 +1,20 @@
 # Design Builder
 
-A Dart build_runner package that generates Flutter `ThemeExtension` classes from W3C Design Tokens. It converts JSON token files into type-safe Dart code with support for light/dark modes, server-side overrides, and const lookup maps for O(1) token resolution.
+[![CI](https://github.com/khode-io/design-builder/actions/workflows/ci.yaml/badge.svg)](https://github.com/khode-io/design-builder/actions/workflows/ci.yaml)
+[![pub package](https://img.shields.io/pub/v/design_builder.svg)](https://pub.dev/packages/design_builder)
+
+Transform your design tokens into production-ready Flutter themes. Generate type-safe ThemeExtension classes from W3C-standard JSON files with zero runtime overhead, adaptive theming, and live server-side updates.
+
+It also works with [Google Labs Design Tokens](https://github.com/google-labs-code/design.md).
 
 ## Features
 
-- **W3C Design Tokens Format** - Uses standard W3C Design Tokens JSON format
-- **Light/Dark Mode Support** - Built-in support for multiple theme modes
-- **Variable Injection** - Define reusable variables in `$variables` section and reference them with `$variable.path` syntax
-- **Typography Support** - Full text style tokens with fontSize, fontWeight, height, letterSpacing, fontFamily, and color
-- **Dimension Tokens** - Support for padding, spacing, radius, and custom sizes
-- **Server-Side Overrides** - Apply runtime token overrides for dynamic theming
-- **Const Lookup Maps** - O(1) token resolution via generated const maps
-- **Type-Safe API** - Generated ThemeExtension classes with full IDE autocomplete
-- **Build Runner Integration** - Automatic regeneration on token file changes
+- **Design Tokens First** — Define your design system in JSON using the W3C standard. No more scattered hardcoded values across your codebase.
+- **Adaptive by Default** — Built-in light/dark mode support with automatic theme switching. One source of truth, infinite variations.
+- **Live Theme Updates** — Push design changes server-side and watch your app adapt in real-time. Perfect for A/B testing and seasonal campaigns.
+- **Performance Obsessed** — Zero runtime overhead with const lookup maps. Theme resolution is O(1) and happens at compile time.
+- **Type-Safe & Autocompleted** — Generated ThemeExtension classes give you full IDE support. Catch design errors before they reach production.
+- **Smart Variable System** — Define reusable design primitives in `$variables` and reference them anywhere with `$variable.path` syntax. Change once, propagate everywhere.
 
 ## Getting Started
 
@@ -65,75 +67,27 @@ Create a JSON schema file (e.g., `lib/schema/theme-spec.schema.json`) that defin
 
 ### 4. Create Token Files
 
-Create token files following the W3C Design Tokens format with support for `$variables`:
+Create token files (e.g., `lib/theme/app.tokens.json`) following the W3C Design Tokens format. Token files define:
 
-```json
-{
-  "$schemaVersion": "3.0",
-  "$id": "theme-tokens",
-  "$version": "1.0.0",
-  "$name": "App Theme Tokens",
-  "light": {
-    "$variables": {
-      "color": {
-        "brand": {
-          "primary": "#1A1A2E",
-          "container": "#F8F9FA"
-        }
-      },
-      "font": {
-        "family": {
-          "primary": "Inter"
-        }
-      }
-    },
-    "color": {
-      "brand": {
-        "primary": {
-          "$type": "color",
-          "$value": "$color.brand.primary",
-          "$description": "Primary brand color"
-        },
-        "container": {
-          "$type": "color",
-          "$value": "$color.brand.container"
-        }
-      }
-    },
-    "typography": {
-      "display": {
-        "bold": {
-          "$type": "typography",
-          "$value": {
-            "fontSize": 32,
-            "fontWeight": 700,
-            "height": 1.2,
-            "fontFamily": "$font.family.primary"
-          }
-        }
-      }
-    }
-  },
-  "dark": {
-    "$variables": {
-      "color": {
-        "brand": {
-          "primary": "#2D3A8C",
-          "container": "#1E1E2E"
-        }
-      }
-    },
-    "color": {
-      "brand": {
-        "primary": {
-          "$type": "color",
-          "$value": "$color.brand.primary"
-        }
-      }
-    }
-  }
-}
-```
+- **Metadata** — `$schemaVersion`, `$id`, `$version`, `$name`
+- **Variables** — Reusable primitives in `$variables` section
+- **Themes** — `light` (required) and `dark` (optional) appearances
+
+See the [example token file](example/lib/theme/app.tokens.json) for a complete reference.
+
+### Token Group Types
+
+The schema defines the following token group hierarchy:
+
+| Group | Subgroups | Token Types |
+|-------|-----------|-------------|
+| `color` | brand, foreground, icon, input, action, canvas, surface, stroke, feedback, indicator | color |
+| `sizes` | padding, spacing, radius, icon, font, motion, blur | number |
+| `typography` | display, headline, title, body, label, caption | typography |
+
+Each color group contains specific semantic tokens (e.g., `color.brand.primary`, `color.foreground.subtle`).
+
+> **Note:** Token groups are defined by the schema and cannot be changed, but you have full flexibility to modify, add, or remove individual tokens within each group based on your design system needs.
 
 ## Usage
 
@@ -259,18 +213,6 @@ Use `$variable.path` syntax to reference variables:
 
 Variables are resolved at build time and injected into the generated Dart code as literal values.
 
-## Configuration Options
-
-| Option | Required | Default | Description |
-|--------|----------|---------|-------------|
-| `spec_path` | Yes | - | Path to JSON schema file |
-| `input_glob` | Yes | `lib/**.tokens.json` | Glob pattern for token files |
-| `output_path` | No | `design_tokens` | Output directory (relative to lib/) |
-| `output_file_name` | No | `app_theme` | Output file name (without extension) |
-| `class_name` | No | `AppTheme` | Generated class name |
-| `const_constructors` | No | `true` | Generate const constructors |
-| `generate_json_methods` | No | `true` | Generate fromJson/toJson methods |
-
 ## Token Format
 
 ### Color Tokens
@@ -307,6 +249,18 @@ Variables are resolved at build time and injected into the generated Dart code a
   }
 }
 ```
+
+## Configuration Options
+
+| Option | Required | Default | Description |
+|--------|----------|---------|-------------|
+| `spec_path` | Yes | - | Path to JSON schema file |
+| `input_glob` | Yes | `lib/**.tokens.json` | Glob pattern for token files |
+| `output_path` | No | `design_tokens` | Output directory (relative to lib/) |
+| `output_file_name` | No | `app_theme` | Output file name (without extension) |
+| `class_name` | No | `AppTheme` | Generated class name |
+| `const_constructors` | No | `true` | Generate const constructors |
+| `generate_json_methods` | No | `true` | Generate fromJson/toJson methods |
 
 ## Additional Information
 
