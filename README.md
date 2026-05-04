@@ -1,6 +1,6 @@
 # Design Builder
 
-A multi-platform build tool that generates platform-specific theme code from W3C Design Tokens. Transform JSON token files into type-safe code for Flutter, iOS, and Android with support for light/dark modes, server-side overrides, and const lookup maps for O(1) token resolution.
+A multi-platform build tool that generates platform-specific theme code from W3C Design Tokens. Transform JSON token files into type-safe code for Flutter, iOS, and Android with support for light/dark modes, server-side overrides, and lightning fast const lookup maps.
 
 ## Overview
 
@@ -10,7 +10,7 @@ This monorepo contains platform-specific **design_builder** packages - code gene
 - Generates type-safe theme code for each platform
 - Supports multiple theme modes (light/dark)
 - Enables runtime token overrides
-- Provides O(1) token resolution via const lookup maps
+- Provides lightning fast lookups via compile-time const maps
 
 ## Packages
 
@@ -28,7 +28,7 @@ This monorepo contains platform-specific **design_builder** packages - code gene
 - **Typography Support** - Full text style tokens with fontSize, fontWeight, height, letterSpacing, fontFamily, and color
 - **Dimension Tokens** - Support for padding, spacing, radius, and custom sizes
 - **Server-Side Overrides** - Apply runtime token overrides for dynamic theming
-- **Const Lookup Maps** - O(1) token resolution via generated const maps
+- **Lightning fast lookups** - Instant theme access via compile-time const maps
 - **Type-Safe API** - Generated ThemeExtension classes with full IDE autocomplete
 - **Build Runner Integration** - Automatic regeneration on token file changes
 
