@@ -1,14 +1,14 @@
 name: design_builder
-description: Build runner for generating Flutter ThemeExtension from W3C Design Tokens
+description: A build tool that generates Flutter ThemeExtension code from W3C Design Tokens with light/dark mode support and runtime overrides
 version: 1.0.0
-homepage: https://github.com/yourusername/design_builder
-repository: https://github.com/yourusername/design_builder
-issue_tracker: https://github.com/yourusername/design_builder/issues
+homepage: https://github.com/khode-io/design-builder
+repository: https://github.com/khode-io/design-builder
+issue_tracker: https://github.com/khode-io/design-builder/issues
 publish_to: none
 
 # Note: Not using workspace resolution due to build_runner dependency conflicts
 environment:
-  sdk: ">=3.11.0 <4.0.0"
+  sdk: ">=3.10.0 <4.0.0"
 
 dependencies:
   build: ">=2.4.0 <4.0.0"
