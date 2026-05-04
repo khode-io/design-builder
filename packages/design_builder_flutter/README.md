@@ -12,7 +12,7 @@ It also works with [Google Labs Design Tokens](https://github.com/google-labs-co
 - **Design Tokens First** — Define your design system in JSON using the W3C standard. No more scattered hardcoded values across your codebase.
 - **Adaptive by Default** — Built-in light/dark mode support with automatic theme switching. One source of truth, infinite variations.
 - **Live Theme Updates** — Push design changes server-side and watch your app adapt in real-time. Perfect for A/B testing and seasonal campaigns.
-- **Performance Obsessed** — Zero runtime overhead with const lookup maps. Theme resolution is O(1) and happens at compile time.
+- **Lightning fast lookups** — Theme values are stored in compile-time const maps for instant access with minimal overhead.
 - **Type-Safe & Autocompleted** — Generated ThemeExtension classes give you full IDE support. Catch design errors before they reach production.
 - **Smart Variable System** — Define reusable design primitives in `$variables` and reference them anywhere with `$variable.path` syntax. Change once, propagate everywhere.
 
