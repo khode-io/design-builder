@@ -213,6 +213,18 @@ Use `$variable.path` syntax to reference variables:
 
 Variables are resolved at build time and injected into the generated Dart code as literal values.
 
+## Configuration Options
+
+| Option | Required | Default | Description |
+|--------|----------|---------|-------------|
+| `spec_path` | Yes | - | Path to JSON schema file |
+| `input_glob` | Yes | `lib/**.tokens.json` | Glob pattern for token files |
+| `output_path` | No | `design_tokens` | Output directory (relative to lib/) |
+| `output_file_name` | No | `app_theme` | Output file name (without extension) |
+| `class_name` | No | `AppTheme` | Generated class name |
+| `const_constructors` | No | `true` | Generate const constructors |
+| `generate_json_methods` | No | `true` | Generate fromJson/toJson methods |
+
 ## Token Format
 
 ### Color Tokens
@@ -249,18 +261,6 @@ Variables are resolved at build time and injected into the generated Dart code a
   }
 }
 ```
-
-## Configuration Options
-
-| Option | Required | Default | Description |
-|--------|----------|---------|-------------|
-| `spec_path` | Yes | - | Path to JSON schema file |
-| `input_glob` | Yes | `lib/**.tokens.json` | Glob pattern for token files |
-| `output_path` | No | `design_tokens` | Output directory (relative to lib/) |
-| `output_file_name` | No | `app_theme` | Output file name (without extension) |
-| `class_name` | No | `AppTheme` | Generated class name |
-| `const_constructors` | No | `true` | Generate const constructors |
-| `generate_json_methods` | No | `true` | Generate fromJson/toJson methods |
 
 ## Additional Information
 
