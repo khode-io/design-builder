@@ -16,7 +16,7 @@ This monorepo contains platform-specific **design_builder** packages - code gene
 
 | Package | Description | Version | Status |
 |---------|-------------|---------|--------|
-| [design_builder_flutter](packages/design_builder_flutter) | Build runner for generating Flutter ThemeExtension | 1.0.0 | ✅ Available |
+| [design_builder_flutter](packages/design_builder_flutter) | Build runner for generating Flutter ThemeExtension | 1.0.1 | ✅ Available |
 | design_builder_ios | Swift code generation for iOS | - | 🚧 Planned |
 | design_builder_android | Kotlin code generation for Android | - | 🚧 Planned |
 
@@ -45,10 +45,7 @@ dependencies:
 
 dev_dependencies:
   build_runner: ^2.4.13
-  design_builder:
-    git:
-      url: https://github.com/khode-io/design-builder.git
-      path: packages/design_builder_flutter
+  design_builder: ^1.0.1
 ```
 
 *Note: iOS and Android native packages coming soon.*
@@ -139,7 +136,6 @@ class MyWidget extends StatelessWidget {
 ## Documentation
 
 - [Package README](packages/design_builder_flutter/README.md) - Detailed usage guide
-- [Setup Guide](packages/design_builder_flutter/SETUP.md) - Complete setup instructions
 - [Contributing](CONTRIBUTING.md) - Contribution guidelines
 - [Changelog](packages/design_builder_flutter/CHANGELOG.md) - Version history
 - [Example](packages/design_builder_flutter/example) - Example usage
