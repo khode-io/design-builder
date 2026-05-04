@@ -4,7 +4,6 @@ version: 1.0.0
 homepage: https://github.com/khode-io/design-builder
 repository: https://github.com/khode-io/design-builder
 issue_tracker: https://github.com/khode-io/design-builder/issues
-publish_to: none
 
 # Note: Not using workspace resolution due to build_runner dependency conflicts
 environment:

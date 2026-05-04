@@ -50,7 +50,10 @@ void main() {
         outputFileName: 'app_theme',
       );
 
-      expect(config.buildExtensionOutput, 'design_tokens/\$outputFileName.g.dart');
+      expect(
+        config.buildExtensionOutput,
+        'design_tokens/\$outputFileName.g.dart',
+      );
     });
 
     group('fromBuilderOptions', () {
@@ -148,7 +151,10 @@ void main() {
           outputFileName: 'app_theme_v2',
         );
 
-        expect(config.outputFilePath, 'lib/generated/themes/app_theme_v2.g.dart');
+        expect(
+          config.outputFilePath,
+          'lib/generated/themes/app_theme_v2.g.dart',
+        );
       });
     });
   });

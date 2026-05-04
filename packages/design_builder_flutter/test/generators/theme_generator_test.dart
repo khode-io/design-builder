@@ -53,7 +53,10 @@ void main() {
           null,
         );
 
-        expect(code, contains('class TestTheme extends ThemeExtension<TestTheme>'));
+        expect(
+          code,
+          contains('class TestTheme extends ThemeExtension<TestTheme>'),
+        );
         expect(code, contains('factory TestTheme.dark()'));
         expect(code, contains('factory TestTheme.light()'));
         expect(code, contains('static TestTheme of(BuildContext context)'));
@@ -111,8 +114,14 @@ void main() {
           null,
         );
 
-        expect(code, contains('class TestThemeNotifier extends ChangeNotifier'));
-        expect(code, contains('class TestThemeProvider extends InheritedNotifier'));
+        expect(
+          code,
+          contains('class TestThemeNotifier extends ChangeNotifier'),
+        );
+        expect(
+          code,
+          contains('class TestThemeProvider extends InheritedNotifier'),
+        );
         expect(code, contains('toggleMode'));
         expect(code, contains('applyOverrides'));
         expect(code, contains('clearOverrides'));
@@ -132,7 +141,10 @@ void main() {
           null,
         );
 
-        expect(code, contains('extension TestThemeContextExtensions on BuildContext'));
+        expect(
+          code,
+          contains('extension TestThemeContextExtensions on BuildContext'),
+        );
         expect(code, contains('TestTheme get theme'));
         expect(code, contains('TestThemeNotifier get themeNotifier'));
       });
@@ -322,8 +334,14 @@ void main() {
           null,
         );
 
-        expect(code, contains('const Map<String, TextStyle> _lightTypographyBody'));
-        expect(code, contains('TextStyle(fontSize: 16, fontWeight: FontWeight.w400)'));
+        expect(
+          code,
+          contains('const Map<String, TextStyle> _lightTypographyBody'),
+        );
+        expect(
+          code,
+          contains('TextStyle(fontSize: 16, fontWeight: FontWeight.w400)'),
+        );
       });
 
       test('generates typography resolver class', () {
@@ -459,7 +477,10 @@ void main() {
         // The generator creates class names based on the full path
         // For display.h1, it should create _DisplayH1Typography
         expect(code, contains('_ThemeTypography')); // Helper class is generated
-        expect(code, contains('_DisplayTypography')); // Display typography class
+        expect(
+          code,
+          contains('_DisplayTypography'),
+        ); // Display typography class
         // The generated code may vary based on the tree structure
         // We verify the code was generated successfully
         expect(code, isNotEmpty);
@@ -508,12 +529,8 @@ void main() {
 
     group('edge cases', () {
       test('handles empty mode groups', () {
-        final modeGroups = <String, List<TokenGroup>>{
-          'light': [],
-        };
-        final modeTokens = <String, List<DesignToken>>{
-          'light': [],
-        };
+        final modeGroups = <String, List<TokenGroup>>{'light': []};
+        final modeTokens = <String, List<DesignToken>>{'light': []};
         final modes = ['light'];
         final groupDescriptions = <String, String>{};
 

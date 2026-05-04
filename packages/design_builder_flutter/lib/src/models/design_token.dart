@@ -31,8 +31,7 @@ class DesignToken {
   bool get isAlias =>
       value is String &&
       (value.toString().startsWith('\$') ||
-          (value.toString().startsWith('{') &&
-              value.toString().endsWith('}')));
+          (value.toString().startsWith('{') && value.toString().endsWith('}')));
 
   /// If this is an alias, returns the referenced path
   String? get aliasPath {

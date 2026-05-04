@@ -25,8 +25,10 @@ class AppTheme extends ThemeExtension<AppTheme> {
   // --------------------------------------------------
   /// Access all color tokens including brand, foreground, action, canvas, etc.
   _ThemeColors get colors => _ThemeColors(_store);
+
   /// Access all size tokens including padding, spacing, radius, typography, etc.
   _ThemeSizes get sizes => _ThemeSizes(_store);
+
   /// Access all typography tokens including display, headline, title, body, etc.
   _ThemeTypography get typography => _ThemeTypography(_store);
 
@@ -49,10 +51,10 @@ class AppTheme extends ThemeExtension<AppTheme> {
   }
 
   @override
-AppTheme copyWith() => AppTheme(_store);
+  AppTheme copyWith() => AppTheme(_store);
 
   @override
-AppTheme lerp(ThemeExtension<dynamic>? other, double t) => this;
+  AppTheme lerp(ThemeExtension<dynamic>? other, double t) => this;
 
   @override
   bool operator ==(Object other) => other is AppTheme && other._store == _store;
@@ -60,7 +62,6 @@ AppTheme lerp(ThemeExtension<dynamic>? other, double t) => this;
   @override
   int get hashCode => _store.hashCode;
 }
-
 
 /// Available theme modes.
 enum AppThemeMode { dark, light }
@@ -72,16 +73,17 @@ enum AppThemeMode { dark, light }
 /// applying server overrides dynamically.
 class AppThemeNotifier extends ChangeNotifier {
   AppThemeNotifier({AppThemeMode initialMode = AppThemeMode.dark})
-      : _mode = initialMode,
-        _store = _TokenStore(mode: initialMode.name),
-        _theme = AppTheme(_TokenStore(mode: initialMode.name));
+    : _mode = initialMode,
+      _store = _TokenStore(mode: initialMode.name),
+      _theme = AppTheme(_TokenStore(mode: initialMode.name));
 
   AppThemeMode _mode;
   final _TokenStore _store;
-AppTheme _theme;
+  AppTheme _theme;
 
   /// The current theme mode (dark or light).
   AppThemeMode get mode => _mode;
+
   /// The current AppTheme instance.
   AppTheme get theme => _theme;
 
@@ -148,15 +150,13 @@ class AppThemeProvider extends InheritedNotifier<AppThemeNotifier> {
   static Widget builder({
     Key? key,
     required AppThemeNotifier notifier,
-    required Widget Function(BuildContext context, AppThemeNotifier notifier) builder,
+    required Widget Function(BuildContext context, AppThemeNotifier notifier)
+    builder,
   }) {
     return AppThemeProvider(
       key: key,
       notifier: notifier,
-      child: _AppThemeBuilder(
-        notifier: notifier,
-        builder: builder,
-      ),
+      child: _AppThemeBuilder(notifier: notifier, builder: builder),
     );
   }
 
@@ -164,7 +164,9 @@ class AppThemeProvider extends InheritedNotifier<AppThemeNotifier> {
   ///
   /// Returns null if no [AppThemeProvider] is found in the ancestry.
   static AppThemeNotifier? maybeOf(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<AppThemeProvider>()?.notifier;
+    return context
+        .dependOnInheritedWidgetOfExactType<AppThemeProvider>()
+        ?.notifier;
   }
 
   /// Retrieves the [AppThemeNotifier] from the widget tree.
@@ -180,12 +182,10 @@ class AppThemeProvider extends InheritedNotifier<AppThemeNotifier> {
 /// Internal widget that rebuilds when [AppThemeNotifier] changes.
 class _AppThemeBuilder extends StatefulWidget {
   final AppThemeNotifier notifier;
-  final Widget Function(BuildContext context, AppThemeNotifier notifier) builder;
+  final Widget Function(BuildContext context, AppThemeNotifier notifier)
+  builder;
 
-  const _AppThemeBuilder({
-    required this.notifier,
-    required this.builder,
-  });
+  const _AppThemeBuilder({required this.notifier, required this.builder});
 
   @override
   State<_AppThemeBuilder> createState() => _AppThemeBuilderState();
@@ -222,7 +222,6 @@ class _AppThemeBuilderState extends State<_AppThemeBuilder> {
     return widget.builder(context, widget.notifier);
   }
 }
-
 
 /// Manages theme token storage and server-side overrides.
 ///
@@ -262,29 +261,49 @@ class _TokenStore {
     final pascalPath = groupPath.split('.').map((s) => _pascalCase(s)).join();
     if (_mode == 'dark') {
       switch (pascalPath) {
-        case "Action": return _darkColorAction[token];
-        case "Brand": return _darkColorBrand[token];
-        case "Canvas": return _darkColorCanvas[token];
-        case "Feedback": return _darkColorFeedback[token];
-        case "Foreground": return _darkColorForeground[token];
-        case "Icon": return _darkColorIcon[token];
-        case "Indicator": return _darkColorIndicator[token];
-        case "Input": return _darkColorInput[token];
-        case "Stroke": return _darkColorStroke[token];
-        case "Surface": return _darkColorSurface[token];
+        case "Action":
+          return _darkColorAction[token];
+        case "Brand":
+          return _darkColorBrand[token];
+        case "Canvas":
+          return _darkColorCanvas[token];
+        case "Feedback":
+          return _darkColorFeedback[token];
+        case "Foreground":
+          return _darkColorForeground[token];
+        case "Icon":
+          return _darkColorIcon[token];
+        case "Indicator":
+          return _darkColorIndicator[token];
+        case "Input":
+          return _darkColorInput[token];
+        case "Stroke":
+          return _darkColorStroke[token];
+        case "Surface":
+          return _darkColorSurface[token];
       }
     } else {
       switch (pascalPath) {
-        case "Action": return _lightColorAction[token];
-        case "Brand": return _lightColorBrand[token];
-        case "Canvas": return _lightColorCanvas[token];
-        case "Feedback": return _lightColorFeedback[token];
-        case "Foreground": return _lightColorForeground[token];
-        case "Icon": return _lightColorIcon[token];
-        case "Indicator": return _lightColorIndicator[token];
-        case "Input": return _lightColorInput[token];
-        case "Stroke": return _lightColorStroke[token];
-        case "Surface": return _lightColorSurface[token];
+        case "Action":
+          return _lightColorAction[token];
+        case "Brand":
+          return _lightColorBrand[token];
+        case "Canvas":
+          return _lightColorCanvas[token];
+        case "Feedback":
+          return _lightColorFeedback[token];
+        case "Foreground":
+          return _lightColorForeground[token];
+        case "Icon":
+          return _lightColorIcon[token];
+        case "Indicator":
+          return _lightColorIndicator[token];
+        case "Input":
+          return _lightColorInput[token];
+        case "Stroke":
+          return _lightColorStroke[token];
+        case "Surface":
+          return _lightColorSurface[token];
       }
     }
     return null;
@@ -302,23 +321,37 @@ class _TokenStore {
     final pascalPath = groupPath.split('.').map((s) => _pascalCase(s)).join();
     if (_mode == 'dark') {
       switch (pascalPath) {
-        case "Blur": return _darkSizeBlur[token];
-        case "Font": return _darkSizeFont[token];
-        case "Icon": return _darkSizeIcon[token];
-        case "Motion": return _darkSizeMotion[token];
-        case "Padding": return _darkSizePadding[token];
-        case "Radius": return _darkSizeRadius[token];
-        case "Spacing": return _darkSizeSpacing[token];
+        case "Blur":
+          return _darkSizeBlur[token];
+        case "Font":
+          return _darkSizeFont[token];
+        case "Icon":
+          return _darkSizeIcon[token];
+        case "Motion":
+          return _darkSizeMotion[token];
+        case "Padding":
+          return _darkSizePadding[token];
+        case "Radius":
+          return _darkSizeRadius[token];
+        case "Spacing":
+          return _darkSizeSpacing[token];
       }
     } else {
       switch (pascalPath) {
-        case "Blur": return _lightSizeBlur[token];
-        case "Font": return _lightSizeFont[token];
-        case "Icon": return _lightSizeIcon[token];
-        case "Motion": return _lightSizeMotion[token];
-        case "Padding": return _lightSizePadding[token];
-        case "Radius": return _lightSizeRadius[token];
-        case "Spacing": return _lightSizeSpacing[token];
+        case "Blur":
+          return _lightSizeBlur[token];
+        case "Font":
+          return _lightSizeFont[token];
+        case "Icon":
+          return _lightSizeIcon[token];
+        case "Motion":
+          return _lightSizeMotion[token];
+        case "Padding":
+          return _lightSizePadding[token];
+        case "Radius":
+          return _lightSizeRadius[token];
+        case "Spacing":
+          return _lightSizeSpacing[token];
       }
     }
     return null;
@@ -336,21 +369,33 @@ class _TokenStore {
     final pascalPath = groupPath.split('.').map((s) => _pascalCase(s)).join();
     if (_mode == 'dark') {
       switch (pascalPath) {
-        case "Body": return _darkTypographyBody[token];
-        case "Caption": return _darkTypographyCaption[token];
-        case "Display": return _darkTypographyDisplay[token];
-        case "Headline": return _darkTypographyHeadline[token];
-        case "Label": return _darkTypographyLabel[token];
-        case "Title": return _darkTypographyTitle[token];
+        case "Body":
+          return _darkTypographyBody[token];
+        case "Caption":
+          return _darkTypographyCaption[token];
+        case "Display":
+          return _darkTypographyDisplay[token];
+        case "Headline":
+          return _darkTypographyHeadline[token];
+        case "Label":
+          return _darkTypographyLabel[token];
+        case "Title":
+          return _darkTypographyTitle[token];
       }
     } else {
       switch (pascalPath) {
-        case "Body": return _lightTypographyBody[token];
-        case "Caption": return _lightTypographyCaption[token];
-        case "Display": return _lightTypographyDisplay[token];
-        case "Headline": return _lightTypographyHeadline[token];
-        case "Label": return _lightTypographyLabel[token];
-        case "Title": return _lightTypographyTitle[token];
+        case "Body":
+          return _lightTypographyBody[token];
+        case "Caption":
+          return _lightTypographyCaption[token];
+        case "Display":
+          return _lightTypographyDisplay[token];
+        case "Headline":
+          return _lightTypographyHeadline[token];
+        case "Label":
+          return _lightTypographyLabel[token];
+        case "Title":
+          return _lightTypographyTitle[token];
       }
     }
     return null;
@@ -362,7 +407,6 @@ class _TokenStore {
     return input[0].toUpperCase() + input.substring(1);
   }
 }
-
 
 /// Extension methods on [BuildContext] for convenient theme access.
 extension AppThemeContextExtensions on BuildContext {
@@ -390,32 +434,41 @@ extension AppThemeContextExtensions on BuildContext {
   }
 }
 
-
 /// Provides access to all color category groups.
 class _ThemeColors {
   final _TokenStore _store;
   const _ThemeColors(this._store);
+
   /// Colors for interactive / tappable elements — buttons, chips, FABs,
   /// toggles
   _ActionColors get action => _ActionColors(_store);
+
   /// Brand identity colors — the primary product accent
   _BrandColors get brand => _BrandColors(_store);
+
   /// Screen / page background layers — the painted surface beneath all
   /// content
   _CanvasColors get canvas => _CanvasColors(_store);
+
   /// UI state signal colors — communicates the result of an action or system
   /// condition
   _FeedbackColors get feedback => _FeedbackColors(_store);
+
   /// Text colors rendered on top of any surface
   _ForegroundColors get foreground => _ForegroundColors(_store);
+
   /// Icon / glyph colors — parallel to foreground but scoped to iconography
   _IconColors get icon => _IconColors(_store);
+
   /// Status indicator colors — badges, chips, tags, and lifecycle pills
   _IndicatorColors get indicator => _IndicatorColors(_store);
+
   /// Colors scoped to form controls — text fields, selects, textareas
   _InputColors get input => _InputColors(_store);
+
   /// Border, divider, and outline colors
   _StrokeColors get stroke => _StrokeColors(_store);
+
   /// Elevated container colors — cards, sheets, and raised panels
   _SurfaceColors get surface => _SurfaceColors(_store);
 }
@@ -424,18 +477,25 @@ class _ThemeColors {
 class _ThemeSizes {
   final _TokenStore _store;
   const _ThemeSizes(this._store);
+
   /// Blur intensity scale for backdrop effects
   _BlurSizes get blur => _BlurSizes(_store);
+
   /// Font size scale for typography
   _FontSizes get font => _FontSizes(_store);
+
   /// Icon size scale for glyphs and symbols
   _IconSizes get icon => _IconSizes(_store);
+
   /// Motion duration scale for animations and transitions
   _MotionSizes get motion => _MotionSizes(_store);
+
   /// Padding scale for internal component spacing
   _PaddingSizes get padding => _PaddingSizes(_store);
+
   /// Border radius scale for rounding corners
   _RadiusSizes get radius => _RadiusSizes(_store);
+
   /// Spacing scale for gaps between components and layout
   _SpacingSizes get spacing => _SpacingSizes(_store);
 }
@@ -444,20 +504,25 @@ class _ThemeSizes {
 class _ThemeTypography {
   final _TokenStore _store;
   const _ThemeTypography(this._store);
+
   /// Body typography scale for paragraphs and content text
   _BodyTypography get body => _BodyTypography(_store);
+
   /// Caption typography scale for small helper text and metadata
   _CaptionTypography get caption => _CaptionTypography(_store);
+
   /// Display typography scale for large headlines and hero text
   _DisplayTypography get display => _DisplayTypography(_store);
+
   /// Headline typography scale for section headings
   _HeadlineTypography get headline => _HeadlineTypography(_store);
+
   /// Label typography scale for form labels and captions
   _LabelTypography get label => _LabelTypography(_store);
+
   /// Title typography scale for card and component titles
   _TitleTypography get title => _TitleTypography(_store);
 }
-
 
 /// Colors for interactive / tappable elements — buttons, chips, FABs,
 /// toggles
@@ -468,16 +533,22 @@ class _ActionColors {
 
   /// Disabled button background
   Color get disabled => _store.color('action', 'disabled')!;
+
   /// Error/destructive filled button
   Color get filledDanger => _store.color('action', 'filledDanger')!;
+
   /// Primary filled button hover state
   Color get filledHover => _store.color('action', 'filledHover')!;
+
   /// Primary filled button active state - deep blue
   Color get filledPrimary => _store.color('action', 'filledPrimary')!;
+
   /// Secondary button hover state
   Color get ghostHover => _store.color('action', 'ghostHover')!;
+
   /// Secondary button active state - lighter coral
   Color get ghostPrimary => _store.color('action', 'ghostPrimary')!;
+
   /// Outlined button border color
   Color get outline => _store.color('action', 'outline')!;
 }
@@ -490,6 +561,7 @@ class _BrandColors {
 
   /// Surface color for primary tinted backgrounds - dark
   Color get container => _store.color('brand', 'container')!;
+
   /// Primary brand color - deep blue for dark mode
   Color get primary => _store.color('brand', 'primary')!;
 }
@@ -502,20 +574,28 @@ class _CanvasColors {
 
   /// Primary tinted background - dark blue
   Color get brand => _store.color('canvas', 'brand')!;
+
   /// Error state surface background - dark red tint
   Color get error => _store.color('canvas', 'error')!;
+
   /// Info state surface background - dark blue tint
   Color get info => _store.color('canvas', 'info')!;
+
   /// Generic gray background - dark
   Color get neutral => _store.color('canvas', 'neutral')!;
+
   /// Main scaffold background - very dark
   Color get primary => _store.color('canvas', 'primary')!;
+
   /// Secondary surface - dark gray
   Color get secondary => _store.color('canvas', 'secondary')!;
+
   /// Success state surface background - dark green tint
   Color get success => _store.color('canvas', 'success')!;
+
   /// Tertiary surface - medium dark
   Color get tertiary => _store.color('canvas', 'tertiary')!;
+
   /// Warning state surface background - dark orange tint
   Color get warning => _store.color('canvas', 'warning')!;
 }
@@ -529,10 +609,13 @@ class _FeedbackColors {
 
   /// Danger/error status color - light red
   Color get danger => _store.color('feedback', 'danger')!;
+
   /// Info status color - light blue
   Color get info => _store.color('feedback', 'info')!;
+
   /// Success status color - light emerald
   Color get success => _store.color('feedback', 'success')!;
+
   /// Warning status color - light amber
   Color get warning => _store.color('feedback', 'warning')!;
 }
@@ -545,24 +628,34 @@ class _ForegroundColors {
 
   /// Body text color - medium gray
   Color get body => _store.color('foreground', 'body')!;
+
   /// Disabled text color - darker gray
   Color get disabled => _store.color('foreground', 'disabled')!;
+
   /// Error state text color - lighter red
   Color get error => _store.color('foreground', 'error')!;
+
   /// Info state text color - lighter blue
   Color get info => _store.color('foreground', 'info')!;
+
   /// Text on filled/colored backgrounds
   Color get inverse => _store.color('foreground', 'inverse')!;
+
   /// Placeholder text color
   Color get placeholder => _store.color('foreground', 'placeholder')!;
+
   /// Primary text color - white for dark backgrounds
   Color get primary => _store.color('foreground', 'primary')!;
+
   /// Secondary text color - light gray
   Color get subtle => _store.color('foreground', 'subtle')!;
+
   /// Success state text color - lighter green
   Color get success => _store.color('foreground', 'success')!;
+
   /// Title text color - white
   Color get title => _store.color('foreground', 'title')!;
+
   /// Warning state text color - lighter orange
   Color get warning => _store.color('foreground', 'warning')!;
 }
@@ -575,22 +668,31 @@ class _IconColors {
 
   /// Icon color for body text areas
   Color get body => _store.color('icon', 'body')!;
+
   /// Disabled icon color
   Color get disabled => _store.color('icon', 'disabled')!;
+
   /// Error icon color
   Color get error => _store.color('icon', 'error')!;
+
   /// Info icon color
   Color get info => _store.color('icon', 'info')!;
+
   /// Icon on filled backgrounds
   Color get inverse => _store.color('icon', 'inverse')!;
+
   /// Primary icon color - white
   Color get primary => _store.color('icon', 'primary')!;
+
   /// Secondary/accent icon color - lighter coral
   Color get subtle => _store.color('icon', 'subtle')!;
+
   /// Success icon color
   Color get success => _store.color('icon', 'success')!;
+
   /// Icon color for titles
   Color get title => _store.color('icon', 'title')!;
+
   /// Warning icon color
   Color get warning => _store.color('icon', 'warning')!;
 }
@@ -603,16 +705,22 @@ class _IndicatorColors {
 
   /// Hired status badge - light green
   Color get hired => _store.color('indicator', 'hired')!;
+
   /// In review status badge - light blue
   Color get inReview => _store.color('indicator', 'inReview')!;
+
   /// Interview status badge - light purple
   Color get interview => _store.color('indicator', 'interview')!;
+
   /// Offer status badge - light green
   Color get offer => _store.color('indicator', 'offer')!;
+
   /// Pending status badge - light amber
   Color get pending => _store.color('indicator', 'pending')!;
+
   /// Rejected status badge - light red
   Color get rejected => _store.color('indicator', 'rejected')!;
+
   /// Urgent badge color - light red
   Color get urgent => _store.color('indicator', 'urgent')!;
 }
@@ -625,20 +733,28 @@ class _InputColors {
 
   /// TextField disabled color
   Color get disabled => _store.color('input', 'disabled')!;
+
   /// TextField error state color
   Color get error => _store.color('input', 'error')!;
+
   /// TextField background color - dark gray
   Color get fill => _store.color('input', 'fill')!;
+
   /// TextField focus border color - blue
   Color get focus => _store.color('input', 'focus')!;
+
   /// TextField label color - light gray
   Color get label => _store.color('input', 'label')!;
+
   /// TextField border color
   Color get outline => _store.color('input', 'outline')!;
+
   /// TextField placeholder color
   Color get placeholder => _store.color('input', 'placeholder')!;
+
   /// TextField primary color - white
   Color get primary => _store.color('input', 'primary')!;
+
   /// TextField input text color - white
   Color get value => _store.color('input', 'value')!;
 }
@@ -651,12 +767,16 @@ class _StrokeColors {
 
   /// Divider line color - dark
   Color get divider => _store.color('stroke', 'divider')!;
+
   /// Primary stroke/border color - dark
   Color get emphasis => _store.color('stroke', 'emphasis')!;
+
   /// Error outline/border color - light red
   Color get error => _store.color('stroke', 'error')!;
+
   /// Inverse stroke for light backgrounds
   Color get inverse => _store.color('stroke', 'inverse')!;
+
   /// Default border stroke - dark
   Color get primary => _store.color('stroke', 'primary')!;
 }
@@ -671,7 +791,6 @@ class _SurfaceColors {
   Color get card => _store.color('surface', 'card')!;
 }
 
-
 /// Blur intensity scale for backdrop effects
 class _BlurSizes {
   final _TokenStore _store;
@@ -680,12 +799,16 @@ class _BlurSizes {
 
   /// Large blur - 16px
   double get lg => _store.size('blur', 'lg') ?? 16.0;
+
   /// Medium blur - 8px
   double get md => _store.size('blur', 'md') ?? 8.0;
+
   /// Small blur - 4px
   double get sm => _store.size('blur', 'sm') ?? 4.0;
+
   /// Extra large blur - 24px
   double get xl => _store.size('blur', 'xl') ?? 24.0;
+
   /// Extra small blur - 2px
   double get xs => _store.size('blur', 'xs') ?? 2.0;
 }
@@ -698,16 +821,22 @@ class _FontSizes {
 
   /// Large font (body large, title medium)
   double get lg => _store.size('font', 'lg') ?? 16.0;
+
   /// Medium font (body medium)
   double get md => _store.size('font', 'md') ?? 14.0;
+
   /// Small font (caption)
   double get sm => _store.size('font', 'sm') ?? 12.0;
+
   /// 2x large font (display medium)
   double get x2l => _store.size('font', 'x2l') ?? 24.0;
+
   /// 3x large font (display large)
   double get x3l => _store.size('font', 'x3l') ?? 32.0;
+
   /// Extra large font (title large)
   double get xl => _store.size('font', 'xl') ?? 20.0;
+
   /// Extra small font - 10px
   double get xs => _store.size('font', 'xs') ?? 10.0;
 }
@@ -720,16 +849,22 @@ class _IconSizes {
 
   /// Large icon - 24px
   double get lg => _store.size('icon', 'lg') ?? 24.0;
+
   /// Medium icon - 20px
   double get md => _store.size('icon', 'md') ?? 20.0;
+
   /// Small icon - 16px
   double get sm => _store.size('icon', 'sm') ?? 16.0;
+
   /// 2x large icon - 40px
   double get x2l => _store.size('icon', 'x2l') ?? 40.0;
+
   /// 3x large icon - 48px
   double get x3l => _store.size('icon', 'x3l') ?? 48.0;
+
   /// Extra large icon - 32px
   double get xl => _store.size('icon', 'xl') ?? 32.0;
+
   /// Extra small icon - 12px
   double get xs => _store.size('icon', 'xs') ?? 12.0;
 }
@@ -742,12 +877,16 @@ class _MotionSizes {
 
   /// Standard duration - 300ms
   double get lg => _store.size('motion', 'lg') ?? 300.0;
+
   /// Medium duration - 200ms
   double get md => _store.size('motion', 'md') ?? 200.0;
+
   /// Short duration - 100ms
   double get sm => _store.size('motion', 'sm') ?? 100.0;
+
   /// Long duration - 500ms
   double get xl => _store.size('motion', 'xl') ?? 500.0;
+
   /// Extra short duration - 50ms
   double get xs => _store.size('motion', 'xs') ?? 50.0;
 }
@@ -760,24 +899,34 @@ class _PaddingSizes {
 
   /// Large padding - 16px
   double get lg => _store.size('padding', 'lg') ?? 16.0;
+
   /// Medium padding - 12px
   double get md => _store.size('padding', 'md') ?? 12.0;
+
   /// Small padding - 8px
   double get sm => _store.size('padding', 'sm') ?? 8.0;
+
   /// 2x large padding - 24px
   double get x2l => _store.size('padding', 'x2l') ?? 24.0;
+
   /// 3x large padding - 32px
   double get x3l => _store.size('padding', 'x3l') ?? 32.0;
+
   /// 4x large padding - 40px
   double get x4l => _store.size('padding', 'x4l') ?? 40.0;
+
   /// 5x large padding - 48px
   double get x5l => _store.size('padding', 'x5l') ?? 48.0;
+
   /// 6x large padding - 64px
   double get x6l => _store.size('padding', 'x6l') ?? 64.0;
+
   /// 7x large padding - 80px
   double get x7l => _store.size('padding', 'x7l') ?? 80.0;
+
   /// Extra large padding - 20px
   double get xl => _store.size('padding', 'xl') ?? 20.0;
+
   /// Extra small padding - 4px
   double get xs => _store.size('padding', 'xs') ?? 4.0;
 }
@@ -790,20 +939,28 @@ class _RadiusSizes {
 
   /// Large radius - 12px
   double get lg => _store.size('radius', 'lg') ?? 12.0;
+
   /// Medium radius - 8px
   double get md => _store.size('radius', 'md') ?? 8.0;
+
   /// Pill/fully rounded radius
   double get pill => _store.size('radius', 'pill') ?? 9999.0;
+
   /// Small radius - 6px
   double get sm => _store.size('radius', 'sm') ?? 6.0;
+
   /// 2x large radius - 20px
   double get x2l => _store.size('radius', 'x2l') ?? 20.0;
+
   /// 3x large radius - 24px
   double get x3l => _store.size('radius', 'x3l') ?? 24.0;
+
   /// 4x large radius - 32px
   double get x4l => _store.size('radius', 'x4l') ?? 32.0;
+
   /// Extra large radius (cards)
   double get xl => _store.size('radius', 'xl') ?? 16.0;
+
   /// Extra small radius - 4px
   double get xs => _store.size('radius', 'xs') ?? 4.0;
 }
@@ -816,28 +973,37 @@ class _SpacingSizes {
 
   /// Large spacing - 16px
   double get lg => _store.size('spacing', 'lg') ?? 16.0;
+
   /// Medium spacing - 12px
   double get md => _store.size('spacing', 'md') ?? 12.0;
+
   /// Small spacing - 8px
   double get sm => _store.size('spacing', 'sm') ?? 8.0;
+
   /// 2x large spacing - 24px
   double get x2l => _store.size('spacing', 'x2l') ?? 24.0;
+
   /// 3x large spacing - 32px
   double get x3l => _store.size('spacing', 'x3l') ?? 32.0;
+
   /// 4x large spacing - 40px
   double get x4l => _store.size('spacing', 'x4l') ?? 40.0;
+
   /// 5x large spacing - 48px
   double get x5l => _store.size('spacing', 'x5l') ?? 48.0;
+
   /// 6x large spacing - 64px
   double get x6l => _store.size('spacing', 'x6l') ?? 64.0;
+
   /// 7x large spacing - 80px
   double get x7l => _store.size('spacing', 'x7l') ?? 80.0;
+
   /// Extra large spacing - 20px
   double get xl => _store.size('spacing', 'xl') ?? 20.0;
+
   /// Extra small spacing - 4px
   double get xs => _store.size('spacing', 'xs') ?? 4.0;
 }
-
 
 /// Body typography scale for paragraphs and content text
 class _BodyTypography {
@@ -846,23 +1012,94 @@ class _BodyTypography {
   const _BodyTypography(this._store);
 
   /// Body - Black - Maximum weight for maximum impact
-  TextStyle get black => _store.textStyle('body', 'black') ?? TextStyle(fontSize: 16, fontWeight: FontWeight.w900, height: 1.5, fontFamily: 'Inter');
+  TextStyle get black =>
+      _store.textStyle('body', 'black') ??
+      TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w900,
+        height: 1.5,
+        fontFamily: 'Inter',
+      );
+
   /// Body - Bold - Strong emphasis for headings and key text
-  TextStyle get bold => _store.textStyle('body', 'bold') ?? TextStyle(fontSize: 16, fontWeight: FontWeight.w700, height: 1.5, fontFamily: 'Inter');
+  TextStyle get bold =>
+      _store.textStyle('body', 'bold') ??
+      TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w700,
+        height: 1.5,
+        fontFamily: 'Inter',
+      );
+
   /// Body - Extra bold - Heavy emphasis for prominent text
-  TextStyle get extraBold => _store.textStyle('body', 'extraBold') ?? TextStyle(fontSize: 16, fontWeight: FontWeight.w800, height: 1.5, fontFamily: 'Inter');
+  TextStyle get extraBold =>
+      _store.textStyle('body', 'extraBold') ??
+      TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w800,
+        height: 1.5,
+        fontFamily: 'Inter',
+      );
+
   /// Body - Extra light - Very light weight for elegant display text
-  TextStyle get extraLight => _store.textStyle('body', 'extraLight') ?? TextStyle(fontSize: 16, fontWeight: FontWeight.w200, height: 1.5, fontFamily: 'Inter');
+  TextStyle get extraLight =>
+      _store.textStyle('body', 'extraLight') ??
+      TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w200,
+        height: 1.5,
+        fontFamily: 'Inter',
+      );
+
   /// Body - Light - Soft weight for refined display text
-  TextStyle get light => _store.textStyle('body', 'light') ?? TextStyle(fontSize: 16, fontWeight: FontWeight.w300, height: 1.5, fontFamily: 'Inter');
+  TextStyle get light =>
+      _store.textStyle('body', 'light') ??
+      TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w300,
+        height: 1.5,
+        fontFamily: 'Inter',
+      );
+
   /// Body - Medium - Slightly emphasized text for UI elements
-  TextStyle get medium => _store.textStyle('body', 'medium') ?? TextStyle(fontSize: 14, fontWeight: FontWeight.w500, height: 1.5, fontFamily: 'Inter');
+  TextStyle get medium =>
+      _store.textStyle('body', 'medium') ??
+      TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
+        height: 1.5,
+        fontFamily: 'Inter',
+      );
+
   /// Body - Regular - Normal weight for standard body text
-  TextStyle get regular => _store.textStyle('body', 'regular') ?? TextStyle(fontSize: 16, fontWeight: FontWeight.w400, height: 1.5, fontFamily: 'Inter');
+  TextStyle get regular =>
+      _store.textStyle('body', 'regular') ??
+      TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        fontFamily: 'Inter',
+      );
+
   /// Body - Semi-bold - Moderate emphasis for subheadings
-  TextStyle get semiBold => _store.textStyle('body', 'semiBold') ?? TextStyle(fontSize: 16, fontWeight: FontWeight.w600, height: 1.5, fontFamily: 'Inter');
+  TextStyle get semiBold =>
+      _store.textStyle('body', 'semiBold') ??
+      TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
+        height: 1.5,
+        fontFamily: 'Inter',
+      );
+
   /// Body - Thin - Delicate, minimal weight for subtle display text
-  TextStyle get thin => _store.textStyle('body', 'thin') ?? TextStyle(fontSize: 16, fontWeight: FontWeight.w100, height: 1.5, fontFamily: 'Inter');
+  TextStyle get thin =>
+      _store.textStyle('body', 'thin') ??
+      TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w100,
+        height: 1.5,
+        fontFamily: 'Inter',
+      );
 }
 
 /// Caption typography scale for small helper text and metadata
@@ -872,23 +1109,94 @@ class _CaptionTypography {
   const _CaptionTypography(this._store);
 
   /// Caption - Black - Maximum weight for maximum impact
-  TextStyle get black => _store.textStyle('caption', 'black') ?? TextStyle(fontSize: 12, fontWeight: FontWeight.w900, height: 1.4, fontFamily: 'Inter');
+  TextStyle get black =>
+      _store.textStyle('caption', 'black') ??
+      TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w900,
+        height: 1.4,
+        fontFamily: 'Inter',
+      );
+
   /// Caption - Bold - Strong emphasis for headings and key text
-  TextStyle get bold => _store.textStyle('caption', 'bold') ?? TextStyle(fontSize: 12, fontWeight: FontWeight.w700, height: 1.4, fontFamily: 'Inter');
+  TextStyle get bold =>
+      _store.textStyle('caption', 'bold') ??
+      TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w700,
+        height: 1.4,
+        fontFamily: 'Inter',
+      );
+
   /// Caption - Extra bold - Heavy emphasis for prominent text
-  TextStyle get extraBold => _store.textStyle('caption', 'extraBold') ?? TextStyle(fontSize: 12, fontWeight: FontWeight.w800, height: 1.4, fontFamily: 'Inter');
+  TextStyle get extraBold =>
+      _store.textStyle('caption', 'extraBold') ??
+      TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w800,
+        height: 1.4,
+        fontFamily: 'Inter',
+      );
+
   /// Caption - Extra light - Very light weight for elegant display text
-  TextStyle get extraLight => _store.textStyle('caption', 'extraLight') ?? TextStyle(fontSize: 12, fontWeight: FontWeight.w200, height: 1.4, fontFamily: 'Inter');
+  TextStyle get extraLight =>
+      _store.textStyle('caption', 'extraLight') ??
+      TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w200,
+        height: 1.4,
+        fontFamily: 'Inter',
+      );
+
   /// Caption - Light - Soft weight for refined display text
-  TextStyle get light => _store.textStyle('caption', 'light') ?? TextStyle(fontSize: 12, fontWeight: FontWeight.w300, height: 1.4, fontFamily: 'Inter');
+  TextStyle get light =>
+      _store.textStyle('caption', 'light') ??
+      TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w300,
+        height: 1.4,
+        fontFamily: 'Inter',
+      );
+
   /// Caption - Medium - Slightly emphasized text for UI elements
-  TextStyle get medium => _store.textStyle('caption', 'medium') ?? TextStyle(fontSize: 12, fontWeight: FontWeight.w500, height: 1.4, fontFamily: 'Inter');
+  TextStyle get medium =>
+      _store.textStyle('caption', 'medium') ??
+      TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w500,
+        height: 1.4,
+        fontFamily: 'Inter',
+      );
+
   /// Caption - Regular - Normal weight for standard body text
-  TextStyle get regular => _store.textStyle('caption', 'regular') ?? TextStyle(fontSize: 12, fontWeight: FontWeight.w400, height: 1.4, fontFamily: 'Inter');
+  TextStyle get regular =>
+      _store.textStyle('caption', 'regular') ??
+      TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
+        height: 1.4,
+        fontFamily: 'Inter',
+      );
+
   /// Caption - Semi-bold - Moderate emphasis for subheadings
-  TextStyle get semiBold => _store.textStyle('caption', 'semiBold') ?? TextStyle(fontSize: 12, fontWeight: FontWeight.w600, height: 1.4, fontFamily: 'Inter');
+  TextStyle get semiBold =>
+      _store.textStyle('caption', 'semiBold') ??
+      TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w600,
+        height: 1.4,
+        fontFamily: 'Inter',
+      );
+
   /// Caption - Thin - Delicate, minimal weight for subtle display text
-  TextStyle get thin => _store.textStyle('caption', 'thin') ?? TextStyle(fontSize: 12, fontWeight: FontWeight.w100, height: 1.4, fontFamily: 'Inter');
+  TextStyle get thin =>
+      _store.textStyle('caption', 'thin') ??
+      TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w100,
+        height: 1.4,
+        fontFamily: 'Inter',
+      );
 }
 
 /// Display typography scale for large headlines and hero text
@@ -898,23 +1206,94 @@ class _DisplayTypography {
   const _DisplayTypography(this._store);
 
   /// Display - Black - Maximum weight for maximum impact
-  TextStyle get black => _store.textStyle('display', 'black') ?? TextStyle(fontSize: 32, fontWeight: FontWeight.w900, height: 1.2, fontFamily: 'Inter');
+  TextStyle get black =>
+      _store.textStyle('display', 'black') ??
+      TextStyle(
+        fontSize: 32,
+        fontWeight: FontWeight.w900,
+        height: 1.2,
+        fontFamily: 'Inter',
+      );
+
   /// Display - Bold - Strong emphasis for headings and key text
-  TextStyle get bold => _store.textStyle('display', 'bold') ?? TextStyle(fontSize: 32, fontWeight: FontWeight.w700, height: 1.2, fontFamily: 'Inter');
+  TextStyle get bold =>
+      _store.textStyle('display', 'bold') ??
+      TextStyle(
+        fontSize: 32,
+        fontWeight: FontWeight.w700,
+        height: 1.2,
+        fontFamily: 'Inter',
+      );
+
   /// Display - Extra bold - Heavy emphasis for prominent text
-  TextStyle get extraBold => _store.textStyle('display', 'extraBold') ?? TextStyle(fontSize: 32, fontWeight: FontWeight.w800, height: 1.2, fontFamily: 'Inter');
+  TextStyle get extraBold =>
+      _store.textStyle('display', 'extraBold') ??
+      TextStyle(
+        fontSize: 32,
+        fontWeight: FontWeight.w800,
+        height: 1.2,
+        fontFamily: 'Inter',
+      );
+
   /// Display - Extra light - Very light weight for elegant display text
-  TextStyle get extraLight => _store.textStyle('display', 'extraLight') ?? TextStyle(fontSize: 32, fontWeight: FontWeight.w200, height: 1.2, fontFamily: 'Inter');
+  TextStyle get extraLight =>
+      _store.textStyle('display', 'extraLight') ??
+      TextStyle(
+        fontSize: 32,
+        fontWeight: FontWeight.w200,
+        height: 1.2,
+        fontFamily: 'Inter',
+      );
+
   /// Display - Light - Soft weight for refined display text
-  TextStyle get light => _store.textStyle('display', 'light') ?? TextStyle(fontSize: 32, fontWeight: FontWeight.w300, height: 1.2, fontFamily: 'Inter');
+  TextStyle get light =>
+      _store.textStyle('display', 'light') ??
+      TextStyle(
+        fontSize: 32,
+        fontWeight: FontWeight.w300,
+        height: 1.2,
+        fontFamily: 'Inter',
+      );
+
   /// Display - Medium - Slightly emphasized text for UI elements
-  TextStyle get medium => _store.textStyle('display', 'medium') ?? TextStyle(fontSize: 32, fontWeight: FontWeight.w500, height: 1.2, fontFamily: 'Inter');
+  TextStyle get medium =>
+      _store.textStyle('display', 'medium') ??
+      TextStyle(
+        fontSize: 32,
+        fontWeight: FontWeight.w500,
+        height: 1.2,
+        fontFamily: 'Inter',
+      );
+
   /// Display - Regular - Normal weight for standard body text
-  TextStyle get regular => _store.textStyle('display', 'regular') ?? TextStyle(fontSize: 32, fontWeight: FontWeight.w400, height: 1.2, fontFamily: 'Inter');
+  TextStyle get regular =>
+      _store.textStyle('display', 'regular') ??
+      TextStyle(
+        fontSize: 32,
+        fontWeight: FontWeight.w400,
+        height: 1.2,
+        fontFamily: 'Inter',
+      );
+
   /// Display - Semi-bold - Moderate emphasis for subheadings
-  TextStyle get semiBold => _store.textStyle('display', 'semiBold') ?? TextStyle(fontSize: 32, fontWeight: FontWeight.w600, height: 1.2, fontFamily: 'Inter');
+  TextStyle get semiBold =>
+      _store.textStyle('display', 'semiBold') ??
+      TextStyle(
+        fontSize: 32,
+        fontWeight: FontWeight.w600,
+        height: 1.2,
+        fontFamily: 'Inter',
+      );
+
   /// Display - Thin - Delicate, minimal weight for subtle display text
-  TextStyle get thin => _store.textStyle('display', 'thin') ?? TextStyle(fontSize: 32, fontWeight: FontWeight.w100, height: 1.2, fontFamily: 'Inter');
+  TextStyle get thin =>
+      _store.textStyle('display', 'thin') ??
+      TextStyle(
+        fontSize: 32,
+        fontWeight: FontWeight.w100,
+        height: 1.2,
+        fontFamily: 'Inter',
+      );
 }
 
 /// Headline typography scale for section headings
@@ -924,23 +1303,94 @@ class _HeadlineTypography {
   const _HeadlineTypography(this._store);
 
   /// Headline - Black - Maximum weight for maximum impact
-  TextStyle get black => _store.textStyle('headline', 'black') ?? TextStyle(fontSize: 28, fontWeight: FontWeight.w900, height: 1.3, fontFamily: 'Inter');
+  TextStyle get black =>
+      _store.textStyle('headline', 'black') ??
+      TextStyle(
+        fontSize: 28,
+        fontWeight: FontWeight.w900,
+        height: 1.3,
+        fontFamily: 'Inter',
+      );
+
   /// Headline - Bold - Strong emphasis for headings and key text
-  TextStyle get bold => _store.textStyle('headline', 'bold') ?? TextStyle(fontSize: 28, fontWeight: FontWeight.w700, height: 1.3, fontFamily: 'Inter');
+  TextStyle get bold =>
+      _store.textStyle('headline', 'bold') ??
+      TextStyle(
+        fontSize: 28,
+        fontWeight: FontWeight.w700,
+        height: 1.3,
+        fontFamily: 'Inter',
+      );
+
   /// Headline - Extra bold - Heavy emphasis for prominent text
-  TextStyle get extraBold => _store.textStyle('headline', 'extraBold') ?? TextStyle(fontSize: 28, fontWeight: FontWeight.w800, height: 1.3, fontFamily: 'Inter');
+  TextStyle get extraBold =>
+      _store.textStyle('headline', 'extraBold') ??
+      TextStyle(
+        fontSize: 28,
+        fontWeight: FontWeight.w800,
+        height: 1.3,
+        fontFamily: 'Inter',
+      );
+
   /// Headline - Extra light - Very light weight for elegant display text
-  TextStyle get extraLight => _store.textStyle('headline', 'extraLight') ?? TextStyle(fontSize: 28, fontWeight: FontWeight.w200, height: 1.3, fontFamily: 'Inter');
+  TextStyle get extraLight =>
+      _store.textStyle('headline', 'extraLight') ??
+      TextStyle(
+        fontSize: 28,
+        fontWeight: FontWeight.w200,
+        height: 1.3,
+        fontFamily: 'Inter',
+      );
+
   /// Headline - Light - Soft weight for refined display text
-  TextStyle get light => _store.textStyle('headline', 'light') ?? TextStyle(fontSize: 28, fontWeight: FontWeight.w300, height: 1.3, fontFamily: 'Inter');
+  TextStyle get light =>
+      _store.textStyle('headline', 'light') ??
+      TextStyle(
+        fontSize: 28,
+        fontWeight: FontWeight.w300,
+        height: 1.3,
+        fontFamily: 'Inter',
+      );
+
   /// Headline - Medium - Slightly emphasized text for UI elements
-  TextStyle get medium => _store.textStyle('headline', 'medium') ?? TextStyle(fontSize: 28, fontWeight: FontWeight.w500, height: 1.3, fontFamily: 'Inter');
+  TextStyle get medium =>
+      _store.textStyle('headline', 'medium') ??
+      TextStyle(
+        fontSize: 28,
+        fontWeight: FontWeight.w500,
+        height: 1.3,
+        fontFamily: 'Inter',
+      );
+
   /// Headline - Regular - Normal weight for standard body text
-  TextStyle get regular => _store.textStyle('headline', 'regular') ?? TextStyle(fontSize: 28, fontWeight: FontWeight.w400, height: 1.3, fontFamily: 'Inter');
+  TextStyle get regular =>
+      _store.textStyle('headline', 'regular') ??
+      TextStyle(
+        fontSize: 28,
+        fontWeight: FontWeight.w400,
+        height: 1.3,
+        fontFamily: 'Inter',
+      );
+
   /// Headline - Semi-bold - Moderate emphasis for subheadings
-  TextStyle get semiBold => _store.textStyle('headline', 'semiBold') ?? TextStyle(fontSize: 28, fontWeight: FontWeight.w600, height: 1.3, fontFamily: 'Inter');
+  TextStyle get semiBold =>
+      _store.textStyle('headline', 'semiBold') ??
+      TextStyle(
+        fontSize: 28,
+        fontWeight: FontWeight.w600,
+        height: 1.3,
+        fontFamily: 'Inter',
+      );
+
   /// Headline - Thin - Delicate, minimal weight for subtle display text
-  TextStyle get thin => _store.textStyle('headline', 'thin') ?? TextStyle(fontSize: 28, fontWeight: FontWeight.w100, height: 1.3, fontFamily: 'Inter');
+  TextStyle get thin =>
+      _store.textStyle('headline', 'thin') ??
+      TextStyle(
+        fontSize: 28,
+        fontWeight: FontWeight.w100,
+        height: 1.3,
+        fontFamily: 'Inter',
+      );
 }
 
 /// Label typography scale for form labels and captions
@@ -950,23 +1400,94 @@ class _LabelTypography {
   const _LabelTypography(this._store);
 
   /// Label - Black - Maximum weight for maximum impact
-  TextStyle get black => _store.textStyle('label', 'black') ?? TextStyle(fontSize: 14, fontWeight: FontWeight.w900, height: 1.4, fontFamily: 'Inter');
+  TextStyle get black =>
+      _store.textStyle('label', 'black') ??
+      TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w900,
+        height: 1.4,
+        fontFamily: 'Inter',
+      );
+
   /// Label - Bold - Strong emphasis for headings and key text
-  TextStyle get bold => _store.textStyle('label', 'bold') ?? TextStyle(fontSize: 14, fontWeight: FontWeight.w700, height: 1.4, fontFamily: 'Inter');
+  TextStyle get bold =>
+      _store.textStyle('label', 'bold') ??
+      TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w700,
+        height: 1.4,
+        fontFamily: 'Inter',
+      );
+
   /// Label - Extra bold - Heavy emphasis for prominent text
-  TextStyle get extraBold => _store.textStyle('label', 'extraBold') ?? TextStyle(fontSize: 14, fontWeight: FontWeight.w800, height: 1.4, fontFamily: 'Inter');
+  TextStyle get extraBold =>
+      _store.textStyle('label', 'extraBold') ??
+      TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w800,
+        height: 1.4,
+        fontFamily: 'Inter',
+      );
+
   /// Label - Extra light - Very light weight for elegant display text
-  TextStyle get extraLight => _store.textStyle('label', 'extraLight') ?? TextStyle(fontSize: 14, fontWeight: FontWeight.w200, height: 1.4, fontFamily: 'Inter');
+  TextStyle get extraLight =>
+      _store.textStyle('label', 'extraLight') ??
+      TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w200,
+        height: 1.4,
+        fontFamily: 'Inter',
+      );
+
   /// Label - Light - Soft weight for refined display text
-  TextStyle get light => _store.textStyle('label', 'light') ?? TextStyle(fontSize: 14, fontWeight: FontWeight.w300, height: 1.4, fontFamily: 'Inter');
+  TextStyle get light =>
+      _store.textStyle('label', 'light') ??
+      TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w300,
+        height: 1.4,
+        fontFamily: 'Inter',
+      );
+
   /// Label - Medium - Slightly emphasized text for UI elements
-  TextStyle get medium => _store.textStyle('label', 'medium') ?? TextStyle(fontSize: 12, fontWeight: FontWeight.w500, height: 1.4, fontFamily: 'Inter');
+  TextStyle get medium =>
+      _store.textStyle('label', 'medium') ??
+      TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w500,
+        height: 1.4,
+        fontFamily: 'Inter',
+      );
+
   /// Label - Regular - Normal weight for standard body text
-  TextStyle get regular => _store.textStyle('label', 'regular') ?? TextStyle(fontSize: 14, fontWeight: FontWeight.w400, height: 1.4, fontFamily: 'Inter');
+  TextStyle get regular =>
+      _store.textStyle('label', 'regular') ??
+      TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+        height: 1.4,
+        fontFamily: 'Inter',
+      );
+
   /// Label - Semi-bold - Moderate emphasis for subheadings
-  TextStyle get semiBold => _store.textStyle('label', 'semiBold') ?? TextStyle(fontSize: 14, fontWeight: FontWeight.w600, height: 1.4, fontFamily: 'Inter');
+  TextStyle get semiBold =>
+      _store.textStyle('label', 'semiBold') ??
+      TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w600,
+        height: 1.4,
+        fontFamily: 'Inter',
+      );
+
   /// Label - Thin - Delicate, minimal weight for subtle display text
-  TextStyle get thin => _store.textStyle('label', 'thin') ?? TextStyle(fontSize: 14, fontWeight: FontWeight.w100, height: 1.4, fontFamily: 'Inter');
+  TextStyle get thin =>
+      _store.textStyle('label', 'thin') ??
+      TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w100,
+        height: 1.4,
+        fontFamily: 'Inter',
+      );
 }
 
 /// Title typography scale for card and component titles
@@ -976,26 +1497,95 @@ class _TitleTypography {
   const _TitleTypography(this._store);
 
   /// Title - Black - Maximum weight for maximum impact
-  TextStyle get black => _store.textStyle('title', 'black') ?? TextStyle(fontSize: 20, fontWeight: FontWeight.w900, height: 1.4, fontFamily: 'Inter');
+  TextStyle get black =>
+      _store.textStyle('title', 'black') ??
+      TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w900,
+        height: 1.4,
+        fontFamily: 'Inter',
+      );
+
   /// Title - Bold - Strong emphasis for headings and key text
-  TextStyle get bold => _store.textStyle('title', 'bold') ?? TextStyle(fontSize: 20, fontWeight: FontWeight.w700, height: 1.4, fontFamily: 'Inter');
+  TextStyle get bold =>
+      _store.textStyle('title', 'bold') ??
+      TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w700,
+        height: 1.4,
+        fontFamily: 'Inter',
+      );
+
   /// Title - Extra bold - Heavy emphasis for prominent text
-  TextStyle get extraBold => _store.textStyle('title', 'extraBold') ?? TextStyle(fontSize: 20, fontWeight: FontWeight.w800, height: 1.4, fontFamily: 'Inter');
+  TextStyle get extraBold =>
+      _store.textStyle('title', 'extraBold') ??
+      TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w800,
+        height: 1.4,
+        fontFamily: 'Inter',
+      );
+
   /// Title - Extra light - Very light weight for elegant display text
-  TextStyle get extraLight => _store.textStyle('title', 'extraLight') ?? TextStyle(fontSize: 20, fontWeight: FontWeight.w200, height: 1.4, fontFamily: 'Inter');
+  TextStyle get extraLight =>
+      _store.textStyle('title', 'extraLight') ??
+      TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w200,
+        height: 1.4,
+        fontFamily: 'Inter',
+      );
+
   /// Title - Light - Soft weight for refined display text
-  TextStyle get light => _store.textStyle('title', 'light') ?? TextStyle(fontSize: 20, fontWeight: FontWeight.w300, height: 1.4, fontFamily: 'Inter');
+  TextStyle get light =>
+      _store.textStyle('title', 'light') ??
+      TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w300,
+        height: 1.4,
+        fontFamily: 'Inter',
+      );
+
   /// Title - Medium - Slightly emphasized text for UI elements
-  TextStyle get medium => _store.textStyle('title', 'medium') ?? TextStyle(fontSize: 16, fontWeight: FontWeight.w500, height: 1.4, fontFamily: 'Inter');
+  TextStyle get medium =>
+      _store.textStyle('title', 'medium') ??
+      TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w500,
+        height: 1.4,
+        fontFamily: 'Inter',
+      );
+
   /// Title - Regular - Normal weight for standard body text
-  TextStyle get regular => _store.textStyle('title', 'regular') ?? TextStyle(fontSize: 20, fontWeight: FontWeight.w400, height: 1.4, fontFamily: 'Inter');
+  TextStyle get regular =>
+      _store.textStyle('title', 'regular') ??
+      TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w400,
+        height: 1.4,
+        fontFamily: 'Inter',
+      );
+
   /// Title - Semi-bold - Moderate emphasis for subheadings
-  TextStyle get semiBold => _store.textStyle('title', 'semiBold') ?? TextStyle(fontSize: 20, fontWeight: FontWeight.w600, height: 1.4, fontFamily: 'Inter');
+  TextStyle get semiBold =>
+      _store.textStyle('title', 'semiBold') ??
+      TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w600,
+        height: 1.4,
+        fontFamily: 'Inter',
+      );
+
   /// Title - Thin - Delicate, minimal weight for subtle display text
-  TextStyle get thin => _store.textStyle('title', 'thin') ?? TextStyle(fontSize: 20, fontWeight: FontWeight.w100, height: 1.4, fontFamily: 'Inter');
+  TextStyle get thin =>
+      _store.textStyle('title', 'thin') ??
+      TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w100,
+        height: 1.4,
+        fontFamily: 'Inter',
+      );
 }
-
-
 
 const Map<String, Color> _darkColorAction = <String, Color>{
   'filledPrimary': Color(0xFF2D3A8C),
@@ -1169,75 +1759,345 @@ const Map<String, double> _darkSizeSpacing = <String, double>{
 };
 
 const Map<String, TextStyle> _darkTypographyBody = <String, TextStyle>{
-  'black': TextStyle(fontSize: 16, fontWeight: FontWeight.w900, height: 1.5, fontFamily: 'Inter'),
-  'extraBold': TextStyle(fontSize: 16, fontWeight: FontWeight.w800, height: 1.5, fontFamily: 'Inter'),
-  'bold': TextStyle(fontSize: 16, fontWeight: FontWeight.w700, height: 1.5, fontFamily: 'Inter'),
-  'semiBold': TextStyle(fontSize: 16, fontWeight: FontWeight.w600, height: 1.5, fontFamily: 'Inter'),
-  'medium': TextStyle(fontSize: 14, fontWeight: FontWeight.w500, height: 1.5, fontFamily: 'Inter'),
-  'regular': TextStyle(fontSize: 16, fontWeight: FontWeight.w400, height: 1.5, fontFamily: 'Inter'),
-  'light': TextStyle(fontSize: 16, fontWeight: FontWeight.w300, height: 1.5, fontFamily: 'Inter'),
-  'extraLight': TextStyle(fontSize: 16, fontWeight: FontWeight.w200, height: 1.5, fontFamily: 'Inter'),
-  'thin': TextStyle(fontSize: 16, fontWeight: FontWeight.w100, height: 1.5, fontFamily: 'Inter'),
+  'black': TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w900,
+    height: 1.5,
+    fontFamily: 'Inter',
+  ),
+  'extraBold': TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w800,
+    height: 1.5,
+    fontFamily: 'Inter',
+  ),
+  'bold': TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w700,
+    height: 1.5,
+    fontFamily: 'Inter',
+  ),
+  'semiBold': TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    height: 1.5,
+    fontFamily: 'Inter',
+  ),
+  'medium': TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    height: 1.5,
+    fontFamily: 'Inter',
+  ),
+  'regular': TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    height: 1.5,
+    fontFamily: 'Inter',
+  ),
+  'light': TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w300,
+    height: 1.5,
+    fontFamily: 'Inter',
+  ),
+  'extraLight': TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w200,
+    height: 1.5,
+    fontFamily: 'Inter',
+  ),
+  'thin': TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w100,
+    height: 1.5,
+    fontFamily: 'Inter',
+  ),
 };
 
 const Map<String, TextStyle> _darkTypographyCaption = <String, TextStyle>{
-  'black': TextStyle(fontSize: 12, fontWeight: FontWeight.w900, height: 1.4, fontFamily: 'Inter'),
-  'extraBold': TextStyle(fontSize: 12, fontWeight: FontWeight.w800, height: 1.4, fontFamily: 'Inter'),
-  'bold': TextStyle(fontSize: 12, fontWeight: FontWeight.w700, height: 1.4, fontFamily: 'Inter'),
-  'semiBold': TextStyle(fontSize: 12, fontWeight: FontWeight.w600, height: 1.4, fontFamily: 'Inter'),
-  'medium': TextStyle(fontSize: 12, fontWeight: FontWeight.w500, height: 1.4, fontFamily: 'Inter'),
-  'regular': TextStyle(fontSize: 12, fontWeight: FontWeight.w400, height: 1.4, fontFamily: 'Inter'),
-  'light': TextStyle(fontSize: 12, fontWeight: FontWeight.w300, height: 1.4, fontFamily: 'Inter'),
-  'extraLight': TextStyle(fontSize: 12, fontWeight: FontWeight.w200, height: 1.4, fontFamily: 'Inter'),
-  'thin': TextStyle(fontSize: 12, fontWeight: FontWeight.w100, height: 1.4, fontFamily: 'Inter'),
+  'black': TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w900,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'extraBold': TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w800,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'bold': TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w700,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'semiBold': TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w600,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'medium': TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'regular': TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'light': TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w300,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'extraLight': TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w200,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'thin': TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w100,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
 };
 
 const Map<String, TextStyle> _darkTypographyDisplay = <String, TextStyle>{
-  'black': TextStyle(fontSize: 32, fontWeight: FontWeight.w900, height: 1.2, fontFamily: 'Inter'),
-  'extraBold': TextStyle(fontSize: 32, fontWeight: FontWeight.w800, height: 1.2, fontFamily: 'Inter'),
-  'bold': TextStyle(fontSize: 32, fontWeight: FontWeight.w700, height: 1.2, fontFamily: 'Inter'),
-  'semiBold': TextStyle(fontSize: 32, fontWeight: FontWeight.w600, height: 1.2, fontFamily: 'Inter'),
-  'medium': TextStyle(fontSize: 32, fontWeight: FontWeight.w500, height: 1.2, fontFamily: 'Inter'),
-  'regular': TextStyle(fontSize: 32, fontWeight: FontWeight.w400, height: 1.2, fontFamily: 'Inter'),
-  'light': TextStyle(fontSize: 32, fontWeight: FontWeight.w300, height: 1.2, fontFamily: 'Inter'),
-  'extraLight': TextStyle(fontSize: 32, fontWeight: FontWeight.w200, height: 1.2, fontFamily: 'Inter'),
-  'thin': TextStyle(fontSize: 32, fontWeight: FontWeight.w100, height: 1.2, fontFamily: 'Inter'),
+  'black': TextStyle(
+    fontSize: 32,
+    fontWeight: FontWeight.w900,
+    height: 1.2,
+    fontFamily: 'Inter',
+  ),
+  'extraBold': TextStyle(
+    fontSize: 32,
+    fontWeight: FontWeight.w800,
+    height: 1.2,
+    fontFamily: 'Inter',
+  ),
+  'bold': TextStyle(
+    fontSize: 32,
+    fontWeight: FontWeight.w700,
+    height: 1.2,
+    fontFamily: 'Inter',
+  ),
+  'semiBold': TextStyle(
+    fontSize: 32,
+    fontWeight: FontWeight.w600,
+    height: 1.2,
+    fontFamily: 'Inter',
+  ),
+  'medium': TextStyle(
+    fontSize: 32,
+    fontWeight: FontWeight.w500,
+    height: 1.2,
+    fontFamily: 'Inter',
+  ),
+  'regular': TextStyle(
+    fontSize: 32,
+    fontWeight: FontWeight.w400,
+    height: 1.2,
+    fontFamily: 'Inter',
+  ),
+  'light': TextStyle(
+    fontSize: 32,
+    fontWeight: FontWeight.w300,
+    height: 1.2,
+    fontFamily: 'Inter',
+  ),
+  'extraLight': TextStyle(
+    fontSize: 32,
+    fontWeight: FontWeight.w200,
+    height: 1.2,
+    fontFamily: 'Inter',
+  ),
+  'thin': TextStyle(
+    fontSize: 32,
+    fontWeight: FontWeight.w100,
+    height: 1.2,
+    fontFamily: 'Inter',
+  ),
 };
 
 const Map<String, TextStyle> _darkTypographyHeadline = <String, TextStyle>{
-  'black': TextStyle(fontSize: 28, fontWeight: FontWeight.w900, height: 1.3, fontFamily: 'Inter'),
-  'extraBold': TextStyle(fontSize: 28, fontWeight: FontWeight.w800, height: 1.3, fontFamily: 'Inter'),
-  'bold': TextStyle(fontSize: 28, fontWeight: FontWeight.w700, height: 1.3, fontFamily: 'Inter'),
-  'semiBold': TextStyle(fontSize: 28, fontWeight: FontWeight.w600, height: 1.3, fontFamily: 'Inter'),
-  'medium': TextStyle(fontSize: 28, fontWeight: FontWeight.w500, height: 1.3, fontFamily: 'Inter'),
-  'regular': TextStyle(fontSize: 28, fontWeight: FontWeight.w400, height: 1.3, fontFamily: 'Inter'),
-  'light': TextStyle(fontSize: 28, fontWeight: FontWeight.w300, height: 1.3, fontFamily: 'Inter'),
-  'extraLight': TextStyle(fontSize: 28, fontWeight: FontWeight.w200, height: 1.3, fontFamily: 'Inter'),
-  'thin': TextStyle(fontSize: 28, fontWeight: FontWeight.w100, height: 1.3, fontFamily: 'Inter'),
+  'black': TextStyle(
+    fontSize: 28,
+    fontWeight: FontWeight.w900,
+    height: 1.3,
+    fontFamily: 'Inter',
+  ),
+  'extraBold': TextStyle(
+    fontSize: 28,
+    fontWeight: FontWeight.w800,
+    height: 1.3,
+    fontFamily: 'Inter',
+  ),
+  'bold': TextStyle(
+    fontSize: 28,
+    fontWeight: FontWeight.w700,
+    height: 1.3,
+    fontFamily: 'Inter',
+  ),
+  'semiBold': TextStyle(
+    fontSize: 28,
+    fontWeight: FontWeight.w600,
+    height: 1.3,
+    fontFamily: 'Inter',
+  ),
+  'medium': TextStyle(
+    fontSize: 28,
+    fontWeight: FontWeight.w500,
+    height: 1.3,
+    fontFamily: 'Inter',
+  ),
+  'regular': TextStyle(
+    fontSize: 28,
+    fontWeight: FontWeight.w400,
+    height: 1.3,
+    fontFamily: 'Inter',
+  ),
+  'light': TextStyle(
+    fontSize: 28,
+    fontWeight: FontWeight.w300,
+    height: 1.3,
+    fontFamily: 'Inter',
+  ),
+  'extraLight': TextStyle(
+    fontSize: 28,
+    fontWeight: FontWeight.w200,
+    height: 1.3,
+    fontFamily: 'Inter',
+  ),
+  'thin': TextStyle(
+    fontSize: 28,
+    fontWeight: FontWeight.w100,
+    height: 1.3,
+    fontFamily: 'Inter',
+  ),
 };
 
 const Map<String, TextStyle> _darkTypographyLabel = <String, TextStyle>{
-  'black': TextStyle(fontSize: 14, fontWeight: FontWeight.w900, height: 1.4, fontFamily: 'Inter'),
-  'extraBold': TextStyle(fontSize: 14, fontWeight: FontWeight.w800, height: 1.4, fontFamily: 'Inter'),
-  'bold': TextStyle(fontSize: 14, fontWeight: FontWeight.w700, height: 1.4, fontFamily: 'Inter'),
-  'semiBold': TextStyle(fontSize: 14, fontWeight: FontWeight.w600, height: 1.4, fontFamily: 'Inter'),
-  'medium': TextStyle(fontSize: 12, fontWeight: FontWeight.w500, height: 1.4, fontFamily: 'Inter'),
-  'regular': TextStyle(fontSize: 14, fontWeight: FontWeight.w400, height: 1.4, fontFamily: 'Inter'),
-  'light': TextStyle(fontSize: 14, fontWeight: FontWeight.w300, height: 1.4, fontFamily: 'Inter'),
-  'extraLight': TextStyle(fontSize: 14, fontWeight: FontWeight.w200, height: 1.4, fontFamily: 'Inter'),
-  'thin': TextStyle(fontSize: 14, fontWeight: FontWeight.w100, height: 1.4, fontFamily: 'Inter'),
+  'black': TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w900,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'extraBold': TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w800,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'bold': TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w700,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'semiBold': TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w600,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'medium': TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'regular': TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'light': TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w300,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'extraLight': TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w200,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'thin': TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w100,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
 };
 
 const Map<String, TextStyle> _darkTypographyTitle = <String, TextStyle>{
-  'black': TextStyle(fontSize: 20, fontWeight: FontWeight.w900, height: 1.4, fontFamily: 'Inter'),
-  'extraBold': TextStyle(fontSize: 20, fontWeight: FontWeight.w800, height: 1.4, fontFamily: 'Inter'),
-  'bold': TextStyle(fontSize: 20, fontWeight: FontWeight.w700, height: 1.4, fontFamily: 'Inter'),
-  'semiBold': TextStyle(fontSize: 20, fontWeight: FontWeight.w600, height: 1.4, fontFamily: 'Inter'),
-  'medium': TextStyle(fontSize: 16, fontWeight: FontWeight.w500, height: 1.4, fontFamily: 'Inter'),
-  'regular': TextStyle(fontSize: 20, fontWeight: FontWeight.w400, height: 1.4, fontFamily: 'Inter'),
-  'light': TextStyle(fontSize: 20, fontWeight: FontWeight.w300, height: 1.4, fontFamily: 'Inter'),
-  'extraLight': TextStyle(fontSize: 20, fontWeight: FontWeight.w200, height: 1.4, fontFamily: 'Inter'),
-  'thin': TextStyle(fontSize: 20, fontWeight: FontWeight.w100, height: 1.4, fontFamily: 'Inter'),
+  'black': TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w900,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'extraBold': TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w800,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'bold': TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w700,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'semiBold': TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w600,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'medium': TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'regular': TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w400,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'light': TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w300,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'extraLight': TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w200,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'thin': TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w100,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
 };
 
 const Map<String, Color> _lightColorAction = <String, Color>{
@@ -1412,74 +2272,343 @@ const Map<String, double> _lightSizeSpacing = <String, double>{
 };
 
 const Map<String, TextStyle> _lightTypographyBody = <String, TextStyle>{
-  'black': TextStyle(fontSize: 16, fontWeight: FontWeight.w900, height: 1.5, fontFamily: 'Inter'),
-  'extraBold': TextStyle(fontSize: 16, fontWeight: FontWeight.w800, height: 1.5, fontFamily: 'Inter'),
-  'bold': TextStyle(fontSize: 16, fontWeight: FontWeight.w700, height: 1.5, fontFamily: 'Inter'),
-  'semiBold': TextStyle(fontSize: 16, fontWeight: FontWeight.w600, height: 1.5, fontFamily: 'Inter'),
-  'medium': TextStyle(fontSize: 14, fontWeight: FontWeight.w500, height: 1.5, fontFamily: 'Inter'),
-  'regular': TextStyle(fontSize: 16, fontWeight: FontWeight.w400, height: 1.5, fontFamily: 'Inter'),
-  'light': TextStyle(fontSize: 16, fontWeight: FontWeight.w300, height: 1.5, fontFamily: 'Inter'),
-  'extraLight': TextStyle(fontSize: 16, fontWeight: FontWeight.w200, height: 1.5, fontFamily: 'Inter'),
-  'thin': TextStyle(fontSize: 16, fontWeight: FontWeight.w100, height: 1.5, fontFamily: 'Inter'),
+  'black': TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w900,
+    height: 1.5,
+    fontFamily: 'Inter',
+  ),
+  'extraBold': TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w800,
+    height: 1.5,
+    fontFamily: 'Inter',
+  ),
+  'bold': TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w700,
+    height: 1.5,
+    fontFamily: 'Inter',
+  ),
+  'semiBold': TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    height: 1.5,
+    fontFamily: 'Inter',
+  ),
+  'medium': TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    height: 1.5,
+    fontFamily: 'Inter',
+  ),
+  'regular': TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    height: 1.5,
+    fontFamily: 'Inter',
+  ),
+  'light': TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w300,
+    height: 1.5,
+    fontFamily: 'Inter',
+  ),
+  'extraLight': TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w200,
+    height: 1.5,
+    fontFamily: 'Inter',
+  ),
+  'thin': TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w100,
+    height: 1.5,
+    fontFamily: 'Inter',
+  ),
 };
 
 const Map<String, TextStyle> _lightTypographyCaption = <String, TextStyle>{
-  'black': TextStyle(fontSize: 12, fontWeight: FontWeight.w900, height: 1.4, fontFamily: 'Inter'),
-  'extraBold': TextStyle(fontSize: 12, fontWeight: FontWeight.w800, height: 1.4, fontFamily: 'Inter'),
-  'bold': TextStyle(fontSize: 12, fontWeight: FontWeight.w700, height: 1.4, fontFamily: 'Inter'),
-  'semiBold': TextStyle(fontSize: 12, fontWeight: FontWeight.w600, height: 1.4, fontFamily: 'Inter'),
-  'medium': TextStyle(fontSize: 12, fontWeight: FontWeight.w500, height: 1.4, fontFamily: 'Inter'),
-  'regular': TextStyle(fontSize: 12, fontWeight: FontWeight.w400, height: 1.4, fontFamily: 'Inter'),
-  'light': TextStyle(fontSize: 12, fontWeight: FontWeight.w300, height: 1.4, fontFamily: 'Inter'),
-  'extraLight': TextStyle(fontSize: 12, fontWeight: FontWeight.w200, height: 1.4, fontFamily: 'Inter'),
-  'thin': TextStyle(fontSize: 12, fontWeight: FontWeight.w100, height: 1.4, fontFamily: 'Inter'),
+  'black': TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w900,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'extraBold': TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w800,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'bold': TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w700,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'semiBold': TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w600,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'medium': TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'regular': TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'light': TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w300,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'extraLight': TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w200,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'thin': TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w100,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
 };
 
 const Map<String, TextStyle> _lightTypographyDisplay = <String, TextStyle>{
-  'black': TextStyle(fontSize: 32, fontWeight: FontWeight.w900, height: 1.2, fontFamily: 'Inter'),
-  'extraBold': TextStyle(fontSize: 32, fontWeight: FontWeight.w800, height: 1.2, fontFamily: 'Inter'),
-  'bold': TextStyle(fontSize: 32, fontWeight: FontWeight.w700, height: 1.2, fontFamily: 'Inter'),
-  'semiBold': TextStyle(fontSize: 32, fontWeight: FontWeight.w600, height: 1.2, fontFamily: 'Inter'),
-  'medium': TextStyle(fontSize: 32, fontWeight: FontWeight.w500, height: 1.2, fontFamily: 'Inter'),
-  'regular': TextStyle(fontSize: 32, fontWeight: FontWeight.w400, height: 1.2, fontFamily: 'Inter'),
-  'light': TextStyle(fontSize: 32, fontWeight: FontWeight.w300, height: 1.2, fontFamily: 'Inter'),
-  'extraLight': TextStyle(fontSize: 32, fontWeight: FontWeight.w200, height: 1.2, fontFamily: 'Inter'),
-  'thin': TextStyle(fontSize: 32, fontWeight: FontWeight.w100, height: 1.2, fontFamily: 'Inter'),
+  'black': TextStyle(
+    fontSize: 32,
+    fontWeight: FontWeight.w900,
+    height: 1.2,
+    fontFamily: 'Inter',
+  ),
+  'extraBold': TextStyle(
+    fontSize: 32,
+    fontWeight: FontWeight.w800,
+    height: 1.2,
+    fontFamily: 'Inter',
+  ),
+  'bold': TextStyle(
+    fontSize: 32,
+    fontWeight: FontWeight.w700,
+    height: 1.2,
+    fontFamily: 'Inter',
+  ),
+  'semiBold': TextStyle(
+    fontSize: 32,
+    fontWeight: FontWeight.w600,
+    height: 1.2,
+    fontFamily: 'Inter',
+  ),
+  'medium': TextStyle(
+    fontSize: 32,
+    fontWeight: FontWeight.w500,
+    height: 1.2,
+    fontFamily: 'Inter',
+  ),
+  'regular': TextStyle(
+    fontSize: 32,
+    fontWeight: FontWeight.w400,
+    height: 1.2,
+    fontFamily: 'Inter',
+  ),
+  'light': TextStyle(
+    fontSize: 32,
+    fontWeight: FontWeight.w300,
+    height: 1.2,
+    fontFamily: 'Inter',
+  ),
+  'extraLight': TextStyle(
+    fontSize: 32,
+    fontWeight: FontWeight.w200,
+    height: 1.2,
+    fontFamily: 'Inter',
+  ),
+  'thin': TextStyle(
+    fontSize: 32,
+    fontWeight: FontWeight.w100,
+    height: 1.2,
+    fontFamily: 'Inter',
+  ),
 };
 
 const Map<String, TextStyle> _lightTypographyHeadline = <String, TextStyle>{
-  'black': TextStyle(fontSize: 28, fontWeight: FontWeight.w900, height: 1.3, fontFamily: 'Inter'),
-  'extraBold': TextStyle(fontSize: 28, fontWeight: FontWeight.w800, height: 1.3, fontFamily: 'Inter'),
-  'bold': TextStyle(fontSize: 28, fontWeight: FontWeight.w700, height: 1.3, fontFamily: 'Inter'),
-  'semiBold': TextStyle(fontSize: 28, fontWeight: FontWeight.w600, height: 1.3, fontFamily: 'Inter'),
-  'medium': TextStyle(fontSize: 28, fontWeight: FontWeight.w500, height: 1.3, fontFamily: 'Inter'),
-  'regular': TextStyle(fontSize: 28, fontWeight: FontWeight.w400, height: 1.3, fontFamily: 'Inter'),
-  'light': TextStyle(fontSize: 28, fontWeight: FontWeight.w300, height: 1.3, fontFamily: 'Inter'),
-  'extraLight': TextStyle(fontSize: 28, fontWeight: FontWeight.w200, height: 1.3, fontFamily: 'Inter'),
-  'thin': TextStyle(fontSize: 28, fontWeight: FontWeight.w100, height: 1.3, fontFamily: 'Inter'),
+  'black': TextStyle(
+    fontSize: 28,
+    fontWeight: FontWeight.w900,
+    height: 1.3,
+    fontFamily: 'Inter',
+  ),
+  'extraBold': TextStyle(
+    fontSize: 28,
+    fontWeight: FontWeight.w800,
+    height: 1.3,
+    fontFamily: 'Inter',
+  ),
+  'bold': TextStyle(
+    fontSize: 28,
+    fontWeight: FontWeight.w700,
+    height: 1.3,
+    fontFamily: 'Inter',
+  ),
+  'semiBold': TextStyle(
+    fontSize: 28,
+    fontWeight: FontWeight.w600,
+    height: 1.3,
+    fontFamily: 'Inter',
+  ),
+  'medium': TextStyle(
+    fontSize: 28,
+    fontWeight: FontWeight.w500,
+    height: 1.3,
+    fontFamily: 'Inter',
+  ),
+  'regular': TextStyle(
+    fontSize: 28,
+    fontWeight: FontWeight.w400,
+    height: 1.3,
+    fontFamily: 'Inter',
+  ),
+  'light': TextStyle(
+    fontSize: 28,
+    fontWeight: FontWeight.w300,
+    height: 1.3,
+    fontFamily: 'Inter',
+  ),
+  'extraLight': TextStyle(
+    fontSize: 28,
+    fontWeight: FontWeight.w200,
+    height: 1.3,
+    fontFamily: 'Inter',
+  ),
+  'thin': TextStyle(
+    fontSize: 28,
+    fontWeight: FontWeight.w100,
+    height: 1.3,
+    fontFamily: 'Inter',
+  ),
 };
 
 const Map<String, TextStyle> _lightTypographyLabel = <String, TextStyle>{
-  'black': TextStyle(fontSize: 14, fontWeight: FontWeight.w900, height: 1.4, fontFamily: 'Inter'),
-  'extraBold': TextStyle(fontSize: 14, fontWeight: FontWeight.w800, height: 1.4, fontFamily: 'Inter'),
-  'bold': TextStyle(fontSize: 14, fontWeight: FontWeight.w700, height: 1.4, fontFamily: 'Inter'),
-  'semiBold': TextStyle(fontSize: 14, fontWeight: FontWeight.w600, height: 1.4, fontFamily: 'Inter'),
-  'medium': TextStyle(fontSize: 12, fontWeight: FontWeight.w500, height: 1.4, fontFamily: 'Inter'),
-  'regular': TextStyle(fontSize: 14, fontWeight: FontWeight.w400, height: 1.4, fontFamily: 'Inter'),
-  'light': TextStyle(fontSize: 14, fontWeight: FontWeight.w300, height: 1.4, fontFamily: 'Inter'),
-  'extraLight': TextStyle(fontSize: 14, fontWeight: FontWeight.w200, height: 1.4, fontFamily: 'Inter'),
-  'thin': TextStyle(fontSize: 14, fontWeight: FontWeight.w100, height: 1.4, fontFamily: 'Inter'),
+  'black': TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w900,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'extraBold': TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w800,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'bold': TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w700,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'semiBold': TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w600,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'medium': TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'regular': TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'light': TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w300,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'extraLight': TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w200,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'thin': TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w100,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
 };
 
 const Map<String, TextStyle> _lightTypographyTitle = <String, TextStyle>{
-  'black': TextStyle(fontSize: 20, fontWeight: FontWeight.w900, height: 1.4, fontFamily: 'Inter'),
-  'extraBold': TextStyle(fontSize: 20, fontWeight: FontWeight.w800, height: 1.4, fontFamily: 'Inter'),
-  'bold': TextStyle(fontSize: 20, fontWeight: FontWeight.w700, height: 1.4, fontFamily: 'Inter'),
-  'semiBold': TextStyle(fontSize: 20, fontWeight: FontWeight.w600, height: 1.4, fontFamily: 'Inter'),
-  'medium': TextStyle(fontSize: 16, fontWeight: FontWeight.w500, height: 1.4, fontFamily: 'Inter'),
-  'regular': TextStyle(fontSize: 20, fontWeight: FontWeight.w400, height: 1.4, fontFamily: 'Inter'),
-  'light': TextStyle(fontSize: 20, fontWeight: FontWeight.w300, height: 1.4, fontFamily: 'Inter'),
-  'extraLight': TextStyle(fontSize: 20, fontWeight: FontWeight.w200, height: 1.4, fontFamily: 'Inter'),
-  'thin': TextStyle(fontSize: 20, fontWeight: FontWeight.w100, height: 1.4, fontFamily: 'Inter'),
+  'black': TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w900,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'extraBold': TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w800,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'bold': TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w700,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'semiBold': TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w600,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'medium': TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'regular': TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w400,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'light': TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w300,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'extraLight': TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w200,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
+  'thin': TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w100,
+    height: 1.4,
+    fontFamily: 'Inter',
+  ),
 };
-

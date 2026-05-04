@@ -125,7 +125,11 @@ void main() {
         type: 'color',
         value: '#FF0000',
         description: 'Target description',
-        raw: {'\$type': 'color', '\$value': '#FF0000', '\$description': 'Target description'},
+        raw: {
+          '\$type': 'color',
+          '\$value': '#FF0000',
+          '\$description': 'Target description',
+        },
       );
 
       final alias = DesignToken(
@@ -133,7 +137,11 @@ void main() {
         type: 'color',
         value: '{light.color.brand.primary}',
         description: 'Alias description',
-        raw: {'\$type': 'color', '\$value': '{light.color.brand.primary}', '\$description': 'Alias description'},
+        raw: {
+          '\$type': 'color',
+          '\$value': '{light.color.brand.primary}',
+          '\$description': 'Alias description',
+        },
       );
 
       final resolved = resolver.resolve([target, alias]);
@@ -147,7 +155,11 @@ void main() {
         type: 'color',
         value: '#FF0000',
         description: 'Target description',
-        raw: {'\$type': 'color', '\$value': '#FF0000', '\$description': 'Target description'},
+        raw: {
+          '\$type': 'color',
+          '\$value': '#FF0000',
+          '\$description': 'Target description',
+        },
       );
 
       final alias = DesignToken(
@@ -168,7 +180,11 @@ void main() {
         type: 'color',
         value: '#FF0000',
         extensions: {'targetId': '123'},
-        raw: {'\$type': 'color', '\$value': '#FF0000', '\$extensions': {'targetId': '123'}},
+        raw: {
+          '\$type': 'color',
+          '\$value': '#FF0000',
+          '\$extensions': {'targetId': '123'},
+        },
       );
 
       final alias = DesignToken(
@@ -176,7 +192,11 @@ void main() {
         type: 'color',
         value: '{light.color.brand.primary}',
         extensions: {'aliasId': '456'},
-        raw: {'\$type': 'color', '\$value': '{light.color.brand.primary}', '\$extensions': {'aliasId': '456'}},
+        raw: {
+          '\$type': 'color',
+          '\$value': '{light.color.brand.primary}',
+          '\$extensions': {'aliasId': '456'},
+        },
       );
 
       final resolved = resolver.resolve([target, alias]);
@@ -190,7 +210,11 @@ void main() {
         type: 'color',
         value: '#FF0000',
         extensions: {'targetId': '123'},
-        raw: {'\$type': 'color', '\$value': '#FF0000', '\$extensions': {'targetId': '123'}},
+        raw: {
+          '\$type': 'color',
+          '\$value': '#FF0000',
+          '\$extensions': {'targetId': '123'},
+        },
       );
 
       final alias = DesignToken(

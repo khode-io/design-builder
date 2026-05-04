@@ -84,10 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Typography Showcase
-            Text(
-              'Typography',
-              style: theme.typography.headline.medium,
-            ),
+            Text('Typography', style: theme.typography.headline.medium),
             SizedBox(height: theme.sizes.spacing.md),
             Text('Display Large', style: theme.typography.display.regular),
             Text('Display Medium', style: theme.typography.display.medium),
@@ -112,32 +109,41 @@ class _MyHomePageState extends State<MyHomePage> {
             SizedBox(height: theme.sizes.spacing.xl),
 
             // Colors Showcase
-            Text(
-              'Design Tokens',
-              style: theme.typography.headline.medium,
-            ),
+            Text('Design Tokens', style: theme.typography.headline.medium),
             SizedBox(height: theme.sizes.spacing.md),
 
             // Color swatches
             _buildColorSwatch('Brand Primary', theme.colors.brand.primary),
             _buildColorSwatch('Brand Container', theme.colors.brand.container),
-            _buildColorSwatch('Foreground Primary', theme.colors.foreground.primary),
-            _buildColorSwatch('Foreground Subtle', theme.colors.foreground.subtle),
+            _buildColorSwatch(
+              'Foreground Primary',
+              theme.colors.foreground.primary,
+            ),
+            _buildColorSwatch(
+              'Foreground Subtle',
+              theme.colors.foreground.subtle,
+            ),
             _buildColorSwatch('Canvas Primary', theme.colors.canvas.primary),
             _buildColorSwatch('Surface Card', theme.colors.surface.card),
-            _buildColorSwatch('Action Filled', theme.colors.action.filledPrimary),
-            _buildColorSwatch('Feedback Success', theme.colors.feedback.success),
-            _buildColorSwatch('Feedback Warning', theme.colors.feedback.warning),
+            _buildColorSwatch(
+              'Action Filled',
+              theme.colors.action.filledPrimary,
+            ),
+            _buildColorSwatch(
+              'Feedback Success',
+              theme.colors.feedback.success,
+            ),
+            _buildColorSwatch(
+              'Feedback Warning',
+              theme.colors.feedback.warning,
+            ),
             _buildColorSwatch('Feedback Danger', theme.colors.feedback.danger),
             _buildColorSwatch('Feedback Info', theme.colors.feedback.info),
 
             SizedBox(height: theme.sizes.spacing.xl),
 
             // Spacing Showcase
-            Text(
-              'Spacing Tokens',
-              style: theme.typography.headline.medium,
-            ),
+            Text('Spacing Tokens', style: theme.typography.headline.medium),
             SizedBox(height: theme.sizes.spacing.md),
             _buildSpacingShowcase(theme),
 
@@ -208,9 +214,7 @@ class _MyHomePageState extends State<MyHomePage> {
             decoration: BoxDecoration(
               color: color,
               borderRadius: BorderRadius.circular(8),
-              border: Border.all(
-                color: Colors.grey.shade300,
-              ),
+              border: Border.all(color: Colors.grey.shade300),
             ),
           ),
           const SizedBox(width: 16),
@@ -225,7 +229,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 Text(
-                  '#${color.value.toRadixString(16).padLeft(8, '0').substring(2).toUpperCase()}',
+                  '#${color.toARGB32().toRadixString(16).padLeft(8, '0').substring(2).toUpperCase()}',
                   style: context.theme.typography.body.regular.copyWith(
                     fontFamily: 'monospace',
                     color: context.theme.colors.foreground.subtle,

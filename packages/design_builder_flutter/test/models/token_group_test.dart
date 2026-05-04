@@ -5,10 +5,7 @@ import 'package:test/test.dart';
 void main() {
   group('TokenGroup', () {
     test('creates root group with default values', () {
-      final group = TokenGroup(
-        name: 'Colors',
-        category: 'color',
-      );
+      final group = TokenGroup(name: 'Colors', category: 'color');
 
       expect(group.name, 'Colors');
       expect(group.category, 'color');
@@ -27,15 +24,9 @@ void main() {
         raw: {'\$type': 'color', '\$value': '#FF0000'},
       );
 
-      final childGroup = TokenGroup(
-        name: 'primary',
-        category: 'color',
-      );
+      final childGroup = TokenGroup(name: 'primary', category: 'color');
 
-      final parentGroup = TokenGroup(
-        name: 'color',
-        category: 'color',
-      );
+      final parentGroup = TokenGroup(name: 'color', category: 'color');
 
       final group = TokenGroup(
         name: 'brand',
@@ -58,19 +49,13 @@ void main() {
 
     group('fullGroupPath', () {
       test('returns name for root group', () {
-        final group = TokenGroup(
-          name: 'Colors',
-          category: 'color',
-        );
+        final group = TokenGroup(name: 'Colors', category: 'color');
 
         expect(group.fullGroupPath, 'Colors');
       });
 
       test('returns name for category root (parent is category)', () {
-        final categoryRoot = TokenGroup(
-          name: 'color',
-          category: 'color',
-        );
+        final categoryRoot = TokenGroup(name: 'color', category: 'color');
 
         final child = TokenGroup(
           name: 'brand',
@@ -82,10 +67,7 @@ void main() {
       });
 
       test('builds full path for nested group', () {
-        final categoryRoot = TokenGroup(
-          name: 'color',
-          category: 'color',
-        );
+        final categoryRoot = TokenGroup(name: 'color', category: 'color');
 
         final brandGroup = TokenGroup(
           name: 'brand',
@@ -104,9 +86,21 @@ void main() {
 
       test('handles deeply nested path', () {
         final root = TokenGroup(name: 'color', category: 'color');
-        final typography = TokenGroup(name: 'typography', category: 'typography', parent: root);
-        final display = TokenGroup(name: 'display', category: 'typography', parent: typography);
-        final h1 = TokenGroup(name: 'h1', category: 'typography', parent: display);
+        final typography = TokenGroup(
+          name: 'typography',
+          category: 'typography',
+          parent: root,
+        );
+        final display = TokenGroup(
+          name: 'display',
+          category: 'typography',
+          parent: typography,
+        );
+        final h1 = TokenGroup(
+          name: 'h1',
+          category: 'typography',
+          parent: display,
+        );
 
         expect(h1.fullGroupPath, 'typography.display.h1');
       });
@@ -114,10 +108,7 @@ void main() {
 
     group('allTokenPaths', () {
       test('returns empty list when no tokens', () {
-        final group = TokenGroup(
-          name: 'Colors',
-          category: 'color',
-        );
+        final group = TokenGroup(name: 'Colors', category: 'color');
 
         expect(group.allTokenPaths, isEmpty);
       });
@@ -129,7 +120,10 @@ void main() {
           tokenPaths: ['light.color.brand.main', 'light.color.brand.surface'],
         );
 
-        expect(group.allTokenPaths, ['light.color.brand.main', 'light.color.brand.surface']);
+        expect(group.allTokenPaths, [
+          'light.color.brand.main',
+          'light.color.brand.surface',
+        ]);
       });
 
       test('recursively collects token paths from children', () {
@@ -151,10 +145,10 @@ void main() {
           children: [child1, child2],
         );
 
-        expect(
-          parent.allTokenPaths,
-          ['light.color.brand.primary.main', 'light.color.brand.secondary.main'],
-        );
+        expect(parent.allTokenPaths, [
+          'light.color.brand.primary.main',
+          'light.color.brand.secondary.main',
+        ]);
       });
 
       test('combines own tokens with children tokens', () {
@@ -171,28 +165,22 @@ void main() {
           children: [child],
         );
 
-        expect(
-          parent.allTokenPaths,
-          ['light.color.brand.main', 'light.color.brand.primary.surface'],
-        );
+        expect(parent.allTokenPaths, [
+          'light.color.brand.main',
+          'light.color.brand.primary.surface',
+        ]);
       });
     });
 
     group('isNested', () {
       test('returns false for category root', () {
-        final root = TokenGroup(
-          name: 'color',
-          category: 'color',
-        );
+        final root = TokenGroup(name: 'color', category: 'color');
 
         expect(root.isNested, isFalse);
       });
 
       test('returns false for group with category root as parent', () {
-        final categoryRoot = TokenGroup(
-          name: 'color',
-          category: 'color',
-        );
+        final categoryRoot = TokenGroup(name: 'color', category: 'color');
 
         final child = TokenGroup(
           name: 'brand',
@@ -205,10 +193,7 @@ void main() {
       });
 
       test('returns true for deeply nested group', () {
-        final categoryRoot = TokenGroup(
-          name: 'color',
-          category: 'color',
-        );
+        final categoryRoot = TokenGroup(name: 'color', category: 'color');
 
         final brand = TokenGroup(
           name: 'brand',
@@ -226,10 +211,7 @@ void main() {
       });
 
       test('returns false for group with null parent', () {
-        final group = TokenGroup(
-          name: 'Colors',
-          category: 'color',
-        );
+        final group = TokenGroup(name: 'Colors', category: 'color');
 
         expect(group.isNested, isFalse);
       });
@@ -260,15 +242,9 @@ void main() {
 
     group('mutability', () {
       test('can add children dynamically', () {
-        final parent = TokenGroup(
-          name: 'brand',
-          category: 'color',
-        );
+        final parent = TokenGroup(name: 'brand', category: 'color');
 
-        final child = TokenGroup(
-          name: 'primary',
-          category: 'color',
-        );
+        final child = TokenGroup(name: 'primary', category: 'color');
 
         parent.children.add(child);
 
@@ -276,10 +252,7 @@ void main() {
       });
 
       test('can add token paths dynamically', () {
-        final group = TokenGroup(
-          name: 'brand',
-          category: 'color',
-        );
+        final group = TokenGroup(name: 'brand', category: 'color');
 
         group.tokenPaths.add('light.color.brand.main');
 
@@ -287,10 +260,7 @@ void main() {
       });
 
       test('can add tokens dynamically', () {
-        final group = TokenGroup(
-          name: 'brand',
-          category: 'color',
-        );
+        final group = TokenGroup(name: 'brand', category: 'color');
 
         final token = DesignToken(
           path: 'light.color.brand.main',

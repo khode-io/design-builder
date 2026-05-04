@@ -80,7 +80,10 @@ void main() {
           path: 'light.typography.body.regular',
           type: 'typography',
           value: {'fontSize': 16, 'fontWeight': 400},
-          raw: {'\$type': 'typography', '\$value': {'fontSize': 16, 'fontWeight': 400}},
+          raw: {
+            '\$type': 'typography',
+            '\$value': {'fontSize': 16, 'fontWeight': 400},
+          },
         ),
       ];
 
@@ -99,7 +102,10 @@ void main() {
           path: 'light.typography.display.h1.bold',
           type: 'typography',
           value: {'fontSize': 48, 'fontWeight': 700},
-          raw: {'\$type': 'typography', '\$value': {'fontSize': 48, 'fontWeight': 700}},
+          raw: {
+            '\$type': 'typography',
+            '\$value': {'fontSize': 48, 'fontWeight': 700},
+          },
         ),
       ];
 
@@ -161,13 +167,19 @@ void main() {
           path: 'light.typography.display.h1.bold',
           type: 'typography',
           value: {'fontSize': 48},
-          raw: {'\$type': 'typography', '\$value': {'fontSize': 48}},
+          raw: {
+            '\$type': 'typography',
+            '\$value': {'fontSize': 48},
+          },
         ),
         DesignToken(
           path: 'light.typography.display.h2.bold',
           type: 'typography',
           value: {'fontSize': 36},
-          raw: {'\$type': 'typography', '\$value': {'fontSize': 36}},
+          raw: {
+            '\$type': 'typography',
+            '\$value': {'fontSize': 36},
+          },
         ),
       ];
 
@@ -188,19 +200,28 @@ void main() {
           path: 'light.typography.display.h1.bold',
           type: 'typography',
           value: {'fontSize': 48, 'fontWeight': 700},
-          raw: {'\$type': 'typography', '\$value': {'fontSize': 48, 'fontWeight': 700}},
+          raw: {
+            '\$type': 'typography',
+            '\$value': {'fontSize': 48, 'fontWeight': 700},
+          },
         ),
         DesignToken(
           path: 'light.typography.display.h1.regular',
           type: 'typography',
           value: {'fontSize': 48, 'fontWeight': 400},
-          raw: {'\$type': 'typography', '\$value': {'fontSize': 48, 'fontWeight': 400}},
+          raw: {
+            '\$type': 'typography',
+            '\$value': {'fontSize': 48, 'fontWeight': 400},
+          },
         ),
         DesignToken(
           path: 'light.typography.body.regular',
           type: 'typography',
           value: {'fontSize': 16, 'fontWeight': 400},
-          raw: {'\$type': 'typography', '\$value': {'fontSize': 16, 'fontWeight': 400}},
+          raw: {
+            '\$type': 'typography',
+            '\$value': {'fontSize': 16, 'fontWeight': 400},
+          },
         ),
       ];
 
@@ -263,7 +284,10 @@ void main() {
           path: 'light.typography.display.h1.bold',
           type: 'typography',
           value: {'fontSize': 48},
-          raw: {'\$type': 'typography', '\$value': {'fontSize': 48}},
+          raw: {
+            '\$type': 'typography',
+            '\$value': {'fontSize': 48},
+          },
         ),
       ];
 

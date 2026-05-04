@@ -174,12 +174,15 @@ void main() {
         expect(weights.length, 3);
       });
 
-      test('returns empty list when typographyWeight definition is missing', () {
-        const schema = '{"definitions": {}}';
-        final loader = SchemaLoader.parse(schema);
+      test(
+        'returns empty list when typographyWeight definition is missing',
+        () {
+          const schema = '{"definitions": {}}';
+          final loader = SchemaLoader.parse(schema);
 
-        expect(loader.getTypographyWeightNames(), isEmpty);
-      });
+          expect(loader.getTypographyWeightNames(), isEmpty);
+        },
+      );
     });
 
     group('getColorGroupProperties', () {
@@ -283,10 +286,7 @@ void main() {
 
       test('detects number token', () {
         final loader = SchemaLoader.parse(simpleSchema);
-        final type = loader.getTokenType({
-          '\$type': 'number',
-          '\$value': 42,
-        });
+        final type = loader.getTokenType({'\$type': 'number', '\$value': 42});
 
         expect(type, 'dimension');
       });
@@ -313,9 +313,7 @@ void main() {
 
       test('returns null when \$type is missing', () {
         final loader = SchemaLoader.parse(simpleSchema);
-        final type = loader.getTokenType({
-          '\$value': '#FF0000',
-        });
+        final type = loader.getTokenType({'\$value': '#FF0000'});
 
         expect(type, isNull);
       });
@@ -348,10 +346,7 @@ void main() {
         final loader = SchemaLoader.parse(simpleSchema);
 
         expect(
-          loader.isToken({
-            '\$type': 'color',
-            '\$value': '#FF0000',
-          }),
+          loader.isToken({'\$type': 'color', '\$value': '#FF0000'}),
           isTrue,
         );
       });
@@ -359,23 +354,13 @@ void main() {
       test('returns false when \$type is missing', () {
         final loader = SchemaLoader.parse(simpleSchema);
 
-        expect(
-          loader.isToken({
-            '\$value': '#FF0000',
-          }),
-          isFalse,
-        );
+        expect(loader.isToken({'\$value': '#FF0000'}), isFalse);
       });
 
       test('returns false when \$value is missing', () {
         final loader = SchemaLoader.parse(simpleSchema);
 
-        expect(
-          loader.isToken({
-            '\$type': 'color',
-          }),
-          isFalse,
-        );
+        expect(loader.isToken({'\$type': 'color'}), isFalse);
       });
 
       test('returns false for empty map', () {

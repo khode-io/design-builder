@@ -285,18 +285,10 @@ class TokenParser {
         // Check if this is a flat structure (direct weights) or nested (size variants)
         if (_isFlatTypographyStyle(style)) {
           // Flat structure: display.black
-          _parseTypographyWeightGroup(
-            style,
-            groupPath,
-            tokens,
-          );
+          _parseTypographyWeightGroup(style, groupPath, tokens);
         } else {
           // Nested structure: display.h1.black
-          _parseNestedTypographyStyle(
-            style,
-            groupPath,
-            tokens,
-          );
+          _parseNestedTypographyStyle(style, groupPath, tokens);
         }
       }
     }

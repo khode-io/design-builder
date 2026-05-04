@@ -410,24 +410,15 @@ void main() {
 
       group('parseColor', () {
         test('parses 6-character hex with hash', () {
-          expect(
-            TokenParser.parseColor('#FF0000'),
-            0xFFFF0000,
-          );
+          expect(TokenParser.parseColor('#FF0000'), 0xFFFF0000);
         });
 
         test('parses 6-character hex without hash', () {
-          expect(
-            TokenParser.parseColor('FF0000'),
-            0xFFFF0000,
-          );
+          expect(TokenParser.parseColor('FF0000'), 0xFFFF0000);
         });
 
         test('parses 8-character hex with alpha', () {
-          expect(
-            TokenParser.parseColor('#80FF0000'),
-            0x80FF0000,
-          );
+          expect(TokenParser.parseColor('#80FF0000'), 0x80FF0000);
         });
 
         test('returns null for invalid color', () {
@@ -463,7 +454,10 @@ void main() {
         final result = parser.parseModes(json);
 
         expect(result.tokens['light'], hasLength(1));
-        expect(result.tokens['light']!.first.path, 'light.typography.display.bold');
+        expect(
+          result.tokens['light']!.first.path,
+          'light.typography.display.bold',
+        );
       });
 
       test('parses deeply nested typography structure', () {
