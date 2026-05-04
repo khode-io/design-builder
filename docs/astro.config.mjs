@@ -4,8 +4,8 @@ import starlight from "@astrojs/starlight";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://khode-io.github.io/design_builder",
-  base: "/design_builder",
+  site: "https://khode-io.github.io/design-builder",
+  base: "/design-builder",
   integrations: [
     starlight({
       title: "Design Builder Flutter",
