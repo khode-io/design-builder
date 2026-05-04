@@ -1,0 +1,65 @@
+---
+title: Design Builder Flutter
+description: Generate Flutter ThemeExtension code from W3C Design Tokens
+template: splash
+hero:
+  tagline: Transform JSON token files into type-safe Flutter theme code with support for light/dark modes and runtime overrides.
+  image:
+    file: ../../assets/houston.webp
+  actions:
+    - text: Get Started
+      link: /design_builder/guides/getting-started/
+      icon: right-arrow
+      variant: primary
+    - text: View on GitHub
+      link: https://github.com/khode-io/design_builder
+      icon: external
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## Features
+
+<CardGrid stagger>
+	<Card title="W3C Design Tokens Format" icon="document">
+		Uses standard W3C Design Tokens JSON format for maximum compatibility.
+	</Card>
+	<Card title="Light/Dark Mode" icon="moon">
+		Built-in support for multiple theme modes with automatic switching.
+	</Card>
+	<Card title="Variable Injection" icon="code">
+		Define reusable variables and reference them with `$variable.path` syntax.
+	</Card>
+	<Card title="Typography Support" icon="text">
+		Full text style tokens with fontSize, fontWeight, letterSpacing, and more.
+	</Card>
+	<Card title="Runtime Overrides" icon="setting">
+		Apply server-side token overrides for dynamic theming scenarios.
+	</Card>
+	<Card title="Lightning Fast Lookups" icon="rocket">
+		Instant theme access via compile-time const maps.
+	</Card>
+</CardGrid>
+
+## Quick Start
+
+```bash
+# Add dependency
+dart pub add design_builder --dev
+
+# Create your token files
+echo '{"light": {"color": {"primary": {"$type": "color", "$value": "#1A1A2E"}}}}' > lib/tokens.json
+
+# Generate code
+dart run build_runner build
+```
+
+<CardGrid>
+	<Card title="Installation Guide" icon="download">
+		[Getting Started](/design_builder/guides/getting-started/) - Learn how to install and set up Design Builder in your Flutter project.
+	</Card>
+	<Card title="Configuration" icon="setting">
+		[Configuration Options](/design_builder/guides/configuration/) - Customize build options, output paths, and token file locations.
+	</Card>
+</CardGrid>

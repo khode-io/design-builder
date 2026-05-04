@@ -1,5 +1,7 @@
 # Design Builder
 
+[![Docs](https://github.com/khode-io/design_builder/actions/workflows/deploy-docs.yml/badge.svg)](https://khode-io.github.io/design_builder/)
+
 A multi-platform build tool that generates platform-specific theme code from W3C Design Tokens. Transform JSON token files into type-safe code for Flutter, iOS, and Android with support for light/dark modes, server-side overrides, and lightning fast const lookup maps.
 
 ## Overview
@@ -134,6 +136,26 @@ class MyWidget extends StatelessWidget {
 ```
 
 ## Documentation
+
+📖 **[View Full Documentation](https://khode-io.github.io/design_builder/)**
+
+Our documentation is built with [Starlight](https://starlight.astro.build/) and includes:
+- Getting started guides
+- API reference
+- Configuration examples
+- Best practices
+
+### Running Docs Locally
+
+```bash
+# Install dependencies (first time only)
+make docs-install
+
+# Start development server
+make docs-dev
+```
+
+### Documentation Resources
 
 - [Package README](packages/design_builder_flutter/README.md) - Detailed usage guide
 - [Contributing](CONTRIBUTING.md) - Contribution guidelines

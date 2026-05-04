@@ -11,7 +11,7 @@ YELLOW = \033[33m
 RED = \033[31m
 RESET = \033[0m
 
-.PHONY: help version analyze test dry-run publish tag release
+.PHONY: help version analyze test dry-run publish tag release docs-dev docs-build docs-preview docs-install
 
 ## Show this help message
 help:
@@ -99,3 +99,29 @@ release: check dry-run
 	@echo "  4. Push to origin: $(YELLOW)git push origin main$(RESET)"
 	@echo "  5. Create tag: $(YELLOW)make tag$(RESET)"
 	@echo "  6. GitHub Actions will automatically publish to pub.dev"
+
+# ============================================================================
+# Documentation Commands (Starlight/Astro)
+# ============================================================================
+
+## Install docs dependencies
+docs-install:
+	@echo "$(BLUE)Installing docs dependencies...$(RESET)"
+	@cd docs && npm install
+	@echo "$(GREEN)✓ Docs dependencies installed$(RESET)"
+
+## Run docs in development mode
+docs-dev:
+	@echo "$(BLUE)Starting docs development server...$(RESET)"
+	@cd docs && npm run dev
+
+## Build the docs site
+docs-build:
+	@echo "$(BLUE)Building docs site...$(RESET)"
+	@cd docs && npm run build
+	@echo "$(GREEN)✓ Docs build complete$(RESET)"
+
+## Preview the built docs
+docs-preview:
+	@echo "$(BLUE)Previewing built docs...$(RESET)"
+	@cd docs && npm run preview
