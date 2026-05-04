@@ -46,4 +46,4 @@ You should see output indicating the package is installed.
 
 ## Next Steps
 
-Once installed, proceed to the [Quick Start Guide](/design_builder/guides/getting-started/) to configure and use Design Builder in your project.
+Once installed, proceed to the [Quick Start Guide](/design-builder/guides/getting-started/) to configure and use Design Builder in your project.

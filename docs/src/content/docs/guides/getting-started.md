@@ -131,6 +131,6 @@ class MyWidget extends StatelessWidget {
 
 ## Next Steps
 
-- Learn about [Configuration Options](/design_builder/guides/configuration/)
-- Understand the [Token Format](/design_builder/guides/token-format/)
-- Explore the [AppTheme API](/design_builder/reference/app-theme/)
+- Learn about [Configuration Options](/design-builder/guides/configuration/)
+- Understand the [Token Format](/design-builder/guides/token-format/)
+- Explore the [AppTheme API](/design-builder/reference/app-theme/)
